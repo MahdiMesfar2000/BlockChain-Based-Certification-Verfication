@@ -590,7 +590,7 @@ function truncateAddress(address) {
 async function addExporter() {
   const address = document.getElementById('Exporter-address').value
   const info = document.getElementById('info').value
-
+  //add here other inputs
   if (info && address) {
     $('#loader').removeClass('d-none')
     $('#ExporterBtn').slideUp()
@@ -606,7 +606,7 @@ async function addExporter() {
 
     try {
       await window.contract.methods
-        .add_Exporter(address, info)
+        .add_Exporter(address, info)//add to blockchain
         .send({ from: window.userAddress })
 
         .on('transactionHash', function (hash) {
@@ -620,7 +620,7 @@ async function addExporter() {
           $('#ExporterBtn').slideDown()
           $('#edit').slideDown()
           $('#delete').slideDown()
-          console.log(receipt)
+          console.log(receipt)//add to database
           $('#note').html(
             `<h5 class="text-info">Exporter Added to the Blockchain 😇</h5>`,
           )
