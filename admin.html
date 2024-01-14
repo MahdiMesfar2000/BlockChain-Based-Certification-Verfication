@@ -94,16 +94,10 @@
         
           <div data-aos="zoom-in" class="col-lg-6 py-3 data-upload my-3 mx-md-2">
             <input   id="Exporter-address" type="text"  placeholder="Exporter Address"  required/>
-            <input  
-              type="text" 
-              id="info"
-              placeholder="Univesity"
-              required
-            />
-            <!--
-              add here other inputs
-            -->
-           
+            <input   type="text" class="d-none" id="name" placeholder="Univesity Name"/>
+            <input   type="text" class="d-none" id="localisation" placeholder="Localisation"/>
+            <input   type="text" class="d-none" id="site" placeholder="Web Site"/>
+            
             <span id="note" class="text-danger"
               ></span
             >
@@ -115,6 +109,13 @@
                 type="submit"
                 value="Add Exporter"
                 id="ExporterBtn"
+              />
+              <input
+              onclick="addExporter2()"
+                class="btn btn-primary  exporter-button main-button d-none"
+                type="submit"
+                value="Add Exporter"
+                id="ExporterBtn2"
               />
               <input
               onclick="deleteExporter()"

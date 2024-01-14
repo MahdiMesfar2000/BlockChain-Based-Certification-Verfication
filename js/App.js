@@ -589,13 +589,23 @@ function truncateAddress(address) {
 
 async function addExporter() {
   const address = document.getElementById('Exporter-address').value
-  const info = document.getElementById('info').value
-  //add here other inputs
-  if (info && address) {
-    $('#loader').removeClass('d-none')
+  if (address){
+
+    const name = document.getElementById('name').value
+    const localisation = document.getElementById('localisation').value
+    const site = document.getElementById('site').value
+    $('#name').removeClass('d-none')
+    $('#localisation').removeClass('d-none')
+    $('#site').removeClass('d-none')
     $('#ExporterBtn').slideUp()
     $('#edit').slideUp()
     $('#delete').slideUp()
+    $('#ExporterBtn2').slideDown()
+    $('#ExporterBtn2').removeClass('d-none')
+  //add here other inputs
+  if (name && address && localisation && site) {
+    $('#loader').removeClass('d-none')
+    
     $('#note').html(
       `<h5 class="text-info">Please confirm the transaction 👍...</h5>`,
     )
@@ -644,7 +654,7 @@ async function addExporter() {
     $('#note').html(
       `<h5 class="text-center text-warning">You need to provide address & inforamtion to add  </h5>`,
     )
-  }
+  }}
 }
 
 async function getExporterInfo() {
