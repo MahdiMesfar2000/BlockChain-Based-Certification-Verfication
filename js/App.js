@@ -52,11 +52,6 @@ window.CONTRACT = {
           "internalType": "address",
           "name": "_add",
           "type": "address"
-        },
-        {
-          "internalType": "string",
-          "name": "_info",
-          "type": "string"
         }
       ],
       "name": "add_Exporter",
@@ -586,75 +581,102 @@ function truncateAddress(address) {
     address.length,
   )}`
 }
+async function Confirm() {
+  const name = document.getElementById('name').value
+  const localisation = document.getElementById('localisation').value
+  const site = document.getElementById('site').value
+  const address = document.getElementById('Exporter-address').value
+if (name && address && localisation && site) {
+  const obj= {"nom":name,"public_key":address,"localisation":localisation,"site":site}
+  $('#loader').removeClass('d-none')
+  $('#note').html(
+    `<h5 class="text-info">Please confirm the transaction 👍...</h5>`,
+  )
+  /*$('#ExporterBtn').attr('disabled', true)
+  $('#delete').attr('disabled', true)
+  $('#edit').attr('disabled', true)
+  get_ChainID()
+
+  try {
+    await window.contract.methods
+      .add_Exporter(address)//add to blockchain
+      .send({ from: window.userAddress })
+
+      .on('transactionHash', function (hash) {
+        $('#note').html(
+          `<h5 class="text-info p-1 text-center">Please wait for transaction to be mined 😴...</h5>`,
+        )
+      })
+
+      .on('receipt', function (receipt) {
+        $('#loader').addClass('d-none')
+        $('#ExporterBtn').slideDown()
+        $('#edit').slideDown()
+        $('#delete').slideDown()
+        console.log(receipt)//add to database
+        
+        $('#note').html(
+          `<h5 class="text-info">Exporter Added to the Blockchain 😇</h5>`,
+        )
+      })
+
+      .on('confirmation', function (confirmationNr) {})
+      .on('error', function (error) {
+        console.log(error.message)
+        $('#note').html(`<h5 class="text-center">${error.message}</h5>`)
+        $('#loader').addClass('d-none')
+        $('#ExporterBtn').slideDown()
+      })
+  } catch (error) {
+    $('#note').html(`<h5 class="text-center">${error.message}</h5>`)
+    $('#loader').addClass('d-none')
+    $('#ExporterBtn').slideDown()
+    $('#edit').slideDown()
+    $('#delete').slideDown()
+  }*/
+  console.log(obj)
+} else {
+  $('#note').html(
+    `<h5 class="text-center text-warning">You need to provide all info!! </h5>`,
+  )
+}
+} 
+
+function back() {
+  $('#loader').addClass('d-none')
+  $('#name').addClass('d-none')
+  $('#localisation').addClass('d-none')
+  $('#site').addClass('d-none')
+
+  $('#ExporterBtn').removeClass('d-none')
+  $('#edit').removeClass('d-none')
+  $('#delete').removeClass('d-none')
+
+  $('#back').addClass('d-none')
+  $('#Confirm').addClass('d-none')
+  $('#note').html( `<h5 class="text-center text-warning"></h5>`,
+  )
+}
+
 
 async function addExporter() {
   const address = document.getElementById('Exporter-address').value
   if (address){
-
-    const name = document.getElementById('name').value
-    const localisation = document.getElementById('localisation').value
-    const site = document.getElementById('site').value
     $('#name').removeClass('d-none')
     $('#localisation').removeClass('d-none')
     $('#site').removeClass('d-none')
-    $('#ExporterBtn').slideUp()
-    $('#edit').slideUp()
-    $('#delete').slideUp()
-    $('#ExporterBtn2').slideDown()
-    $('#ExporterBtn2').removeClass('d-none')
+    $('#ExporterBtn').addClass('d-none')
+    $('#edit').addClass('d-none')
+    $('#delete').addClass('d-none')
+    $('#back').removeClass('d-none')
+    $('#Confirm').removeClass('d-none')
   //add here other inputs
-  if (name && address && localisation && site) {
-    $('#loader').removeClass('d-none')
-    
+}
+  else {
     $('#note').html(
-      `<h5 class="text-info">Please confirm the transaction 👍...</h5>`,
+      `<h5 class="text-center text-warning">You need to provide address </h5>`,
     )
-    $('#ExporterBtn').attr('disabled', true)
-    $('#delete').attr('disabled', true)
-    $('#edit').attr('disabled', true)
-    get_ChainID()
-
-    try {
-      await window.contract.methods
-        .add_Exporter(address, info)//add to blockchain
-        .send({ from: window.userAddress })
-
-        .on('transactionHash', function (hash) {
-          $('#note').html(
-            `<h5 class="text-info p-1 text-center">Please wait for transaction to be mined 😴...</h5>`,
-          )
-        })
-
-        .on('receipt', function (receipt) {
-          $('#loader').addClass('d-none')
-          $('#ExporterBtn').slideDown()
-          $('#edit').slideDown()
-          $('#delete').slideDown()
-          console.log(receipt)//add to database
-          $('#note').html(
-            `<h5 class="text-info">Exporter Added to the Blockchain 😇</h5>`,
-          )
-        })
-
-        .on('confirmation', function (confirmationNr) {})
-        .on('error', function (error) {
-          console.log(error.message)
-          $('#note').html(`<h5 class="text-center">${error.message}</h5>`)
-          $('#loader').addClass('d-none')
-          $('#ExporterBtn').slideDown()
-        })
-    } catch (error) {
-      $('#note').html(`<h5 class="text-center">${error.message}</h5>`)
-      $('#loader').addClass('d-none')
-      $('#ExporterBtn').slideDown()
-      $('#edit').slideDown()
-      $('#delete').slideDown()
-    }
-  } else {
-    $('#note').html(
-      `<h5 class="text-center text-warning">You need to provide address & inforamtion to add  </h5>`,
-    )
-  }}
+  }
 }
 
 async function getExporterInfo() {
