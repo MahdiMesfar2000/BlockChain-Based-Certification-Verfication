@@ -10,6 +10,7 @@
       href="css/bootstrap.min.css"
       rel="stylesheet"
     />  
+    <link rel="stylesheet" href="css/table.css">
     <script src="js/App.js"></script>
     <script src="node_modules\web3\dist\web3.min.js"></script>
     <link href="./css/aos.min.css" rel="stylesheet" />
@@ -119,11 +120,25 @@
                 id="Confirm"
               />
               <input
+              onclick="Confirm2()"
+                class="btn btn-primary  exporter-button main-button d-none"
+                type="submit"
+                value="Confirm"
+                id="Confirm2"
+              />
+              <input
               onclick="back()"
                 class="btn btn-primary  exporter-button main-button d-none"
                 type="submit"
                 value="Back"
                 id="back"
+              />
+              <input
+              onclick="back2()"
+                class="btn btn-primary  exporter-button main-button d-none"
+                type="submit"
+                value="Back"
+                id="back2"
               />
               <input
               onclick="deleteExporter()"
@@ -142,9 +157,20 @@
             </div>
            
           </div>
-          
- 
+
         </div>
+        <table class=" container rwd-table">
+          <tr>
+              <th>Public Key</th>
+              <th>Name</th>
+              <th>Localisation</th>
+              <th>site</th>
+          </tr>
+      
+          <tbody id="myTable">
+              
+          </tbody>
+      </table>
       </div>
     <!--=====================Footer===========================-->
     <div class="footer-dark">
@@ -237,7 +263,31 @@
   $("#edit").attr("disabled", false);
   $("#delete").attr("disabled", false);
 }
- 
+function Table(data){
+  var table = document.getElementById('myTable')
+
+  for (var i = 0; i < data.length; i++){
+    var row = `<tr>
+            <td>${data[i].public_key}</td>
+            <td>${data[i].nom}</td>
+            <td>${data[i].localisation}</td>
+            <td>${data[i].site}</td>
+          </tr>`
+    table.innerHTML += row
+
+
+  }
+}
+async function buildTable(){
+  const response = await fetch('http://localhost:4000/api/workouts')
+      const json = await response.json()
+
+      if (response.ok) {
+        console.log(json)
+        Table(json)
+      }
+}
+buildTable()
     </script>
   </body>
 </html>

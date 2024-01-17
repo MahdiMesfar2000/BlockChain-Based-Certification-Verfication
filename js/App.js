@@ -249,7 +249,7 @@ window.onload = async () => {
   window.userAddress = window.localStorage.getItem('userAddress')
 
   if (window.ethereum) {
-    //gere we need MetaMask to read and write to our Contract
+    //here we need MetaMask to read and write to our Contract
     window.web3 = new Web3(window.ethereum)
     window.contract = new window.web3.eth.Contract(
       window.CONTRACT.abi,
@@ -581,18 +581,52 @@ function truncateAddress(address) {
     address.length,
   )}`
 }
+async function Confirm2() {
+  const name = document.getElementById('name').value
+  const localisation = document.getElementById('localisation').value
+  const site = document.getElementById('site').value
+  const address = document.getElementById('Exporter-address').value
+if (name && address && localisation && site) {
+  const obj= {"nom":name,"public_key":address,"localisation":localisation, "site":site}
+  console.log(obj)
+  
+  const response = await fetch('http://localhost:4000/api/workouts/'+address, {
+    method: 'PUT',
+    body: JSON.stringify(obj),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  const json = await response.json()
+
+  if (!response.ok) {
+    console.log(json.error)
+  }
+  if (response.ok) {
+   
+    console.log('workout updated:', json)
+    location.reload()
+  }
+
+
+} else {
+  $('#note').html(
+    `<h5 class="text-center text-warning">You need to provide all info!! </h5>`,
+  )
+}
+}
 async function Confirm() {
   const name = document.getElementById('name').value
   const localisation = document.getElementById('localisation').value
   const site = document.getElementById('site').value
   const address = document.getElementById('Exporter-address').value
 if (name && address && localisation && site) {
-  const obj= {"nom":name,"public_key":address,"localisation":localisation,"site":site}
-  $('#loader').removeClass('d-none')
+  const obj= {"nom":name,"public_key":address,"localisation":localisation, "site":site}
+  /*$('#loader').removeClass('d-none')
   $('#note').html(
     `<h5 class="text-info">Please confirm the transaction 👍...</h5>`,
   )
-  /*$('#ExporterBtn').attr('disabled', true)
+  $('#ExporterBtn').attr('disabled', true)
   $('#delete').attr('disabled', true)
   $('#edit').attr('disabled', true)
   get_ChainID()
@@ -635,6 +669,26 @@ if (name && address && localisation && site) {
     $('#delete').slideDown()
   }*/
   console.log(obj)
+  
+  const response = await fetch('http://localhost:4000/api/workouts', {
+    method: 'POST',
+    body: JSON.stringify(obj),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  const json = await response.json()
+
+  if (!response.ok) {
+    console.log(json.error)
+  }
+  if (response.ok) {
+   
+    console.log('new workout added:', json)
+    location.reload()
+  }
+
+
 } else {
   $('#note').html(
     `<h5 class="text-center text-warning">You need to provide all info!! </h5>`,
@@ -654,6 +708,21 @@ function back() {
 
   $('#back').addClass('d-none')
   $('#Confirm').addClass('d-none')
+  $('#note').html( `<h5 class="text-center text-warning"></h5>`,
+  )
+}
+function back2() {
+  $('#loader').addClass('d-none')
+  $('#name').addClass('d-none')
+  $('#localisation').addClass('d-none')
+  $('#site').addClass('d-none')
+
+  $('#ExporterBtn').removeClass('d-none')
+  $('#edit').removeClass('d-none')
+  $('#delete').removeClass('d-none')
+
+  $('#back2').addClass('d-none')
+  $('#Confirm2').addClass('d-none')
   $('#note').html( `<h5 class="text-center text-warning"></h5>`,
   )
 }
@@ -712,8 +781,43 @@ async function getCounters() {
 
 async function editExporter() {
   const address = document.getElementById('Exporter-address').value
-  const info = document.getElementById('info').value
+  if (address){
+   
+  const response = await fetch('http://localhost:4000/api/workouts'+'/'+address, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  const json = await response.json()
 
+  if (!response.ok) {
+    console.log(json.error)
+    $('#note').html(
+      `<h5 class="text-center text-warning">Adress not found!!</h5>`,
+    )
+  }
+  if (response.ok) {
+    $('#name').removeClass('d-none')
+    $('#localisation').removeClass('d-none')
+    $('#site').removeClass('d-none')
+    $('#ExporterBtn').addClass('d-none')
+    $('#edit').addClass('d-none')
+    $('#delete').addClass('d-none')
+    $('#back2').removeClass('d-none')
+    $('#Confirm2').removeClass('d-none')
+    console.log('workout selected:', json)
+    document.getElementById('name').value=json['nom']
+    document.getElementById('localisation').value=json['localisation']
+    document.getElementById('site').value=json['site']
+    
+    //location.reload()
+  }}else {
+    $('#note').html(
+      `<h5 class="text-center text-warning">You need to provide address </h5>`,
+    )
+  }
+/*
   if (info && address) {
     $('#loader').removeClass('d-none')
     $('#ExporterBtn').slideUp()
@@ -763,13 +867,29 @@ async function editExporter() {
     $('#note').html(
       `<h5 class="text-center text-warning">You need to provide address & inforamtion to update 😵‍💫 </h5>`,
     )
-  }
+  }*/
 }
 
 
 async function deleteExporter() {
   const address = document.getElementById('Exporter-address').value
+  const response = await fetch('http://localhost:4000/api/workouts'+'/'+address, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  const json = await response.json()
 
+  if (!response.ok) {
+    console.log(json.error)
+  }
+  if (response.ok) {
+   
+    console.log('workout deleted:', json)
+    location.reload()
+  }
+  /*
   if (address) {
     $('#loader').removeClass('d-none')
     $('#ExporterBtn').slideUp()
@@ -821,7 +941,7 @@ async function deleteExporter() {
     $('#note').html(
       `<h5 class="text-center text-warning">You need to provide address to delete 👍</h5>`,
     )
-  }
+  }*/
 }
 
 // Generate QR code so any one an Verify the documents
