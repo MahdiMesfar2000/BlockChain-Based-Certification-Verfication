@@ -47,7 +47,15 @@ const deleteWorkout = async (req, res) => {
 
 // update a workout
 const updateWorkout = async (req, res) => {
+  const workout = await Workout.findOneAndUpdate({public_key: req.params.id}, {
+    ...req.body
+  })
 
+  if (!workout) {
+    return res.status(400).json({error: 'No such workout'})
+  }
+
+  res.status(200).json(workout)
 }
 
 module.exports = {
