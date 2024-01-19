@@ -79,7 +79,7 @@ contract Verification  is AccessControl  {
 
         event addHash(address indexed _exporter,string _ipfsHash);
     function addDocHash (bytes32  hash,string calldata _ipfs) public 
-      canAddHash
+      onlyRole(EXPORTER_ROLE)
       {
             assert(docHashes[hash].blockNumber==0 && docHashes[hash].minetime==0);
             Record memory  newRecord = 
@@ -113,3 +113,14 @@ contract Verification  is AccessControl  {
         return (Exporters[_add].info);
     }
 }
+
+
+
+
+/*function addDocHash(bytes32 hash, string calldata _ipfs) public {
+     require( hasRole(EXPORTER_ROLE, msg.sender) || hasRole(OWNER_ROLE, msg.sender), "Caller is not authorized" );
+      require( docHashes[hash].blockNumber == 0 && docHashes[hash].minetime == 0, "The hash has already been added" );
+       Record memory newRecord = Record(block.number, block.timestamp, Exporters[msg.sender].info, _ipfs);
+ docHashes[hash] = newRecord;
+  ++count_hashes;
+   emit addHash(msg.sender, _ipfs); }*/
