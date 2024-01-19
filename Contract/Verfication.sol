@@ -9,8 +9,8 @@ contract Verification {
     address public owner;
 
     struct  Record  {
-        uint blockNumber; 
-        uint minetime; 
+        uint blockNumber;
+        uint minetime;
         string info;
         string ipfs_hash;
          }

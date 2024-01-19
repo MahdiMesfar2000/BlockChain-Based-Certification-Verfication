@@ -3,7 +3,7 @@
 //just provide the network address
 
 window.CONTRACT = {
-  address: '0x1440726eF34365215dad988721921F7BbC868547',
+  address: '0x378Db0F8113ed74ABDE52721DAf71A7FAf57F283',
   network: 'https://rpc.sepolia.org/',
   explore: 'https://sepolia.etherscan.io/',
   // Your Contract ABI 
@@ -19,7 +19,7 @@ window.CONTRACT = {
         {
           "indexed": true,
           "internalType": "address",
-          "name": "_Exporter",
+          "name": "_exporter",
           "type": "address"
         },
         {
@@ -249,6 +249,7 @@ async function verify_Hash() {
         window.newHash = result
         if ((result[0] != 0) & (result[1] != 0)) {
           //Doc Verified
+          console.log(result)
           print_verification_info(result, true)
         } else {
          //Doc not Verified
@@ -354,7 +355,7 @@ function print_verification_info(result, is_verified) {
       `<span class="text-info"><i class="fa-solid fa-cube"></i></span> ${result[0]}`,
     )
     document.getElementById('student-document').src =
-      'https://ipfs.io/ipfs/' + result[3]
+      'http://localhost:8080/ipfs/' + result[3]
     document.getElementById('download-document').href = document.getElementById(
       'student-document',
     ).src

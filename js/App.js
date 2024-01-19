@@ -1,5 +1,6 @@
+
 window.CONTRACT = {
-  address: '0x1440726eF34365215dad988721921F7BbC868547',
+  address: '0x378Db0F8113ed74ABDE52721DAf71A7FAf57F283',
   network: 'https://rpc.sepolia.org/',
   explore: 'https://sepolia.etherscan.io/',
   // Your Contract ABI 
@@ -390,8 +391,8 @@ async function sendHash() {
   get_ChainID()
   // Initilize Ipfs
 
-  const file = document.getElementById('doc-file').files[0]
-  node = await Ipfs.create({ repo: 'Ali-ok' + Math.random() })
+  const file = document.getElementById('doc-file').files[0];
+  node = await Ipfs.create({ repo: 'Ali-ok' + Math.random(), host: 'localhost', port: '5001', protocol: 'http' })
   const fileReader = new FileReader()
   fileReader.readAsArrayBuffer(file)
   fileReader.onload = async (event) => {
@@ -404,7 +405,7 @@ async function sendHash() {
   // =================================================
   if (window.hashedfile) {
     const file = document.getElementById('doc-file').files[0]
-    node = await Ipfs.create({ repo: 'Ali-ok' + Math.random() })
+    node = await Ipfs.create({ repo: 'Ali-ok' + Math.random(), host: 'localhost', port: '5001', protocol: 'http' })
     const fileReader = new FileReader()
     fileReader.readAsArrayBuffer(file)
     fileReader.onload = async (event) => {
@@ -867,7 +868,7 @@ function printTransactions(data) {
     a.style = 'overflow:hidden;'
     const image = document.createElement('object')
     image.style = 'width:100%;height: 100%;'
-    image.data = `https://ipfs.io/ipfs/${data[i].returnValues[1]}`
+    image.data = `http://localhost:8080/ipfs/${data[i].returnValues[1]}`
     const num = document.createElement('h1')
     num.append(document.createTextNode(i + 1))
     a.appendChild(image)
