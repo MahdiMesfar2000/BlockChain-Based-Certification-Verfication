@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0
 
 pragma solidity >=0.7.0 <0.9.0;
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/AccessControl.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/audit/2023-03/contracts/access/AccessControl.sol";
 
 
 contract test  is AccessControl {
@@ -10,7 +10,7 @@ contract test  is AccessControl {
     bytes32 public constant STUDENT_ROLE = keccak256("STUDENT_ROLE"); 
 
 
-    constructor() { grantRole(OWNER_ROLE, msg.sender); }
+    constructor() { _setupRole(OWNER_ROLE, msg.sender); }
     uint16 public count_Exporters =0;
     uint16 public count_hashes=0;
     
@@ -39,7 +39,7 @@ contract test  is AccessControl {
     function add_Exporter(address _add,string calldata _info) external
     onlyRole(OWNER_ROLE){ 
         assert(Exporters[_add].blockNumber==0);
-          grantRole(EXPORTER_ROLE, _add);
+          _setupRole(EXPORTER_ROLE, _add);
           Exporters[_add].blockNumber = block.number;
           Exporters[_add].info = _info;
           ++count_Exporters;
