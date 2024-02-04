@@ -13,6 +13,7 @@ contract Verification {
         uint minetime;
         string info;
         string ipfs_hash;
+        address studentAddress; // New attribute for student address
          }
     struct Exporter_Record{
         uint blockNumber;
@@ -72,23 +73,33 @@ contract Verification {
         onlyOwner  validAddress(_newOwner)   {  owner = _newOwner; }
 
         event addHash(address indexed _exporter,string _ipfsHash);
-    function addDocHash (bytes32  hash,string calldata _ipfs) public 
+    function addDocHash (bytes32  hash,string calldata _ipfs, address _studentAddress) public 
       canAddHash
       {
             assert(docHashes[hash].blockNumber==0 && docHashes[hash].minetime==0);
-            Record memory  newRecord = 
-            Record(block.number,block.timestamp,Exporters[msg.sender].info,_ipfs);
+            Record memory newRecord = Record(
+            block.number,
+            block.timestamp,
+            Exporters[msg.sender].info,
+            _ipfs,
+            _studentAddress
+            );
             docHashes[hash] = newRecord; 
             ++count_hashes;
             emit addHash(msg.sender,_ipfs);
       }
       
 
-    function findDocHash (bytes32 _hash) 
-    external  view  returns (uint,uint,string memory,string memory) {
-       
-        return (docHashes[_hash].blockNumber,docHashes[_hash].minetime,docHashes[_hash].info,docHashes[_hash].ipfs_hash );
-        }
+    function findDocHash(bytes32 _hash) external view returns (uint, uint, string memory, string memory, address) {
+        return (
+            docHashes[_hash].blockNumber,
+            docHashes[_hash].minetime,
+            docHashes[_hash].info,
+            docHashes[_hash].ipfs_hash,
+            docHashes[_hash].studentAddress
+        );
+    }
+
 
     function deleteHash (bytes32 _hash) public
     authorised_Exporter(_hash)

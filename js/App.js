@@ -1,6 +1,6 @@
 
 window.CONTRACT = {
-  address: '0x378Db0F8113ed74ABDE52721DAf71A7FAf57F283',
+  address: '0x4A62496D1f1245913598D979eFa35f1eE087829F',
   network: 'https://rpc.sepolia.org/',
   explore: 'https://sepolia.etherscan.io/',
   // Your Contract ABI 
@@ -40,6 +40,11 @@ window.CONTRACT = {
           "internalType": "string",
           "name": "_ipfs",
           "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "_studentAddress",
+          "type": "address"
         }
       ],
       "name": "addDocHash",
@@ -177,6 +182,11 @@ window.CONTRACT = {
           "internalType": "string",
           "name": "",
           "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
         }
       ],
       "stateMutability": "view",
@@ -353,6 +363,10 @@ function printUploadInfo(result) {
       result.to,
     )}`,
   )
+  const studentAddress = document.getElementById('student-address').value;
+  $('#student-address').html(
+    `<i class="fa-solid fa-user mx-1"></i> ${truncateAddress(studentAddress)}`,
+  )
   $('#time-stamps').html('<i class="fa-solid fa-clock mx-1"></i>' + getTime())
   $('#blockNumber').html(
     `<i class="fa-solid fa-link mx-1"></i>${result.blockNumber}`,
@@ -412,8 +426,9 @@ async function sendHash() {
       let result = await node.add(fileReader.result)
       window.ipfsCid = result.path
     }
+    const studentAddress = document.getElementById('student-address').value;
     await window.contract.methods
-      .addDocHash(window.hashedfile, window.ipfsCid)
+      .addDocHash(window.hashedfile, window.ipfsCid, studentAddress)
       .send({ from: window.userAddress })
       .on('transactionHash', function (_hash) {
         $('#note').html(
