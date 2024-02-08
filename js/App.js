@@ -1290,6 +1290,19 @@ async function getrole(){
 
     .then((result) => {
     console.log("roles:", result);
+    if (!(result[0])){$(document).ready(function() {$('#Admin').addClass('d-none');});}
+    if (!(result[1])){$(document).ready(function() {$('#Upload').addClass('d-none');$('#Delete').addClass('d-none');});}
+    if (window.location.pathname == '/admin.html')
+    {
+      if (!(result[0])) {window.location.href = '/index.html';}
+      
+    }
+
+    if ((window.location.pathname == '/delete.html') || (window.location.pathname == '/upload.html'))
+    {
+      if (!(result[1])) {window.location.href = '/index.html';}
+      
+    }
       
     })
   
