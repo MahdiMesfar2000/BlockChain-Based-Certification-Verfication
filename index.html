@@ -34,7 +34,14 @@
     <link href="./css/main.css" rel="stylesheet" />
     <!-- Favicon -->
     <link rel="icon" href="./assets/images/icon.png" />
+    <script src="node_modules\web3\dist\web3.min.js"></script>
+    
+    <script src="js/App.js"></script>
+
+
   </head>
+
+
   <body>
     <div class="loader-wraper">
       <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
@@ -52,23 +59,23 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              <a class="nav-link active" id="Home" aria-current="page" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link " href="upload.html">Upload </a>
+              <a class="nav-link " id="Upload" href="upload.html">Upload </a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="verify.html">Verify </a>
+              <a class="nav-link" id="Verify" href="verify.html">Verify </a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="delete.html">Delete </a>
+              <a class="nav-link" id="Delete" href="delete.html">Delete </a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="admin.html">Admin</a>
+                <a class="nav-link" id="Admin" href="admin.html">Admin</a>
                 </li>            
                   <li class="nav-item">
-              <a class="nav-link " href="about.html">Team</a>
+              <a class="nav-link " id="Team" href="about.html">Team</a>
               </li>
           </ul>
           </div>
@@ -366,6 +373,7 @@
       //   },4000)
   $(".loader-wraper").fadeOut("slow");
     </script>
+
 
   </body>
 </html>

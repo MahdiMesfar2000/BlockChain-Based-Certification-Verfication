@@ -520,6 +520,16 @@ window.onload = async () => {
       window.CONTRACT.address,
     )
     //checking if user loged in
+
+
+
+
+    getRolesList()
+
+
+
+
+
     if (window.userAddress.length > 10) {
       // let isLocked =await window.ethereum._metamask.isUnlocked();
       //  if(!isLocked) disconnect();
@@ -546,7 +556,7 @@ window.onload = async () => {
 
       setTimeout(() => {
         listen()
-        getRolesList()
+        
       }, 0)
     } else {
       $('#logoutButton').hide()
@@ -1305,7 +1315,6 @@ async function getrole(){
     }
       
     })
-  
 
 }
 

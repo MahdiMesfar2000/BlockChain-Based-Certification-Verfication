@@ -12,13 +12,14 @@
     />  
     <link rel="stylesheet" href="css/table.css">
     <script src="js/App.js"></script>
+
     <script src="node_modules\web3\dist\web3.min.js"></script>
     <link href="./css/aos.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <link rel="stylesheet" href="css/main.css" />
     <link rel="icon" href="./assets/images/icon.png" />
     <title>Admin Dashboard</title>
   </head>
-
+  
   <body>
     <div class="loader-wraper">
       <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
@@ -26,8 +27,25 @@
     <div >
       <i onclick="topFunction()" id="scroll-btn" class="fa-solid fa-angle-up"></i>
     </div>
-    <!-----------------------------navbBar Start-------------------->
-  <!--NavBar Start-->
+    <!-----------------------------MODAL Start-------------------->
+  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-----------------------------navbBar Start-------------------->
+<!--NavBar Start-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 navbar-dark">
     <div class="container">
       <a class="navbar-brand" href="index.html">
@@ -40,23 +58,23 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link " aria-current="page" href="index.html">Home</a>
+          <a class="nav-link "id="Home"  aria-current="page" href="index.html">Home</a>
           </li>
           <li class="nav-item">
-          <a class="nav-link  " href="upload.html">Upload </a>
+          <a class="nav-link  "id="Upload"  href="upload.html">Upload </a>
           </li>
           <li class="nav-item">
-          <a class="nav-link" href="verify.html">Verify </a>
+          <a class="nav-link" id="Verify" href="verify.html">Verify </a>
           </li>
           <li class="nav-item">
-          <a class="nav-link" href="delete.html">Delete </a>
+          <a class="nav-link" id="Delete" href="delete.html">Delete </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active" href="admin.html">Admin</a>
+            <a class="nav-link active"id="Admin"  href="admin.html">Admin</a>
             </li>         
              <li class="nav-item">
-          <a class="nav-link" href="about.html">Team</a>
+          <a class="nav-link"  id="Team" href="about.html">Team</a>
           </li>
       </ul>
 
@@ -289,5 +307,6 @@ async function buildTable(){
 }
 buildTable()
     </script>
+
   </body>
 </html>

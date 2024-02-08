@@ -14,7 +14,7 @@ constructor() {
 
 function addExporter(address account) public onlyRole(OWNER_ROLE) { 
     grantRole(EXPORTER_ROLE, account);
-} 
+}
 
 function addStudent(address account) public onlyRole(EXPORTER_ROLE) { 
 

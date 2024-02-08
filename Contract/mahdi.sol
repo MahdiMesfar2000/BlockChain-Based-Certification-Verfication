@@ -11,7 +11,7 @@ contract test  is AccessControl {
 
 
     constructor() { _setupRole(OWNER_ROLE, msg.sender); }
-    uint16 public count_Exporters =0;
+    uint16 public count_Exporters=0;
     uint16 public count_hashes=0;
     
 
@@ -56,7 +56,7 @@ contract test  is AccessControl {
         --count_Exporters;
         }
         
-    function alter_Exporter(address _add,string calldata    _newInfo) public
+    function alter_Exporter(address _add,string calldata  _newInfo) public
     onlyRole(OWNER_ROLE)
      { 
           assert(Exporters[_add].blockNumber!=0);
@@ -65,7 +65,7 @@ contract test  is AccessControl {
     function changeOwner(address _newOwner) public 
         onlyRole(OWNER_ROLE)  validAddress(_newOwner)   {  
             revokeRole(OWNER_ROLE, msg.sender);
-            grantRole(OWNER_ROLE, _newOwner);
+            _setupRole(OWNER_ROLE, _newOwner);
             }
 
         event addHash(address indexed _exporter,string _ipfsHash);
@@ -109,13 +109,11 @@ contract test  is AccessControl {
     }
     
     function  getExporterInfo(address _add) external view returns(string memory){
-
         return (Exporters[_add].info);
     }
 
-    function  roleInfo(address _add) external view returns(bool[3] memory){
-
-        return ([hasRole(OWNER_ROLE, _add),hasRole(EXPORTER_ROLE, _add),hasRole(STUDENT_ROLE, _add)]);
-
+    function roleInfo(address _add) external view returns(bool[3] memory){
+        bool[3] memory roles = [hasRole(OWNER_ROLE, _add),hasRole(EXPORTER_ROLE, _add),hasRole(STUDENT_ROLE, _add)];
+        return (roles);
     }
 }
