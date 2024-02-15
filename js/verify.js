@@ -3,7 +3,7 @@
 //just provide the network address
 
 window.CONTRACT = {
-  address: '0x1440726eF34365215dad988721921F7BbC868547',
+  address: '0x58AC94aaAf909aDC5c9909826f4d909ECC4EF7c7',
   network: 'https://rpc.sepolia.org/',
   explore: 'https://sepolia.etherscan.io/',
   // Your Contract ABI 
@@ -19,7 +19,7 @@ window.CONTRACT = {
         {
           "indexed": true,
           "internalType": "address",
-          "name": "_Exporter",
+          "name": "_exporter",
           "type": "address"
         },
         {
@@ -43,6 +43,11 @@ window.CONTRACT = {
           "internalType": "string",
           "name": "_ipfs",
           "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "_studentAddress",
+          "type": "address"
         }
       ],
       "name": "addDocHash",
@@ -180,6 +185,11 @@ window.CONTRACT = {
           "internalType": "string",
           "name": "",
           "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
         }
       ],
       "stateMutability": "view",
@@ -315,6 +325,7 @@ function print_verification_info(result, is_verified) {
     $('#contract-address').hide()
     $('#time-stamps').hide()
     $('#blockNumber').hide()
+    $('#student-address').hide()
     $('.transaction-status').show()
   } else {
     $('#download-document').show()
@@ -323,6 +334,7 @@ function print_verification_info(result, is_verified) {
     $('#contract-address').show()
     $('#time-stamps').show()
     $('#blockNumber').show()
+    $('#student-address').show()
 
     var t = new Date(1970, 0, 1)
     t.setSeconds(result[1])
@@ -352,6 +364,9 @@ function print_verification_info(result, is_verified) {
     )
     $('#blockNumber').html(
       `<span class="text-info"><i class="fa-solid fa-cube"></i></span> ${result[0]}`,
+    )
+    $('#student-address').html(
+      `<span class="text-info"><i class="fa-solid fa-user"></i></span> ${truncateAddress(result[4])}`,
     )
     document.getElementById('student-document').src =
       'https://ipfs.io/ipfs/' + result[3]
