@@ -3,7 +3,7 @@
 //just provide the network address
 
 window.CONTRACT = {
-  address: '0x4A62496D1f1245913598D979eFa35f1eE087829F',
+  address: '0x58AC94aaAf909aDC5c9909826f4d909ECC4EF7c7',
   network: 'https://rpc.sepolia.org/',
   explore: 'https://sepolia.etherscan.io/',
   // Your Contract ABI 
@@ -259,7 +259,6 @@ async function verify_Hash() {
         window.newHash = result
         if ((result[0] != 0) & (result[1] != 0)) {
           //Doc Verified
-          console.log(result)
           print_verification_info(result, true)
         } else {
          //Doc not Verified
@@ -326,6 +325,7 @@ function print_verification_info(result, is_verified) {
     $('#contract-address').hide()
     $('#time-stamps').hide()
     $('#blockNumber').hide()
+    $('#student-address').hide()
     $('.transaction-status').show()
   } else {
     $('#download-document').show()
@@ -334,6 +334,7 @@ function print_verification_info(result, is_verified) {
     $('#contract-address').show()
     $('#time-stamps').show()
     $('#blockNumber').show()
+    $('#student-address').show()
 
     var t = new Date(1970, 0, 1)
     t.setSeconds(result[1])
@@ -364,8 +365,11 @@ function print_verification_info(result, is_verified) {
     $('#blockNumber').html(
       `<span class="text-info"><i class="fa-solid fa-cube"></i></span> ${result[0]}`,
     )
+    $('#student-address').html(
+      `<span class="text-info"><i class="fa-solid fa-user"></i></span> ${truncateAddress(result[4])}`,
+    )
     document.getElementById('student-document').src =
-      'http://localhost:8080/ipfs/' + result[3]
+      'https://ipfs.io/ipfs/' + result[3]
     document.getElementById('download-document').href = document.getElementById(
       'student-document',
     ).src

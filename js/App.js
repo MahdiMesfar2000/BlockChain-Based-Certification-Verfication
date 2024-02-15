@@ -1,6 +1,5 @@
-
 window.CONTRACT = {
-  address: '0x4A62496D1f1245913598D979eFa35f1eE087829F',
+  address: '0x58AC94aaAf909aDC5c9909826f4d909ECC4EF7c7',
   network: 'https://rpc.sepolia.org/',
   explore: 'https://sepolia.etherscan.io/',
   // Your Contract ABI 
@@ -364,9 +363,6 @@ function printUploadInfo(result) {
     )}`,
   )
   const studentAddress = document.getElementById('student-address').value;
-  $('#student-address').html(
-    `<i class="fa-solid fa-user mx-1"></i> ${truncateAddress(studentAddress)}`,
-  )
   $('#time-stamps').html('<i class="fa-solid fa-clock mx-1"></i>' + getTime())
   $('#blockNumber').html(
     `<i class="fa-solid fa-link mx-1"></i>${result.blockNumber}`,
@@ -381,7 +377,7 @@ function printUploadInfo(result) {
   )
   $('#to-netowrk').hide()
   $('#gas-used').html(
-    `<i class="fa-solid fa-gas-pump mx-1"></i> ${result.gasUsed} Gwei`,
+    `<i class="fa-solid fa-user mx-1"></i> ${truncateAddress(studentAddress)}`,
   )
   $('#loader').addClass('d-none')
   $('#upload_file_button').addClass('d-block')
@@ -405,8 +401,12 @@ async function sendHash() {
   get_ChainID()
   // Initilize Ipfs
 
-  const file = document.getElementById('doc-file').files[0];
-  node = await Ipfs.create({ repo: 'Ali-ok' + Math.random(), host: 'localhost', port: '5001', protocol: 'http' })
+  const file = document.getElementById('doc-file').files[0]
+  const nodeId = 'ipfs-' + Math.random();
+  node = await Ipfs.create({ repo: nodeId });
+  window.node = node;
+  const status = node.isOnline() ? 'online' : 'offline';
+  console.log(`Node status: ${status}`);
   const fileReader = new FileReader()
   fileReader.readAsArrayBuffer(file)
   fileReader.onload = async (event) => {
@@ -419,17 +419,22 @@ async function sendHash() {
   // =================================================
   if (window.hashedfile) {
     const file = document.getElementById('doc-file').files[0]
-    node = await Ipfs.create({ repo: 'Ali-ok' + Math.random(), host: 'localhost', port: '5001', protocol: 'http' })
+    const nodeId = 'ipfs-' + Math.random();
+    node = await Ipfs.create({ repo: nodeId });
+    console.log("Your node: " + nodeId);
+    const status = node.isOnline() ? 'online' : 'offline';
+    console.log(`Node status: ${status}`);
     const fileReader = new FileReader()
     fileReader.readAsArrayBuffer(file)
     fileReader.onload = async (event) => {
       let result = await node.add(fileReader.result)
       window.ipfsCid = result.path
+      console.log(result);
     }
     const studentAddress = document.getElementById('student-address').value;
     await window.contract.methods
-      .addDocHash(window.hashedfile, window.ipfsCid, studentAddress)
-      .send({ from: window.userAddress })
+    .addDocHash(window.hashedfile, window.ipfsCid, studentAddress)
+    .send({ from: window.userAddress })
       .on('transactionHash', function (_hash) {
         $('#note').html(
           `<h5 class="text-info p-1 text-center">Please wait for transaction to be mined...</h5>`,
@@ -883,7 +888,7 @@ function printTransactions(data) {
     a.style = 'overflow:hidden;'
     const image = document.createElement('object')
     image.style = 'width:100%;height: 100%;'
-    image.data = `http://localhost:8080/ipfs/${data[i].returnValues[1]}`
+    image.data = `https://ipfs.io/ipfs/${data[i].returnValues[1]}`
     const num = document.createElement('h1')
     num.append(document.createTextNode(i + 1))
     a.appendChild(image)

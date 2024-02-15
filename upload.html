@@ -127,8 +127,17 @@
             onchange="get_Sha3()"
             id="doc-file"
             type="file"
-            accept="application/pdf, image/*"
+            accept="image/jpeg"
           />
+          <script>
+            const uploadField = document.getElementById("doc-file");
+            uploadField.onchange = function () {
+              if (this.files[0].size > 262144) {
+                alert("File is too Big! (Maximum size is 256Kb)");
+                this.value = "";
+              }
+            };
+          </script>
           <input
             id="student-address"
             type="text"
@@ -158,8 +167,6 @@
           <span class="p-2 info" id="blockNumber"></span>
           <span class="p-2 info" id="blockHash"></span>
           <span class="p-2 info" id="to-netowrk"></span>
-          <span class="p-2 info" id="to-netowrk"></span>
-
           <span class="p-2 info" id="gas-used"></span>
           <span class="btn-container">
             <a
@@ -327,24 +334,21 @@
           //create a variable with the directory path '/my/beautiful/directory' 
           // and a file 'awesomesause.txt' with the content 'ABC' 
   
-                    const a = await node.add({
-              path: 'hello.txt',
-              content: 'Hello World 100'
-            });
+          const files = [
+              {
+                  path: '/',
+                  content: 'ABC'
+              },
+              {
+                  path: '/',
+                  content: 'ABC'
+              }
+          ]
 
-            console.log('Added file:', a);
-            console.log('-------------------------------------------------');
-            const cid = 'QmRPQ86rZh5qtSBe9hbbB61VuEibv4NGrgrdixH6QQt4iX'
-
-            for await (const buf of window.node.get(cid)) {
-              console.log(buf);
-             
-            } 
-            let obj = await window.node.get(cid);
-           console.log(obj);
-            console.log('-------------------------------------------------');
-      })
-
+          //add the files to IPFS
+          const result = await node.add(files);
+          console.log(result);
+      });
   </script>-->
   </body>
 </html>
