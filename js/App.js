@@ -1,5 +1,5 @@
 window.CONTRACT = {
-  address: '0x58AC94aaAf909aDC5c9909826f4d909ECC4EF7c7',
+  address: '0x5140c9E9fB3743766450fea6100CaD7a768Cfc94',
   network: 'https://rpc.sepolia.org/',
   explore: 'https://sepolia.etherscan.io/',
   // Your Contract ABI 
@@ -23,6 +23,12 @@ window.CONTRACT = {
           "internalType": "string",
           "name": "_ipfsHash",
           "type": "string"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_studentAddress",
+          "type": "address"
         }
       ],
       "name": "addHash",
@@ -559,31 +565,37 @@ async function get_ChainID() {
 
 
 function get_Sha3() {
-  hide_txInfo()
-  $('#note').html(`<h5 class="text-warning">Hashing Your Document 😴...</h5>`)
+  const studentAddress = document.getElementById('student-address').value;
+  var file = document.getElementById('doc-file').files[0];
 
-  $('#upload_file_button').attr('disabled', false)
+  if(web3.utils.isAddress(studentAddress) && file){
+    hide_txInfo();
+    $('#note').html(`<h5 class="text-warning">Hashing Your Document 😴...</h5>`);
+    $('#upload_file_button').attr('disabled', false);
+    console.log('file changed');
 
-  console.log('file changed')
-
-  var file = document.getElementById('doc-file').files[0]
-  if (file) {
-    var reader = new FileReader()
-    reader.readAsText(file, 'UTF-8')
+    var reader = new FileReader();
+    reader.readAsText(file, 'UTF-8');
     reader.onload = function (evt) {
-      // var SHA256 = new Hashes.SHA256();
-      // = SHA256.hex(evt.target.result);
-      window.hashedfile = web3.utils.soliditySha3(evt.target.result)
-      console.log(`Document Hash : ${window.hashedfile}`)
-      $('#note').html(
-        `<h5 class="text-center text-info">Document Hashed  😎 </h5>`,
-      )
+      window.hashedfile = web3.utils.soliditySha3(evt.target.result);
+      console.log(`Document Hash : ${window.hashedfile}`);
+      $('#note').html(`<h5 class="text-center text-info">Document Hashed  😎 </h5>`);
     }
     reader.onerror = function (evt) {
-      console.log('error reading file')
+      console.log('error reading file');
     }
   } else {
-    window.hashedfile = null
+    window.hashedfile = null;
+    $('#upload_file_button').attr('disabled', true);
+    if (!web3.utils.isAddress(studentAddress)) {
+      console.log('Invalid or empty Ethereum address');
+    }
+    if (!file) {
+      console.log('File input is empty');
+    }
+    if (file && file.size > 256 * 1024) {
+      console.log('File size exceeds 256KB');
+    }
   }
 }
 
@@ -845,28 +857,46 @@ function generateQRCode() {
 // cuz the pastEvents returns transactions in last 999 block
 async function listen() {
   console.log('started...')
-  if (window.location.pathname != '/upload.html') return
+  if (window.location.pathname != '/upload.html' && window.location.pathname != '/certificates.html') return
   document.querySelector('.loading-tx').classList.remove('d-none')
   window.web3 = new Web3(window.ethereum)
   window.contract = new window.web3.eth.Contract(
     window.CONTRACT.abi,
     window.CONTRACT.address,
   )
-
-  await window.contract.getPastEvents(
-    'addHash',
-    {
-      filter: {
-        _exporter: window.userAddress, //Only get the documents uploaded by current Exporter
+  if (window.location.pathname == '/upload.html') {
+    await window.contract.getPastEvents(
+      'addHash',
+      {
+        filter: {
+          _exporter: window.userAddress, //Only get the documents uploaded by current Exporter
+        },
+        fromBlock: (await window.web3.eth.getBlockNumber()) - 999,
+        toBlock: 'latest',
       },
-      fromBlock: (await window.web3.eth.getBlockNumber()) - 999,
-      toBlock: 'latest',
-    },
-    function (error, events) {
-      printTransactions(events)
-      console.log(events)
-    },
-  )
+      function (error, events) {
+        printTransactions(events)
+        console.log(events)
+      },
+    )
+  }
+  else if (window.location.pathname == '/certificates.html') {
+    await window.contract.getPastEvents(
+      'addHash',
+      {
+        filter: {
+          _studentAddress: window.userAddress, //Only get the documents owned by current student
+        },
+        fromBlock: 0,
+        toBlock: 'latest',
+      },
+      function (error, events) {
+        printTransactions(events)
+        console.log(events)
+        console.log(window.userAddress)
+      },
+    )
+  }
 }
 
 //If there is past tx then show them
