@@ -3,7 +3,7 @@
 //just provide the network address
 
 window.CONTRACT = {
-  address: '0x58AC94aaAf909aDC5c9909826f4d909ECC4EF7c7',
+  address: '0x5140c9E9fB3743766450fea6100CaD7a768Cfc94',
   network: 'https://rpc.sepolia.org/',
   explore: 'https://sepolia.etherscan.io/',
   // Your Contract ABI 
@@ -27,6 +27,12 @@ window.CONTRACT = {
           "internalType": "string",
           "name": "_ipfsHash",
           "type": "string"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_studentAddress",
+          "type": "address"
         }
       ],
       "name": "addHash",
