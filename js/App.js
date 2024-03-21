@@ -504,11 +504,7 @@ async function connect() {
 }
 
 window.onload = async () => {
-  $('#loginButton').hide()
-  $('#recent-header').hide()
-  $('.loader-wraper').fadeOut('slow')
-  hide_txInfo()
-  $('#upload_file_button').attr('disabled', true)
+  
 
   window.userAddress = window.localStorage.getItem('userAddress')
 
@@ -526,8 +522,13 @@ window.onload = async () => {
 
     getRolesList()
 
-
-
+    $('#loader').hide()
+    $('#loginButton').hide()
+    $('#recent-header').hide()
+    $('.loader-wraper').fadeOut('slow')
+    hide_txInfo()
+    $('#upload_file_button').attr('disabled', true)
+  
 
 
     if (window.userAddress.length > 10) {
@@ -898,7 +899,7 @@ async function Confirm() {
   const address = document.getElementById('Exporter-address').value
 if (name && address && localisation && site) {
   const obj= {"nom":name,"public_key":address,"localisation":localisation, "site":site}
-  /*$('#loader').removeClass('d-none')
+  $('#loader').removeClass('d-none')
   $('#note').html(
     `<h5 class="text-info">Please confirm the transaction 👍...</h5>`,
   )
@@ -909,7 +910,7 @@ if (name && address && localisation && site) {
 
   try {
     await window.contract.methods
-      .add_Exporter(address)//add to blockchain
+      .add_Exporter(address,name)//add to blockchain
       .send({ from: window.userAddress })
 
       .on('transactionHash', function (hash) {
@@ -943,7 +944,7 @@ if (name && address && localisation && site) {
     $('#ExporterBtn').slideDown()
     $('#edit').slideDown()
     $('#delete').slideDown()
-  }*/
+  }
   console.log(obj)
   
   const response = await fetch('http://localhost:4000/api/workouts', {
@@ -1095,7 +1096,7 @@ async function editExporter() {
       `<h5 class="text-center text-warning">You need to provide address </h5>`,
     )
   }
-/*
+
   if (info && address) {
     $('#loader').removeClass('d-none')
     $('#ExporterBtn').slideUp()
@@ -1145,7 +1146,7 @@ async function editExporter() {
     $('#note').html(
       `<h5 class="text-center text-warning">You need to provide address & inforamtion to update 😵‍💫 </h5>`,
     )
-  }*/
+  }
 }
 
 
@@ -1167,7 +1168,7 @@ async function deleteExporter() {
     console.log('workout deleted:', json)
     location.reload()
   }
-  /*
+  
   if (address) {
     $('#loader').removeClass('d-none')
     $('#ExporterBtn').slideUp()
@@ -1219,7 +1220,7 @@ async function deleteExporter() {
     $('#note').html(
       `<h5 class="text-center text-warning">You need to provide address to delete 👍</h5>`,
     )
-  }*/
+  }
 }
 
 // Generate QR code so any one an Verify the documents
