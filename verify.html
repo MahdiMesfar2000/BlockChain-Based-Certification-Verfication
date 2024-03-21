@@ -81,6 +81,10 @@
               <a class="nav-link" id="Admin" href="admin.html">Admin</a>
             </li>
             <li class="nav-item">
+
+              <a class="nav-link" href="certificates.html">Certificates</a>
+            </li>  
+            <li class="nav-item">
               <a class="nav-link" id="Team" href="about.html">Team</a>
             </li>
           </ul>
@@ -91,7 +95,7 @@
     <div class="container">
       <!-- upload form -->
       <div data-aos="zoom-in" class="col p-3 data-upload my-3 mx-md-2">
-        <input onchange="get_Sha3()" id="doc-file" type="file" />
+        <input onchange="get_Sha3()" id="doc-file" type="file" accept="image/jpeg" />
         <span id="note" class="text-danger"></span>
         <img id="loader" src="files/loader.svg" alt="loader" />
         <input
@@ -111,6 +115,7 @@
           <span class="p-2 info" id="time-stamps"></span>
           <span class="p-2 info" id="blockNumber"></span>
           <span class="p-2 info" id="college-name"></span>
+          <span class="p-2 info" id="student-address"></span>
 
           <span class="d-flex justify-content-center">
             <a
@@ -120,7 +125,7 @@
               class="download-link"
               target="_blank"
             >
-              View Cirtificate
+              View Certificate
             </a>
           </span>
         </div>

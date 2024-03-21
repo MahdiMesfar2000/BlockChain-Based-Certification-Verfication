@@ -48,6 +48,10 @@
             <a class="nav-link" id="Admin" href="admin.html">Admin</a>
             </li>          
             <li class="nav-item">
+
+                  <a class="nav-link" href="certificates.html">Certificates</a>
+                </li>  
+            <li class="nav-item">
           <a class="nav-link" id="Team" href="about.html">Team</a>
           </li>
       </ul>
@@ -86,7 +90,13 @@
           </div>
         
           <div data-aos="zoom-in" class="col-lg-6 py-3 data-upload my-3 mx-md-2">
-            <input onchange="get_Sha3()"  id="doc-file" type="file"/>
+          <input
+            onchange="get_Sha3()"
+            id="doc-file"
+            type="file"
+            accept="image/jpeg"
+            required
+          />
             
             <span id="note" class="text-danger"
               ></span

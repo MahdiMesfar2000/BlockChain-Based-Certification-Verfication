@@ -15,6 +15,12 @@ window.CONTRACT = {
           "internalType": "string",
           "name": "_info",
           "type": "string"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_studentAddress",
+          "type": "address"
         }
       ],
       "name": "add_Exporter",
@@ -341,6 +347,11 @@ window.CONTRACT = {
           "internalType": "address",
           "name": "",
           "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
         }
       ],
       "stateMutability": "view",
@@ -624,6 +635,7 @@ function printUploadInfo(result) {
       result.to,
     )}`,
   )
+  const studentAddress = document.getElementById('student-address').value;
   $('#time-stamps').html('<i class="fa-solid fa-clock mx-1"></i>' + getTime())
   $('#blockNumber').html(
     `<i class="fa-solid fa-link mx-1"></i>${result.blockNumber}`,
@@ -638,7 +650,7 @@ function printUploadInfo(result) {
   )
   $('#to-netowrk').hide()
   $('#gas-used').html(
-    `<i class="fa-solid fa-gas-pump mx-1"></i> ${result.gasUsed} Gwei`,
+    `<i class="fa-solid fa-user mx-1"></i> ${truncateAddress(studentAddress)}`,
   )
   $('#loader').addClass('d-none')
   $('#upload_file_button').addClass('d-block')
@@ -663,7 +675,11 @@ async function sendHash() {
   // Initilize Ipfs
 
   const file = document.getElementById('doc-file').files[0]
-  node = await Ipfs.create({ repo: 'Ali-ok' + Math.random() })
+  const nodeId = 'ipfs-' + Math.random();
+  node = await Ipfs.create({ repo: nodeId });
+  window.node = node;
+  const status = node.isOnline() ? 'online' : 'offline';
+  console.log(`Node status: ${status}`);
   const fileReader = new FileReader()
   fileReader.readAsArrayBuffer(file)
   fileReader.onload = async (event) => {
@@ -676,16 +692,22 @@ async function sendHash() {
   // =================================================
   if (window.hashedfile) {
     const file = document.getElementById('doc-file').files[0]
-    node = await Ipfs.create({ repo: 'Ali-ok' + Math.random() })
+    const nodeId = 'ipfs-' + Math.random();
+    node = await Ipfs.create({ repo: nodeId });
+    console.log("Your node: " + nodeId);
+    const status = node.isOnline() ? 'online' : 'offline';
+    console.log(`Node status: ${status}`);
     const fileReader = new FileReader()
     fileReader.readAsArrayBuffer(file)
     fileReader.onload = async (event) => {
       let result = await node.add(fileReader.result)
       window.ipfsCid = result.path
+      console.log(result);
     }
+    const studentAddress = document.getElementById('student-address').value;
     await window.contract.methods
-      .addDocHash(window.hashedfile, window.ipfsCid)
-      .send({ from: window.userAddress })
+    .addDocHash(window.hashedfile, window.ipfsCid, studentAddress)
+    .send({ from: window.userAddress })
       .on('transactionHash', function (_hash) {
         $('#note').html(
           `<h5 class="text-info p-1 text-center">Please wait for transaction to be mined...</h5>`,
@@ -810,32 +832,70 @@ async function get_ChainID() {
 
 
 function get_Sha3() {
-  hide_txInfo()
-  $('#note').html(`<h5 class="text-warning">Hashing Your Document 😴...</h5>`)
+  if(window.location.pathname == '/upload.html'){
+    const studentAddress = document.getElementById('student-address').value;
+  var file = document.getElementById('doc-file').files[0];
 
-  $('#upload_file_button').attr('disabled', false)
+  if(web3.utils.isAddress(studentAddress) && file){
+    hide_txInfo();
+    $('#note').html(`<h5 class="text-warning">Hashing Your Document 😴...</h5>`);
+    $('#upload_file_button').attr('disabled', false);
+    console.log('file changed');
 
-  console.log('file changed')
-
-  var file = document.getElementById('doc-file').files[0]
-  if (file) {
-    var reader = new FileReader()
-    reader.readAsText(file, 'UTF-8')
+    var reader = new FileReader();
+    reader.readAsText(file, 'UTF-8');
     reader.onload = function (evt) {
-      // var SHA256 = new Hashes.SHA256();
-      // = SHA256.hex(evt.target.result);
-      window.hashedfile = web3.utils.soliditySha3(evt.target.result)
-      console.log(`Document Hash : ${window.hashedfile}`)
-      $('#note').html(
-        `<h5 class="text-center text-info">Document Hashed  😎 </h5>`,
-      )
+      window.hashedfile = web3.utils.soliditySha3(evt.target.result);
+      console.log(`Document Hash : ${window.hashedfile}`);
+      $('#note').html(`<h5 class="text-center text-info">Document Hashed  😎 </h5>`);
     }
     reader.onerror = function (evt) {
-      console.log('error reading file')
+      console.log('error reading file');
     }
   } else {
-    window.hashedfile = null
+    window.hashedfile = null;
+    $('#upload_file_button').attr('disabled', true);
+    if (!web3.utils.isAddress(studentAddress)) {
+      console.log('Invalid or empty Ethereum address');
+    }
+    if (!file) {
+      console.log('File input is empty');
+    }
+    if (file && file.size > 256 * 1024) {
+      console.log('File size exceeds 256KB');
+    }
   }
+  }
+  else if(window.location.pathname == '/delete.html'){
+  var file = document.getElementById('doc-file').files[0];
+  if(file){
+    hide_txInfo();
+    $('#note').html(`<h5 class="text-warning">Hashing Your Document 😴...</h5>`);
+    $('#upload_file_button').attr('disabled', false);
+    console.log('file changed');
+
+    var reader = new FileReader();
+    reader.readAsText(file, 'UTF-8');
+    reader.onload = function (evt) {
+      window.hashedfile = web3.utils.soliditySha3(evt.target.result);
+      console.log(`Document Hash : ${window.hashedfile}`);
+      $('#note').html(`<h5 class="text-center text-info">Document Hashed  😎 </h5>`);
+    }
+    reader.onerror = function (evt) {
+      console.log('error reading file');
+    }
+  } else {
+    window.hashedfile = null;
+    $('#upload_file_button').attr('disabled', true);
+    if (!file) {
+      console.log('File input is empty');
+    }
+    if (file && file.size > 256 * 1024) {
+      console.log('File size exceeds 256KB');
+    }
+  }
+
+}
 }
 
 //logout
@@ -1255,13 +1315,14 @@ function generateQRCode() {
 // cuz the pastEvents returns transactions in last 999 block
 async function listen() {
   console.log('started...')
-  if (window.location.pathname != '/upload.html') return
+  if (window.location.pathname != '/upload.html' && window.location.pathname != '/certificates.html') return
   document.querySelector('.loading-tx').classList.remove('d-none')
   window.web3 = new Web3(window.ethereum)
   window.contract = new window.web3.eth.Contract(
     window.CONTRACT.abi,
     window.CONTRACT.address,
   )
+
   
   await window.contract.getPastEvents(
     'addHash',
@@ -1317,34 +1378,116 @@ async function getrole(){
       
     })
 
+  if (window.location.pathname == '/upload.html') {
+    await window.contract.getPastEvents(
+      'addHash',
+      {
+        filter: {
+          _exporter: window.userAddress, //Only get the documents uploaded by current Exporter
+        },
+        fromBlock: (await window.web3.eth.getBlockNumber()) - 999,
+        toBlock: 'latest',
+      },
+      function (error, events) {
+        printTransactions(events)
+        console.log(events)
+      },
+    )
+  }
+  else if (window.location.pathname == '/certificates.html') {
+    await window.contract.getPastEvents(
+      'addHash',
+      {
+        filter: {
+          _studentAddress: window.userAddress, //Only get the documents owned by current student
+        },
+        fromBlock: 0,
+        toBlock: 'latest',
+      },
+      function (error, events) {
+        printTransactions(events)
+        console.log(events)
+        console.log(window.userAddress)
+      },
+    )
+  }
 }
 
 //If there is past tx then show them
-function printTransactions(data) {
-  document.querySelector('.transactions').innerHTML = ''
-  document.querySelector('.loading-tx').classList.add('d-none')
-  if (!data.length) {
-    $('#recent-header').hide()
-    return
+async function printTransactions(data) {
+
+  if(window.location.pathname == '/upload.html'){
+    document.querySelector('.transactions').innerHTML = ''
+    document.querySelector('.loading-tx').classList.add('d-none')
+    if (!data.length) {
+      $('#recent-header').hide()
+      return
+    }
+    $('#recent-header').show()
+    const main = document.querySelector('.transactions')
+    for (let i = 0; i < data.length; i++) {
+      const a = document.createElement('a')
+      a.href = `${window.CONTRACT.explore}` + '/tx/' + data[i].transactionHash
+      a.setAttribute('target', '_blank')
+      a.className =
+        'col-lg-3 col-md-4 col-sm-5 m-2  bg-dark text-light rounded position-relative card'
+      a.style = 'overflow:hidden;'
+      const image = document.createElement('object')
+      image.style = 'width:100%;height: 100%;'
+      image.data = `https://ipfs.io/ipfs/${data[i].returnValues[1]}`
+      const num = document.createElement('h1')
+      num.append(document.createTextNode(i + 1))
+      a.appendChild(image)
+      num.style =
+        'position:absolute; left:4px; bottom: -20px;font-size:4rem; color: rgba(20, 63, 74, 0.35);'
+      a.appendChild(num)
+      main.prepend(a)
+    }
   }
-  $('#recent-header').show()
-  const main = document.querySelector('.transactions')
-  for (let i = 0; i < data.length; i++) {
-    const a = document.createElement('a')
-    a.href = `${window.CONTRACT.explore}` + '/tx/' + data[i].transactionHash
-    a.setAttribute('target', '_blank')
-    a.className =
-      'col-lg-3 col-md-4 col-sm-5 m-2  bg-dark text-light rounded position-relative card'
-    a.style = 'overflow:hidden;'
-    const image = document.createElement('object')
-    image.style = 'width:100%;height: 100%;'
-    image.data = `https://ipfs.io/ipfs/${data[i].returnValues[1]}`
-    const num = document.createElement('h1')
-    num.append(document.createTextNode(i + 1))
-    a.appendChild(image)
-    num.style =
-      'position:absolute; left:4px; bottom: -20px;font-size:4rem; color: rgba(20, 63, 74, 0.35);'
-    a.appendChild(num)
-    main.prepend(a)
+  else if(window.location.pathname == '/certificates.html'){
+    const main = document.querySelector('.transactions');
+    main.innerHTML = '';
+    document.querySelector('.loading-tx').classList.add('d-none');
+  
+    if (!data.length) {
+      $('#recent-header').hide();
+      return;
+    }
+    $('#recent-header').show();
+  
+    await Promise.all(data.map(async (item, i) => {
+      const fileUrl = `https://ipfs.io/ipfs/${item.returnValues[1]}`;
+  
+      try {
+        const response = await fetch(fileUrl);
+        const fileData = await response.text();
+        const hash = web3.utils.soliditySha3(fileData);
+  
+        const a = document.createElement('a');
+        a.href = `/verify.html?hash=${hash}`;
+        a.setAttribute('target', '_blank');
+        a.className = 'col-lg-3 col-md-4 col-sm-5 m-2 bg-dark text-light rounded position-relative card';
+        a.style.overflow = 'hidden';
+  
+        const image = document.createElement('object');
+        image.style.width = '100%';
+        image.style.height = '100%';
+        image.data = fileUrl;
+  
+        const num = document.createElement('h1');
+        num.textContent = i + 1;
+        num.style.position = 'absolute';
+        num.style.left = '4px';
+        num.style.bottom = '-20px';
+        num.style.fontSize = '4rem';
+        num.style.color = 'rgba(20, 63, 74, 0.35)';
+  
+        a.appendChild(image);
+        a.appendChild(num);
+        main.prepend(a);
+      } catch (error) {
+        console.error('Error fetching file:', error);
+      }
+    }));
   }
 }

@@ -3,7 +3,9 @@
 //just provide the network address
 
 window.CONTRACT = {
+
   address: '0x4A2CA6B4ab52978dad97848EB2554652CC7a53c2',
+
   network: 'https://rpc.sepolia.org/',
   explore: 'https://sepolia.etherscan.io/',
   // Your Contract ABI 
@@ -19,6 +21,12 @@ window.CONTRACT = {
           "internalType": "string",
           "name": "_info",
           "type": "string"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_studentAddress",
+          "type": "address"
         }
       ],
       "name": "add_Exporter",
@@ -345,6 +353,11 @@ window.CONTRACT = {
           "internalType": "address",
           "name": "",
           "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
         }
       ],
       "stateMutability": "view",
@@ -497,9 +510,6 @@ async function verify_Hash() {
   $('#loader').show()
 
   if (window.hashedfile) {
-    /*   I used the contract address (window.CONTRACT.address) as the caller of the function 'findDocHash'
-        you can use any address because it used just for reading info from the contract
-    */
     await contract.methods
       .findDocHash(window.hashedfile)
       .call({ from: window.CONTRACT.address })
@@ -507,11 +517,17 @@ async function verify_Hash() {
         $('.transaction-status').removeClass('d-none')
         window.newHash = result
         if ((result[0] != 0) & (result[1] != 0)) {
-          //Doc Verified
-          print_verification_info(result, true)
+          console.log(result)
+          if (result[5]) { // Check if the document is valid
+            //Doc Verified
+            print_verification_info(result, 'verified')
+          } else {
+            //Doc Revoked
+            print_verification_info(result, 'revoked')
+          }
         } else {
-         //Doc not Verified
-          print_verification_info(result, false)
+          //Doc not Found
+          print_verification_info(result, 'not found')
         }
       })
   }
@@ -553,35 +569,19 @@ async function get_Sha3() {
   }
 }
 
-function print_verification_info(result, is_verified) {
+function print_verification_info(result, status) {
   //Default Image for not Verified Docunets
   document.getElementById('student-document').src = './files/notvalid.svg'
   $('#loader').hide()
   // when document not verfied
-  if (!is_verified) {
-    // document.getElementById('download-document').classList.add('d-none')
-    $('#download-document').hide()
-    $('#doc-status').html(`<h3 class="text-danger">
-        Certificate not Verified 😕
-         <i class="text-danger  fa fa-times-circle" aria-hidden="true"></i>
-        </h3>`)
-    $('#file-hash').html(
-      `<span class="text-info"><i class="fa-solid fa-hashtag"></i></span> ${truncateAddress(
-        window.hashedfile,
-      )}`,
-    )
-    $('#college-name').hide()
-    $('#contract-address').hide()
-    $('#time-stamps').hide()
-    $('#blockNumber').hide()
-    $('.transaction-status').show()
-  } else {
+  if (status === 'verified') {
     $('#download-document').show()
     // when document verfied
     $('#college-name').show()
     $('#contract-address').show()
     $('#time-stamps').show()
     $('#blockNumber').show()
+    $('#student-address').show()
 
     var t = new Date(1970, 0, 1)
     t.setSeconds(result[1])
@@ -612,11 +612,80 @@ function print_verification_info(result, is_verified) {
     $('#blockNumber').html(
       `<span class="text-info"><i class="fa-solid fa-cube"></i></span> ${result[0]}`,
     )
+    $('#student-address').html(
+      `<span class="text-info"><i class="fa-solid fa-user"></i></span> ${truncateAddress(result[4])}`,
+    )
     document.getElementById('student-document').src =
       'https://ipfs.io/ipfs/' + result[3]
     document.getElementById('download-document').href = document.getElementById(
       'student-document',
     ).src
+    $('.transaction-status').show()
+  } else if (status === 'revoked'){
+    $('#download-document').show()
+    // when document verfied
+    $('#college-name').show()
+    $('#contract-address').show()
+    $('#time-stamps').show()
+    $('#blockNumber').show()
+    $('#student-address').show()
+
+    var t = new Date(1970, 0, 1)
+    t.setSeconds(result[1])
+    console.log(result[1])
+    t.setHours(t.getHours() + 3)
+    // hide loader
+    $('#loader').hide()
+    $('#doc-status').html(`<h3 class="text-danger">
+        Certificate Revoked 😕
+         <i class="text-danger  fa fa-times-circle" aria-hidden="true"></i>
+        </h3>`)
+    $('#file-hash').html(
+      `<span class="text-info"><i class="fa-solid fa-hashtag"></i></span> ${truncateAddress(
+        window.hashedfile,
+      )}`,
+    )
+    $('#college-name').html(
+      `<span class="text-info"><i class="fa-solid fa-graduation-cap"></i></span> ${result[2]}`,
+    )
+    $('#contract-address').html(
+      `<span class="text-info"><i class="fa-solid fa-file-contract"></i> </span>${truncateAddress(
+        window.CONTRACT.address,
+      )}`,
+    )
+    $('#time-stamps').html(
+      `<span class="text-info"><i class="fa-solid fa-clock"></i> </span>${t}`,
+    )
+    $('#blockNumber').html(
+      `<span class="text-info"><i class="fa-solid fa-cube"></i></span> ${result[0]}`,
+    )
+    $('#student-address').html(
+      `<span class="text-info"><i class="fa-solid fa-user"></i></span> ${truncateAddress(result[4])}`,
+    )
+    document.getElementById('student-document').src =
+      'https://ipfs.io/ipfs/' + result[3]
+    document.getElementById('download-document').href = document.getElementById(
+      'student-document',
+    ).src
+    $('.transaction-status').show()
+  } 
+  else {
+    // document.getElementById('download-document').classList.add('d-none')
+    $('#download-document').hide()
+    $('#doc-status').html(`<h3 class="text-danger">
+        Certificate not Verified 😕
+         <i class="text-danger  fa fa-times-circle" aria-hidden="true"></i>
+        </h3>`)
+    $('#file-hash').html(
+      `<span class="text-info"><i class="fa-solid fa-hashtag"></i></span> ${truncateAddress(
+        window.hashedfile,
+      )}`,
+    )
+    $('#college-name').hide()
+    $('#contract-address').hide()
+    $('#time-stamps').hide()
+    $('#blockNumber').hide()
+    $('#student-address').hide()
     $('.transaction-status').show()
   }
 }
