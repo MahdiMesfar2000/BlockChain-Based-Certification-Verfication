@@ -1,27 +1,19 @@
 window.CONTRACT = {
-  address: '0xa8b335daa3dc0a39B3D5146097736a7718351729',
+  address: '0x4A2CA6B4ab52978dad97848EB2554652CC7a53c2',
   network: 'https://rpc.sepolia.org/',
   explore: 'https://sepolia.etherscan.io/',
   // Your Contract ABI 
   abi: [
     {
-      "inputs": [],
-      "stateMutability": "nonpayable",
-      "type": "constructor"
-    },
-    {
-      "anonymous": false,
       "inputs": [
         {
-          "indexed": true,
           "internalType": "address",
-          "name": "_exporter",
+          "name": "_add",
           "type": "address"
         },
         {
-          "indexed": false,
           "internalType": "string",
-          "name": "_ipfsHash",
+          "name": "_info",
           "type": "string"
         },
         {
@@ -31,8 +23,10 @@ window.CONTRACT = {
           "type": "address"
         }
       ],
-      "name": "addHash",
-      "type": "event"
+      "name": "add_Exporter",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
       "inputs": [
@@ -53,24 +47,6 @@ window.CONTRACT = {
         }
       ],
       "name": "addDocHash",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "_add",
-          "type": "address"
-        },
-        {
-          "internalType": "string",
-          "name": "_info",
-          "type": "string"
-        }
-      ],
-      "name": "add_Exporter",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -107,6 +83,185 @@ window.CONTRACT = {
       "type": "function"
     },
     {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_add",
+          "type": "address"
+        }
+      ],
+      "name": "delete_Exporter",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_hash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "deleteHash",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "previousAdminRole",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "newAdminRole",
+          "type": "bytes32"
+        }
+      ],
+      "name": "RoleAdminChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "RoleGranted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "RoleRevoked",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_exporter",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "_ipfsHash",
+          "type": "string"
+        }
+      ],
+      "name": "addHash",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "grantRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "renounceRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "revokeRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
       "inputs": [],
       "name": "count_Exporters",
       "outputs": [
@@ -133,29 +288,29 @@ window.CONTRACT = {
       "type": "function"
     },
     {
-      "inputs": [
+      "inputs": [],
+      "name": "DEFAULT_ADMIN_ROLE",
+      "outputs": [
         {
           "internalType": "bytes32",
-          "name": "_hash",
+          "name": "",
           "type": "bytes32"
         }
       ],
-      "name": "deleteHash",
-      "outputs": [],
-      "stateMutability": "nonpayable",
+      "stateMutability": "view",
       "type": "function"
     },
     {
-      "inputs": [
+      "inputs": [],
+      "name": "EXPORTER_ROLE",
+      "outputs": [
         {
-          "internalType": "address",
-          "name": "_add",
-          "type": "address"
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
         }
       ],
-      "name": "delete_Exporter",
-      "outputs": [],
-      "stateMutability": "nonpayable",
+      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -222,13 +377,107 @@ window.CONTRACT = {
       "type": "function"
     },
     {
-      "inputs": [],
-      "name": "owner",
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        }
+      ],
+      "name": "getRoleAdmin",
       "outputs": [
         {
-          "internalType": "address",
+          "internalType": "bytes32",
           "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
           "type": "address"
+        }
+      ],
+      "name": "hasRole",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "OWNER_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_add",
+          "type": "address"
+        }
+      ],
+      "name": "roleInfo",
+      "outputs": [
+        {
+          "internalType": "bool[3]",
+          "name": "",
+          "type": "bool[3]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "STUDENT_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes4",
+          "name": "interfaceId",
+          "type": "bytes4"
+        }
+      ],
+      "name": "supportsInterface",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
         }
       ],
       "stateMutability": "view",
@@ -266,22 +515,33 @@ async function connect() {
 }
 
 window.onload = async () => {
-  $('#loginButton').hide()
-  $('#recent-header').hide()
-  $('.loader-wraper').fadeOut('slow')
-  hide_txInfo()
-  $('#upload_file_button').attr('disabled', true)
+  
 
   window.userAddress = window.localStorage.getItem('userAddress')
 
   if (window.ethereum) {
-    //gere we need MetaMask to read and write to our Contract
+    //here we need MetaMask to read and write to our Contract
     window.web3 = new Web3(window.ethereum)
     window.contract = new window.web3.eth.Contract(
       window.CONTRACT.abi,
       window.CONTRACT.address,
     )
     //checking if user loged in
+
+
+
+
+    getRolesList()
+
+    $('#loader').hide()
+    $('#loginButton').hide()
+    $('#recent-header').hide()
+    $('.loader-wraper').fadeOut('slow')
+    hide_txInfo()
+    $('#upload_file_button').attr('disabled', true)
+  
+
+
     if (window.userAddress.length > 10) {
       // let isLocked =await window.ethereum._metamask.isUnlocked();
       //  if(!isLocked) disconnect();
@@ -308,6 +568,7 @@ window.onload = async () => {
 
       setTimeout(() => {
         listen()
+        
       }, 0)
     } else {
       $('#logoutButton').hide()
@@ -329,6 +590,7 @@ window.onload = async () => {
     // alert("Please download metamask extension first.\nhttps://metamask.io/download/");
     // window.location = "https://metamask.io/download/"
   }
+  
 }
 
 function hide_txInfo() {
@@ -656,63 +918,169 @@ function truncateAddress(address) {
     address.length,
   )}`
 }
+async function Confirm2() {
+  const name = document.getElementById('name').value
+  const localisation = document.getElementById('localisation').value
+  const site = document.getElementById('site').value
+  const address = document.getElementById('Exporter-address').value
+if (name && address && localisation && site) {
+  const obj= {"nom":name,"public_key":address,"localisation":localisation, "site":site}
+  console.log(obj)
+  
+  const response = await fetch('http://localhost:4000/api/workouts/'+address, {
+    method: 'PUT',
+    body: JSON.stringify(obj),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  const json = await response.json()
+
+  if (!response.ok) {
+    console.log(json.error)
+  }
+  if (response.ok) {
+   
+    console.log('workout updated:', json)
+    location.reload()
+  }
+
+
+} else {
+  $('#note').html(
+    `<h5 class="text-center text-warning">You need to provide all info!! </h5>`,
+  )
+}
+}
+async function Confirm() {
+  const name = document.getElementById('name').value
+  const localisation = document.getElementById('localisation').value
+  const site = document.getElementById('site').value
+  const address = document.getElementById('Exporter-address').value
+if (name && address && localisation && site) {
+  const obj= {"nom":name,"public_key":address,"localisation":localisation, "site":site}
+  $('#loader').removeClass('d-none')
+  $('#note').html(
+    `<h5 class="text-info">Please confirm the transaction 👍...</h5>`,
+  )
+  $('#ExporterBtn').attr('disabled', true)
+  $('#delete').attr('disabled', true)
+  $('#edit').attr('disabled', true)
+  get_ChainID()
+
+  try {
+    await window.contract.methods
+      .add_Exporter(address,name)//add to blockchain
+      .send({ from: window.userAddress })
+
+      .on('transactionHash', function (hash) {
+        $('#note').html(
+          `<h5 class="text-info p-1 text-center">Please wait for transaction to be mined 😴...</h5>`,
+        )
+      })
+
+      .on('receipt', function (receipt) {
+        $('#loader').addClass('d-none')
+        $('#ExporterBtn').slideDown()
+        $('#edit').slideDown()
+        $('#delete').slideDown()
+        console.log(receipt)//add to database
+        
+        $('#note').html(
+          `<h5 class="text-info">Exporter Added to the Blockchain 😇</h5>`,
+        )
+      })
+
+      .on('confirmation', function (confirmationNr) {})
+      .on('error', function (error) {
+        console.log(error.message)
+        $('#note').html(`<h5 class="text-center">${error.message}</h5>`)
+        $('#loader').addClass('d-none')
+        $('#ExporterBtn').slideDown()
+      })
+  } catch (error) {
+    $('#note').html(`<h5 class="text-center">${error.message}</h5>`)
+    $('#loader').addClass('d-none')
+    $('#ExporterBtn').slideDown()
+    $('#edit').slideDown()
+    $('#delete').slideDown()
+  }
+  console.log(obj)
+  
+  const response = await fetch('http://localhost:4000/api/workouts', {
+    method: 'POST',
+    body: JSON.stringify(obj),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  const json = await response.json()
+
+  if (!response.ok) {
+    console.log(json.error)
+  }
+  if (response.ok) {
+   
+    console.log('new workout added:', json)
+    location.reload()
+  }
+
+
+} else {
+  $('#note').html(
+    `<h5 class="text-center text-warning">You need to provide all info!! </h5>`,
+  )
+}
+} 
+
+function back() {
+  $('#loader').addClass('d-none')
+  $('#name').addClass('d-none')
+  $('#localisation').addClass('d-none')
+  $('#site').addClass('d-none')
+
+  $('#ExporterBtn').removeClass('d-none')
+  $('#edit').removeClass('d-none')
+  $('#delete').removeClass('d-none')
+
+  $('#back').addClass('d-none')
+  $('#Confirm').addClass('d-none')
+  $('#note').html( `<h5 class="text-center text-warning"></h5>`,
+  )
+}
+function back2() {
+  $('#loader').addClass('d-none')
+  $('#name').addClass('d-none')
+  $('#localisation').addClass('d-none')
+  $('#site').addClass('d-none')
+
+  $('#ExporterBtn').removeClass('d-none')
+  $('#edit').removeClass('d-none')
+  $('#delete').removeClass('d-none')
+
+  $('#back2').addClass('d-none')
+  $('#Confirm2').addClass('d-none')
+  $('#note').html( `<h5 class="text-center text-warning"></h5>`,
+  )
+}
+
 
 async function addExporter() {
   const address = document.getElementById('Exporter-address').value
-  const info = document.getElementById('info').value
-
-  if (info && address) {
-    $('#loader').removeClass('d-none')
-    $('#ExporterBtn').slideUp()
-    $('#edit').slideUp()
-    $('#delete').slideUp()
+  if (address){
+    $('#name').removeClass('d-none')
+    $('#localisation').removeClass('d-none')
+    $('#site').removeClass('d-none')
+    $('#ExporterBtn').addClass('d-none')
+    $('#edit').addClass('d-none')
+    $('#delete').addClass('d-none')
+    $('#back').removeClass('d-none')
+    $('#Confirm').removeClass('d-none')
+  //add here other inputs
+}
+  else {
     $('#note').html(
-      `<h5 class="text-info">Please confirm the transaction 👍...</h5>`,
-    )
-    $('#ExporterBtn').attr('disabled', true)
-    $('#delete').attr('disabled', true)
-    $('#edit').attr('disabled', true)
-    get_ChainID()
-
-    try {
-      await window.contract.methods
-        .add_Exporter(address, info)
-        .send({ from: window.userAddress })
-
-        .on('transactionHash', function (hash) {
-          $('#note').html(
-            `<h5 class="text-info p-1 text-center">Please wait for transaction to be mined 😴...</h5>`,
-          )
-        })
-
-        .on('receipt', function (receipt) {
-          $('#loader').addClass('d-none')
-          $('#ExporterBtn').slideDown()
-          $('#edit').slideDown()
-          $('#delete').slideDown()
-          console.log(receipt)
-          $('#note').html(
-            `<h5 class="text-info">Exporter Added to the Blockchain 😇</h5>`,
-          )
-        })
-
-        .on('confirmation', function (confirmationNr) {})
-        .on('error', function (error) {
-          console.log(error.message)
-          $('#note').html(`<h5 class="text-center">${error.message}</h5>`)
-          $('#loader').addClass('d-none')
-          $('#ExporterBtn').slideDown()
-        })
-    } catch (error) {
-      $('#note').html(`<h5 class="text-center">${error.message}</h5>`)
-      $('#loader').addClass('d-none')
-      $('#ExporterBtn').slideDown()
-      $('#edit').slideDown()
-      $('#delete').slideDown()
-    }
-  } else {
-    $('#note').html(
-      `<h5 class="text-center text-warning">You need to provide address & inforamtion to add  </h5>`,
+      `<h5 class="text-center text-warning">You need to provide address </h5>`,
     )
   }
 }
@@ -745,12 +1113,49 @@ async function getCounters() {
       $('#num-hashes').html(
         `<i class="fa-solid fa-file mx-2 text-warning"></i>${result}`,
       )
+      
+
     })
 }
 
 async function editExporter() {
   const address = document.getElementById('Exporter-address').value
-  const info = document.getElementById('info').value
+  if (address){
+   
+  const response = await fetch('http://localhost:4000/api/workouts'+'/'+address, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  const json = await response.json()
+
+  if (!response.ok) {
+    console.log(json.error)
+    $('#note').html(
+      `<h5 class="text-center text-warning">Adress not found!!</h5>`,
+    )
+  }
+  if (response.ok) {
+    $('#name').removeClass('d-none')
+    $('#localisation').removeClass('d-none')
+    $('#site').removeClass('d-none')
+    $('#ExporterBtn').addClass('d-none')
+    $('#edit').addClass('d-none')
+    $('#delete').addClass('d-none')
+    $('#back2').removeClass('d-none')
+    $('#Confirm2').removeClass('d-none')
+    console.log('workout selected:', json)
+    document.getElementById('name').value=json['nom']
+    document.getElementById('localisation').value=json['localisation']
+    document.getElementById('site').value=json['site']
+    
+    //location.reload()
+  }}else {
+    $('#note').html(
+      `<h5 class="text-center text-warning">You need to provide address </h5>`,
+    )
+  }
 
   if (info && address) {
     $('#loader').removeClass('d-none')
@@ -807,7 +1212,23 @@ async function editExporter() {
 
 async function deleteExporter() {
   const address = document.getElementById('Exporter-address').value
+  const response = await fetch('http://localhost:4000/api/workouts'+'/'+address, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  const json = await response.json()
 
+  if (!response.ok) {
+    console.log(json.error)
+  }
+  if (response.ok) {
+   
+    console.log('workout deleted:', json)
+    location.reload()
+  }
+  
   if (address) {
     $('#loader').removeClass('d-none')
     $('#ExporterBtn').slideUp()
@@ -901,6 +1322,62 @@ async function listen() {
     window.CONTRACT.abi,
     window.CONTRACT.address,
   )
+
+  
+  await window.contract.getPastEvents(
+    'addHash',
+    {
+      filter: {
+        _exporter: window.userAddress, //Only get the documents uploaded by current Exporter
+      },
+      fromBlock: (await window.web3.eth.getBlockNumber()) - 999,
+      toBlock: 'latest',
+    },
+    function (error, events) {
+      printTransactions(events)
+      console.log(events)
+    },
+    
+  )
+  
+  
+  
+
+}
+async function getRolesList() {
+  window.web3 = new Web3(window.ethereum)
+  window.contract = new window.web3.eth.Contract(
+    window.CONTRACT.abi,
+    window.CONTRACT.address,
+  )
+  await getrole()
+}
+
+
+
+async function getrole(){
+  await window.contract.methods
+    .roleInfo(window.userAddress)
+    .call({ from: window.userAddress })
+
+    .then((result) => {
+    console.log("roles:", result);
+    if (!(result[0])){$(document).ready(function() {$('#Admin').addClass('d-none');});}
+    if (!(result[1])){$(document).ready(function() {$('#Upload').addClass('d-none');$('#Delete').addClass('d-none');});}
+    if (window.location.pathname == '/admin.html')
+    {
+      if (!(result[0])) {window.location.href = '/index.html';}
+      
+    }
+
+    if ((window.location.pathname == '/delete.html') || (window.location.pathname == '/upload.html'))
+    {
+      if (!(result[1])) {window.location.href = '/index.html';}
+      
+    }
+      
+    })
+
   if (window.location.pathname == '/upload.html') {
     await window.contract.getPastEvents(
       'addHash',

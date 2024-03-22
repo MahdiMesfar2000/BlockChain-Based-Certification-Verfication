@@ -5,18 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/loader.css">
   
+    
     <link
       href="css/bootstrap.min.css"
       rel="stylesheet"
     />  
+    <link rel="stylesheet" href="css/table.css">
     <script src="js/App.js"></script>
+
     <script src="node_modules\web3\dist\web3.min.js"></script>
     <link href="./css/aos.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <link rel="stylesheet" href="css/main.css" />
     <link rel="icon" href="./assets/images/icon.png" />
     <title>Admin Dashboard</title>
   </head>
-
+  
   <body>
     <div class="loader-wraper">
       <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
@@ -24,8 +27,25 @@
     <div >
       <i onclick="topFunction()" id="scroll-btn" class="fa-solid fa-angle-up"></i>
     </div>
-    <!-----------------------------navbBar Start-------------------->
-  <!--NavBar Start-->
+    <!-----------------------------MODAL Start-------------------->
+  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-----------------------------navbBar Start-------------------->
+<!--NavBar Start-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 navbar-dark">
     <div class="container">
       <a class="navbar-brand" href="index.html">
@@ -38,26 +58,26 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link " aria-current="page" href="index.html">Home</a>
+          <a class="nav-link "id="Home"  aria-current="page" href="index.html">Home</a>
           </li>
           <li class="nav-item">
-          <a class="nav-link  " href="upload.html">Upload </a>
+          <a class="nav-link  "id="Upload"  href="upload.html">Upload </a>
           </li>
           <li class="nav-item">
-          <a class="nav-link" href="verify.html">Verify </a>
+          <a class="nav-link" id="Verify" href="verify.html">Verify </a>
           </li>
           <li class="nav-item">
-          <a class="nav-link" href="delete.html">Delete </a>
+          <a class="nav-link" id="Delete" href="delete.html">Delete </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active" href="admin.html">Admin</a>
+            <a class="nav-link active"id="Admin"  href="admin.html">Admin</a>
             </li>         
             <li class="nav-item">
               <a class="nav-link" href="certificates.html">Certificates</a>
             </li>  
              <li class="nav-item">
-          <a class="nav-link" href="about.html">Team</a>
+          <a class="nav-link"  id="Team" href="about.html">Team</a>
           </li>
       </ul>
 
@@ -97,13 +117,10 @@
         
           <div data-aos="zoom-in" class="col-lg-6 py-3 data-upload my-3 mx-md-2">
             <input   id="Exporter-address" type="text"  placeholder="Exporter Address"  required/>
-            <input  
-              type="text" 
-              id="info"
-              placeholder="Univesity"
-              required
-            />
-           
+            <input   type="text" class="d-none" id="name" placeholder="Univesity Name" required/>
+            <input   type="text" class="d-none" id="localisation" placeholder="Localisation" required/>
+            <input   type="text" class="d-none" id="site" placeholder="Web Site" required/>
+            
             <span id="note" class="text-danger"
               ></span
             >
@@ -115,6 +132,34 @@
                 type="submit"
                 value="Add Exporter"
                 id="ExporterBtn"
+              />
+              <input
+              onclick="Confirm()"
+                class="btn btn-primary  exporter-button main-button d-none"
+                type="submit"
+                value="Confirm"
+                id="Confirm"
+              />
+              <input
+              onclick="Confirm2()"
+                class="btn btn-primary  exporter-button main-button d-none"
+                type="submit"
+                value="Confirm"
+                id="Confirm2"
+              />
+              <input
+              onclick="back()"
+                class="btn btn-primary  exporter-button main-button d-none"
+                type="submit"
+                value="Back"
+                id="back"
+              />
+              <input
+              onclick="back2()"
+                class="btn btn-primary  exporter-button main-button d-none"
+                type="submit"
+                value="Back"
+                id="back2"
               />
               <input
               onclick="deleteExporter()"
@@ -133,9 +178,20 @@
             </div>
            
           </div>
-          
- 
+
         </div>
+        <table class=" container rwd-table">
+          <tr>
+              <th>Public Key</th>
+              <th>Name</th>
+              <th>Localisation</th>
+              <th>site</th>
+          </tr>
+      
+          <tbody id="myTable">
+              
+          </tbody>
+      </table>
       </div>
     <!--=====================Footer===========================-->
     <div class="footer-dark">
@@ -228,7 +284,32 @@
   $("#edit").attr("disabled", false);
   $("#delete").attr("disabled", false);
 }
- 
+function Table(data){
+  var table = document.getElementById('myTable')
+
+  for (var i = 0; i < data.length; i++){
+    var row = `<tr>
+            <td>${data[i].public_key}</td>
+            <td>${data[i].nom}</td>
+            <td>${data[i].localisation}</td>
+            <td>${data[i].site}</td>
+          </tr>`
+    table.innerHTML += row
+
+
+  }
+}
+async function buildTable(){
+  const response = await fetch('http://localhost:4000/api/workouts')
+      const json = await response.json()
+
+      if (response.ok) {
+        console.log(json)
+        Table(json)
+      }
+}
+buildTable()
     </script>
+
   </body>
 </html>
