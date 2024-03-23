@@ -1,5 +1,5 @@
 window.CONTRACT = {
-  address: '0x4A2CA6B4ab52978dad97848EB2554652CC7a53c2',
+  address: '0x9DBcE6108534643EeCd2D2FB6577eF867a64b868',
   network: 'https://rpc.sepolia.org/',
   explore: 'https://sepolia.etherscan.io/',
   // Your Contract ABI 
@@ -15,12 +15,6 @@ window.CONTRACT = {
           "internalType": "string",
           "name": "_info",
           "type": "string"
-        },
-        {
-          "indexed": true,
-          "internalType": "address",
-          "name": "_studentAddress",
-          "type": "address"
         }
       ],
       "name": "add_Exporter",
@@ -347,11 +341,6 @@ window.CONTRACT = {
           "internalType": "address",
           "name": "",
           "type": "address"
-        },
-        {
-          "internalType": "bool",
-          "name": "",
-          "type": "bool"
         }
       ],
       "stateMutability": "view",
@@ -483,7 +472,7 @@ window.CONTRACT = {
       "stateMutability": "view",
       "type": "function"
     }
-  ],
+  ]
 }
 
 //login
@@ -986,6 +975,10 @@ if (name && address && localisation && site) {
         $('#delete').slideDown()
         console.log(receipt)//add to database
         
+
+        console.log(obj)
+  
+
         $('#note').html(
           `<h5 class="text-info">Exporter Added to the Blockchain 😇</h5>`,
         )
@@ -1005,9 +998,7 @@ if (name && address && localisation && site) {
     $('#edit').slideDown()
     $('#delete').slideDown()
   }
-  console.log(obj)
-  
-  const response = await fetch('http://localhost:4000/api/workouts', {
+  const response =  await fetch('http://localhost:4000/api/workouts', {
     method: 'POST',
     body: JSON.stringify(obj),
     headers: {
@@ -1024,6 +1015,7 @@ if (name && address && localisation && site) {
     console.log('new workout added:', json)
     location.reload()
   }
+
 
 
 } else {

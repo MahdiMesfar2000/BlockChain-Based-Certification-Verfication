@@ -3,9 +3,7 @@
 //just provide the network address
 
 window.CONTRACT = {
-
-  address: '0x4A2CA6B4ab52978dad97848EB2554652CC7a53c2',
-
+  address: '0x9DBcE6108534643EeCd2D2FB6577eF867a64b868',
   network: 'https://rpc.sepolia.org/',
   explore: 'https://sepolia.etherscan.io/',
   // Your Contract ABI 
@@ -21,12 +19,6 @@ window.CONTRACT = {
           "internalType": "string",
           "name": "_info",
           "type": "string"
-        },
-        {
-          "indexed": true,
-          "internalType": "address",
-          "name": "_studentAddress",
-          "type": "address"
         }
       ],
       "name": "add_Exporter",
@@ -353,11 +345,6 @@ window.CONTRACT = {
           "internalType": "address",
           "name": "",
           "type": "address"
-        },
-        {
-          "internalType": "bool",
-          "name": "",
-          "type": "bool"
         }
       ],
       "stateMutability": "view",
@@ -489,7 +476,7 @@ window.CONTRACT = {
       "stateMutability": "view",
       "type": "function"
     }
-  ],
+  ]
 }
 //I used Web3.providers.HttpProvider instead of MetaMask Provider so We can Verify Docs without Wallet
 const web3 = new Web3(new Web3.providers.HttpProvider(window.CONTRACT.network))
@@ -504,6 +491,7 @@ window.onload = async () => {
   //check the Url if it was Passed with document hash 
   $('#upload_file_button').attr('disabled', true)
   checkURL()
+  
 }
 async function verify_Hash() {
   //Show the loading
@@ -542,7 +530,7 @@ function checkURL() {
   verify_Hash()
 }
 // get Sha3 Hash from the file
-async function get_Sha3() {
+async function get_Sha() {
   $('#note').html(`<h5 class="text-warning">Hashing Your Document 😴...</h5>`)
   $('#upload_file_button').attr('disabled', false)
   console.log('file changed')
