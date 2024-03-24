@@ -53,6 +53,7 @@ contract test  is AccessControl {
         
         Exporters[_add].blockNumber=0;
         Exporters[_add].info="";
+        _revokeRole(EXPORTER_ROLE, _add);
         --count_Exporters;
         }
         
@@ -64,7 +65,7 @@ contract test  is AccessControl {
 
     function changeOwner(address _newOwner) public 
         onlyRole(OWNER_ROLE)  validAddress(_newOwner)   {  
-            revokeRole(OWNER_ROLE, msg.sender);
+            _revokeRole(OWNER_ROLE, msg.sender);
             _setupRole(OWNER_ROLE, _newOwner);
             }
 
