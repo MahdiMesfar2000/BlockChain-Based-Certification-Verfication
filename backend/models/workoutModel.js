@@ -19,6 +19,11 @@ const workoutSchema = new Schema({
     type: String,
     required: true
   }
+  ,
+  pending: {
+    type: String,
+    required: true
+  }
 
 
 }, { timestamps: true })

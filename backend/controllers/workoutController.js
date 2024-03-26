@@ -22,11 +22,11 @@ const getWorkout = async (req, res) => {
 
 // create a new workout
 const createWorkout = async (req, res) => {
-  const {nom, public_key, localisation,site} = req.body
+  const {nom, public_key, localisation,site,pending} = req.body
 
   // add to the database
   try {
-    const workout = await Workout.create({nom, public_key, localisation,site})
+    const workout = await Workout.create({nom, public_key, localisation,site,pending})
     res.status(200).json(workout)
   } catch (error) {
     res.status(400).json({ error: error.message })

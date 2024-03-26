@@ -1,0 +1,5 @@
+PORT=4000
+MONGO_URI=mongodb+srv://yassinefeki:yassine*2mahdi@cluster0.n1vbgyw.mongodb.net/?retryWrites=true&w=majority
+
+
+mongodb+srv://<username>:<password>@cluster1.ytmbnsz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1

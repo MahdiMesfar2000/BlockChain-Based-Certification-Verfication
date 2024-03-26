@@ -3,17 +3,14 @@
 pragma solidity >=0.7.0 <0.9.0;
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/audit/2023-03/contracts/access/AccessControl.sol";
 
-
-contract test  is AccessControl {
+contract Verification is AccessControl {
     bytes32 public constant OWNER_ROLE = keccak256("OWNER_ROLE"); 
     bytes32 public constant EXPORTER_ROLE = keccak256("EXPORTER_ROLE"); 
     bytes32 public constant STUDENT_ROLE = keccak256("STUDENT_ROLE"); 
-
-
+    
     constructor() { _setupRole(OWNER_ROLE, msg.sender); }
     uint16 public count_Exporters=0;
     uint16 public count_hashes=0;
-    
 
     struct  Record  {
         uint blockNumber;
@@ -21,16 +18,17 @@ contract test  is AccessControl {
         string info;
         string ipfs_hash;
         address studentAddress; // New attribute for student address
+        bool valid; // New attribute for validity
          }
     struct Exporter_Record{
         uint blockNumber;
         string info;
          }
+
      mapping (bytes32  => Record) private docHashes;
      mapping (address => Exporter_Record) private Exporters;
      
 //---------------------------------------------------------------------------------------------------------//
-
     modifier validAddress(address _addr) {
             assert(_addr != address(0)); _; }
 
@@ -69,8 +67,8 @@ contract test  is AccessControl {
             _setupRole(OWNER_ROLE, _newOwner);
             }
 
-        event addHash(address indexed _exporter,string _ipfsHash);
-    function addDocHash (bytes32  hash,string calldata _ipfs, address _studentAddress) public 
+        event addHash(address indexed _exporter,string _ipfsHash, address indexed _studentAddress);
+      function addDocHash (bytes32  hash,string calldata _ipfs, address _studentAddress) public 
       onlyRole(EXPORTER_ROLE)
       {
             assert(docHashes[hash].blockNumber==0 && docHashes[hash].minetime==0);
@@ -79,32 +77,34 @@ contract test  is AccessControl {
             block.timestamp,
             Exporters[msg.sender].info,
             _ipfs,
-            _studentAddress
+            _studentAddress,
+            true // Document is valid when added
             );
             docHashes[hash] = newRecord; 
             ++count_hashes;
-            emit addHash(msg.sender,_ipfs);
+            _setupRole(STUDENT_ROLE, _studentAddress);
+            emit addHash(msg.sender,_ipfs,_studentAddress);
       }
       
 
-    function findDocHash(bytes32 _hash) external view returns (uint, uint, string memory, string memory, address) {
+    function findDocHash(bytes32 _hash) external view returns (uint, uint, string memory, string memory, address, bool) {
         return (
             docHashes[_hash].blockNumber,
             docHashes[_hash].minetime,
             docHashes[_hash].info,
             docHashes[_hash].ipfs_hash,
-            docHashes[_hash].studentAddress
+            docHashes[_hash].studentAddress,
+            docHashes[_hash].valid // Return the valid attribute
         );
     }
-
 
     function deleteHash (bytes32 _hash) public
     onlyRole(EXPORTER_ROLE)
     {
     assert(docHashes[_hash].minetime!=0);
-    docHashes[_hash].blockNumber=0;
-    docHashes[_hash].minetime=0;
-    
+    docHashes[_hash].minetime=block.timestamp; // Update minetime to current time
+    docHashes[_hash].valid = false; // Document becomes invalid when deleted
+    //_revokeRole(STUDENT_ROLE, docHashes[_hash].studentAddress);
     --count_hashes;
     
     }

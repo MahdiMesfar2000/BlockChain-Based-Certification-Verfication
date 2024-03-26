@@ -1,107 +1,9 @@
 window.CONTRACT = {
-  address: '0x243DD52643fcc0D0f5782e16a4c87256a03c58D0',
+  address: '0xD83E289De02538910efDCFE60255f72c30ce1686',
   network: 'https://rpc.sepolia.org/',
   explore: 'https://sepolia.etherscan.io/',
   // Your Contract ABI 
   abi: [
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "_add",
-          "type": "address"
-        },
-        {
-          "internalType": "string",
-          "name": "_info",
-          "type": "string"
-        }
-      ],
-      "name": "add_Exporter",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "bytes32",
-          "name": "hash",
-          "type": "bytes32"
-        },
-        {
-          "internalType": "string",
-          "name": "_ipfs",
-          "type": "string"
-        },
-        {
-          "internalType": "address",
-          "name": "_studentAddress",
-          "type": "address"
-        }
-      ],
-      "name": "addDocHash",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "_add",
-          "type": "address"
-        },
-        {
-          "internalType": "string",
-          "name": "_newInfo",
-          "type": "string"
-        }
-      ],
-      "name": "alter_Exporter",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "_newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "changeOwner",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "_add",
-          "type": "address"
-        }
-      ],
-      "name": "delete_Exporter",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "bytes32",
-          "name": "_hash",
-          "type": "bytes32"
-        }
-      ],
-      "name": "deleteHash",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
     {
       "inputs": [],
       "stateMutability": "nonpayable",
@@ -196,25 +98,88 @@ window.CONTRACT = {
           "internalType": "string",
           "name": "_ipfsHash",
           "type": "string"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_studentAddress",
+          "type": "address"
         }
       ],
       "name": "addHash",
       "type": "event"
     },
     {
+      "inputs": [],
+      "name": "DEFAULT_ADMIN_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "EXPORTER_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "OWNER_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "STUDENT_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [
         {
           "internalType": "bytes32",
-          "name": "role",
+          "name": "hash",
           "type": "bytes32"
         },
         {
+          "internalType": "string",
+          "name": "_ipfs",
+          "type": "string"
+        },
+        {
           "internalType": "address",
-          "name": "account",
+          "name": "_studentAddress",
           "type": "address"
         }
       ],
-      "name": "grantRole",
+      "name": "addDocHash",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -222,17 +187,17 @@ window.CONTRACT = {
     {
       "inputs": [
         {
-          "internalType": "bytes32",
-          "name": "role",
-          "type": "bytes32"
+          "internalType": "address",
+          "name": "_add",
+          "type": "address"
         },
         {
-          "internalType": "address",
-          "name": "account",
-          "type": "address"
+          "internalType": "string",
+          "name": "_info",
+          "type": "string"
         }
       ],
-      "name": "renounceRole",
+      "name": "add_Exporter",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -240,17 +205,30 @@ window.CONTRACT = {
     {
       "inputs": [
         {
-          "internalType": "bytes32",
-          "name": "role",
-          "type": "bytes32"
+          "internalType": "address",
+          "name": "_add",
+          "type": "address"
         },
         {
+          "internalType": "string",
+          "name": "_newInfo",
+          "type": "string"
+        }
+      ],
+      "name": "alter_Exporter",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
           "internalType": "address",
-          "name": "account",
+          "name": "_newOwner",
           "type": "address"
         }
       ],
-      "name": "revokeRole",
+      "name": "changeOwner",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -282,29 +260,29 @@ window.CONTRACT = {
       "type": "function"
     },
     {
-      "inputs": [],
-      "name": "DEFAULT_ADMIN_ROLE",
-      "outputs": [
+      "inputs": [
         {
           "internalType": "bytes32",
-          "name": "",
+          "name": "_hash",
           "type": "bytes32"
         }
       ],
-      "stateMutability": "view",
+      "name": "deleteHash",
+      "outputs": [],
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
-      "inputs": [],
-      "name": "EXPORTER_ROLE",
-      "outputs": [
+      "inputs": [
         {
-          "internalType": "bytes32",
-          "name": "",
-          "type": "bytes32"
+          "internalType": "address",
+          "name": "_add",
+          "type": "address"
         }
       ],
-      "stateMutability": "view",
+      "name": "delete_Exporter",
+      "outputs": [],
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -341,6 +319,11 @@ window.CONTRACT = {
           "internalType": "address",
           "name": "",
           "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
         }
       ],
       "stateMutability": "view",
@@ -397,6 +380,24 @@ window.CONTRACT = {
           "type": "address"
         }
       ],
+      "name": "grantRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
       "name": "hasRole",
       "outputs": [
         {
@@ -409,16 +410,39 @@ window.CONTRACT = {
       "type": "function"
     },
     {
-      "inputs": [],
-      "name": "OWNER_ROLE",
-      "outputs": [
+      "inputs": [
         {
           "internalType": "bytes32",
-          "name": "",
+          "name": "role",
           "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
         }
       ],
-      "stateMutability": "view",
+      "name": "renounceRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "revokeRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -435,19 +459,6 @@ window.CONTRACT = {
           "internalType": "bool[3]",
           "name": "",
           "type": "bool[3]"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "STUDENT_ROLE",
-      "outputs": [
-        {
-          "internalType": "bytes32",
-          "name": "",
-          "type": "bytes32"
         }
       ],
       "stateMutability": "view",
@@ -941,14 +952,44 @@ if (name && address && localisation && site) {
   )
 }
 }
-async function Confirm() {
-  const name = document.getElementById('name').value
-  const localisation = document.getElementById('localisation').value
-  const site = document.getElementById('site').value
-  const address = document.getElementById('Exporter-address').value
+
+
+async function add_to_mango(obj) {
+const response =  await fetch('http://localhost:4000/api/workouts', {
+    method: 'POST',
+    body: JSON.stringify(obj),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  const json = await response.json()
+
+  if (!response.ok) {
+    console.log(json.error)
+  }
+  if (response.ok) {
+   
+    console.log('new workout added:', json)
+    location.reload()
+  }
+}
+
+async function Confirm_AcceptExporter(obj) {
+  
+  const name = obj.nom
+  const localisation = obj.localisation
+  const site = obj.site
+  const address =obj.public_key
+  const pending = "0"
+
+  
 if (name && address && localisation && site) {
-  const obj= {"nom":name,"public_key":address,"localisation":localisation, "site":site}
+  const obj= {"nom":name,"public_key":address,"localisation":localisation, "site":site,"pending":pending}
+  //const obj= {"nom":name,"public_key":address,"localisation":localisation, "site":site}
+
   $('#loader').removeClass('d-none')
+  $('#Confirm').attr('disabled', true)
+
   $('#note').html(
     `<h5 class="text-info">Please confirm the transaction 👍...</h5>`,
   )
@@ -973,7 +1014,7 @@ if (name && address && localisation && site) {
         $('#ExporterBtn').slideDown()
         $('#edit').slideDown()
         $('#delete').slideDown()
-        console.log(receipt)//add to database
+        console.log(receipt)
         
 
         console.log(obj)
@@ -982,41 +1023,29 @@ if (name && address && localisation && site) {
         $('#note').html(
           `<h5 class="text-info">Exporter Added to the Blockchain 😇</h5>`,
         )
+        add_to_mango(obj)//add to database
+        
       })
 
       .on('confirmation', function (confirmationNr) {})
       .on('error', function (error) {
         console.log(error.message)
+        $('#Confirm').attr('disabled', false)
         $('#note').html(`<h5 class="text-center">${error.message}</h5>`)
         $('#loader').addClass('d-none')
         $('#ExporterBtn').slideDown()
+        
       })
   } catch (error) {
+    $('#Confirm').attr('disabled', false)
     $('#note').html(`<h5 class="text-center">${error.message}</h5>`)
     $('#loader').addClass('d-none')
     $('#ExporterBtn').slideDown()
     $('#edit').slideDown()
     $('#delete').slideDown()
   }
-  const response =  await fetch('http://localhost:4000/api/workouts', {
-    method: 'POST',
-    body: JSON.stringify(obj),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  const json = await response.json()
-
-  if (!response.ok) {
-    console.log(json.error)
-  }
-  if (response.ok) {
-   
-    console.log('new workout added:', json)
-    location.reload()
-  }
-
-
+  
+  
 
 } else {
   $('#note').html(
@@ -1024,6 +1053,101 @@ if (name && address && localisation && site) {
   )
 }
 } 
+
+function AcceptExporter(obj){
+
+  delete_from_mango(obj.public_key)
+  Confirm_AcceptExporter(obj)
+  
+  
+}
+
+function RejectExporter(adress){
+  delete_from_mango(adress)
+  location.reload()
+}
+async function Confirm() {
+  
+  const name = document.getElementById('name').value
+  const localisation = document.getElementById('localisation').value
+  const site = document.getElementById('site').value
+  const address = document.getElementById('Exporter-address').value
+  const pending = "0"
+
+  
+if (name && address && localisation && site) {
+  const obj= {"nom":name,"public_key":address,"localisation":localisation, "site":site,"pending":pending}
+  //const obj= {"nom":name,"public_key":address,"localisation":localisation, "site":site}
+
+  $('#loader').removeClass('d-none')
+  $('#Confirm').attr('disabled', true)
+
+  $('#note').html(
+    `<h5 class="text-info">Please confirm the transaction 👍...</h5>`,
+  )
+  $('#ExporterBtn').attr('disabled', true)
+  $('#delete').attr('disabled', true)
+  $('#edit').attr('disabled', true)
+  get_ChainID()
+
+  try {
+    await window.contract.methods
+      .add_Exporter(address,name)//add to blockchain
+      .send({ from: window.userAddress })
+
+      .on('transactionHash', function (hash) {
+        $('#note').html(
+          `<h5 class="text-info p-1 text-center">Please wait for transaction to be mined 😴...</h5>`,
+        )
+      })
+
+      .on('receipt', function (receipt) {
+        $('#loader').addClass('d-none')
+        $('#ExporterBtn').slideDown()
+        $('#edit').slideDown()
+        $('#delete').slideDown()
+        console.log(receipt)
+        
+
+        console.log(obj)
+  
+
+        $('#note').html(
+          `<h5 class="text-info">Exporter Added to the Blockchain 😇</h5>`,
+        )
+        add_to_mango(obj)//add to database
+        
+      })
+
+      .on('confirmation', function (confirmationNr) {})
+      .on('error', function (error) {
+        console.log(error.message)
+        $('#Confirm').attr('disabled', false)
+        $('#note').html(`<h5 class="text-center">${error.message}</h5>`)
+        $('#loader').addClass('d-none')
+        $('#ExporterBtn').slideDown()
+        
+      })
+  } catch (error) {
+    $('#Confirm').attr('disabled', false)
+    $('#note').html(`<h5 class="text-center">${error.message}</h5>`)
+    $('#loader').addClass('d-none')
+    $('#ExporterBtn').slideDown()
+    $('#edit').slideDown()
+    $('#delete').slideDown()
+  }
+  
+  
+
+} else {
+  $('#note').html(
+    `<h5 class="text-center text-warning">You need to provide all info!! </h5>`,
+  )
+}
+} 
+
+
+
 
 function back() {
   $('#loader').addClass('d-none')
@@ -1068,6 +1192,7 @@ async function addExporter() {
     $('#delete').addClass('d-none')
     $('#back').removeClass('d-none')
     $('#Confirm').removeClass('d-none')
+    $('#Confirm22').removeClass('d-none')
   //add here other inputs
 }
   else {
@@ -1201,10 +1326,8 @@ async function editExporter() {
   }
 }
 
-
-async function deleteExporter() {
-  const address = document.getElementById('Exporter-address').value
-  const response = await fetch('http://localhost:4000/api/workouts'+'/'+address, {
+async function delete_from_mango(address) {
+const response = await fetch('http://localhost:4000/api/workouts'+'/'+address, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -1218,8 +1341,11 @@ async function deleteExporter() {
   if (response.ok) {
    
     console.log('workout deleted:', json)
-    location.reload()
   }
+}
+async function deleteExporter() {
+  const address = document.getElementById('Exporter-address').value
+  
   
   if (address) {
     $('#loader').removeClass('d-none')
@@ -1252,6 +1378,8 @@ async function deleteExporter() {
           $('#note').html(
             `<h5 class="text-info">Exporter Deleted Successfully 🙂</h5>`,
           )
+          delete_from_mango(address)
+          
         })
         .on('error', function (error) {
           console.log(error.message)
@@ -1268,6 +1396,7 @@ async function deleteExporter() {
       $('#edit').slideDown()
       $('#delete').slideDown()
     }
+    location.reload()
   } else {
     $('#note').html(
       `<h5 class="text-center text-warning">You need to provide address to delete 👍</h5>`,
@@ -1354,8 +1483,10 @@ async function getrole(){
 
     .then((result) => {
     console.log("roles:", result);
-    if (!(result[0])){$(document).ready(function() {$('#Admin').addClass('d-none');});}
-    if (!(result[1])){$(document).ready(function() {$('#Upload').addClass('d-none');$('#Delete').addClass('d-none');});}
+    if ((result[0])){$(document).ready(function() {$('#Admin').removeClass('d-none');});}
+    if ((result[1])){$(document).ready(function() {$('#Upload').removeClass('d-none');$('#Delete').removeClass('d-none');});}
+    if ((result[2])){$(document).ready(function() {$('#certificates').removeClass('d-none');});}
+
     if (window.location.pathname == '/admin.html')
     {
       if (!(result[0])) {window.location.href = '/index.html';}
@@ -1365,6 +1496,11 @@ async function getrole(){
     if ((window.location.pathname == '/delete.html') || (window.location.pathname == '/upload.html'))
     {
       if (!(result[1])) {window.location.href = '/index.html';}
+      
+    }
+    if (window.location.pathname == '/certificates.html')
+    {
+      if (!(result[2])) {window.location.href = '/index.html';}
       
     }
       
