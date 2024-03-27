@@ -3,11 +3,109 @@
 //just provide the network address
 
 window.CONTRACT = {
-  address: '0xD83E289De02538910efDCFE60255f72c30ce1686',
+  address: '0x4ED639Bd46843177E0C0D91f5Fb74CFD1944BeD5',
   network: 'https://rpc.sepolia.org/',
   explore: 'https://sepolia.etherscan.io/',
   // Your Contract ABI 
-  abi: [
+  abi:[
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_add",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "_info",
+          "type": "string"
+        }
+      ],
+      "name": "add_Exporter",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "hash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "string",
+          "name": "_ipfs",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "_studentAddress",
+          "type": "address"
+        }
+      ],
+      "name": "addDocHash",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_add",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "_newInfo",
+          "type": "string"
+        }
+      ],
+      "name": "alter_Exporter",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "changeOwner",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_add",
+          "type": "address"
+        }
+      ],
+      "name": "delete_Exporter",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_hash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "deleteHash",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
     {
       "inputs": [],
       "stateMutability": "nonpayable",
@@ -114,76 +212,19 @@ window.CONTRACT = {
       "type": "event"
     },
     {
-      "inputs": [],
-      "name": "DEFAULT_ADMIN_ROLE",
-      "outputs": [
-        {
-          "internalType": "bytes32",
-          "name": "",
-          "type": "bytes32"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "EXPORTER_ROLE",
-      "outputs": [
-        {
-          "internalType": "bytes32",
-          "name": "",
-          "type": "bytes32"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "OWNER_ROLE",
-      "outputs": [
-        {
-          "internalType": "bytes32",
-          "name": "",
-          "type": "bytes32"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "STUDENT_ROLE",
-      "outputs": [
-        {
-          "internalType": "bytes32",
-          "name": "",
-          "type": "bytes32"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
       "inputs": [
         {
           "internalType": "bytes32",
-          "name": "hash",
+          "name": "role",
           "type": "bytes32"
         },
         {
-          "internalType": "string",
-          "name": "_ipfs",
-          "type": "string"
-        },
-        {
           "internalType": "address",
-          "name": "_studentAddress",
+          "name": "account",
           "type": "address"
         }
       ],
-      "name": "addDocHash",
+      "name": "grantRole",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -191,17 +232,17 @@ window.CONTRACT = {
     {
       "inputs": [
         {
-          "internalType": "address",
-          "name": "_add",
-          "type": "address"
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
         },
         {
-          "internalType": "string",
-          "name": "_info",
-          "type": "string"
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
         }
       ],
-      "name": "add_Exporter",
+      "name": "renounceRole",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -209,30 +250,17 @@ window.CONTRACT = {
     {
       "inputs": [
         {
-          "internalType": "address",
-          "name": "_add",
-          "type": "address"
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
         },
         {
-          "internalType": "string",
-          "name": "_newInfo",
-          "type": "string"
-        }
-      ],
-      "name": "alter_Exporter",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
           "internalType": "address",
-          "name": "_newOwner",
+          "name": "account",
           "type": "address"
         }
       ],
-      "name": "changeOwner",
+      "name": "revokeRole",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -264,29 +292,29 @@ window.CONTRACT = {
       "type": "function"
     },
     {
-      "inputs": [
+      "inputs": [],
+      "name": "DEFAULT_ADMIN_ROLE",
+      "outputs": [
         {
           "internalType": "bytes32",
-          "name": "_hash",
+          "name": "",
           "type": "bytes32"
         }
       ],
-      "name": "deleteHash",
-      "outputs": [],
-      "stateMutability": "nonpayable",
+      "stateMutability": "view",
       "type": "function"
     },
     {
-      "inputs": [
+      "inputs": [],
+      "name": "EXPORTER_ROLE",
+      "outputs": [
         {
-          "internalType": "address",
-          "name": "_add",
-          "type": "address"
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
         }
       ],
-      "name": "delete_Exporter",
-      "outputs": [],
-      "stateMutability": "nonpayable",
+      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -384,24 +412,6 @@ window.CONTRACT = {
           "type": "address"
         }
       ],
-      "name": "grantRole",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "bytes32",
-          "name": "role",
-          "type": "bytes32"
-        },
-        {
-          "internalType": "address",
-          "name": "account",
-          "type": "address"
-        }
-      ],
       "name": "hasRole",
       "outputs": [
         {
@@ -414,39 +424,16 @@ window.CONTRACT = {
       "type": "function"
     },
     {
-      "inputs": [
+      "inputs": [],
+      "name": "OWNER_ROLE",
+      "outputs": [
         {
           "internalType": "bytes32",
-          "name": "role",
+          "name": "",
           "type": "bytes32"
-        },
-        {
-          "internalType": "address",
-          "name": "account",
-          "type": "address"
         }
       ],
-      "name": "renounceRole",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "bytes32",
-          "name": "role",
-          "type": "bytes32"
-        },
-        {
-          "internalType": "address",
-          "name": "account",
-          "type": "address"
-        }
-      ],
-      "name": "revokeRole",
-      "outputs": [],
-      "stateMutability": "nonpayable",
+      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -463,6 +450,19 @@ window.CONTRACT = {
           "internalType": "bool[3]",
           "name": "",
           "type": "bool[3]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "STUDENT_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
         }
       ],
       "stateMutability": "view",
@@ -489,6 +489,7 @@ window.CONTRACT = {
     }
   ]
 }
+
 //I used Web3.providers.HttpProvider instead of MetaMask Provider so We can Verify Docs without Wallet
 const web3 = new Web3(new Web3.providers.HttpProvider(window.CONTRACT.network))
 const contract = new web3.eth.Contract(
@@ -515,8 +516,10 @@ async function verify_Hash() {
       .then((result) => {
         $('.transaction-status').removeClass('d-none')
         window.newHash = result
+        console.log("result")
+        console.log(result)
         if ((result[0] != 0) & (result[1] != 0)) {
-          console.log(result)
+          
           if (result[5]) { // Check if the document is valid
             //Doc Verified
             print_verification_info(result, 'verified')
