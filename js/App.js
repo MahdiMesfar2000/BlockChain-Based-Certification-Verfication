@@ -539,12 +539,16 @@ window.onload = async () => {
     $('.loader-wraper').fadeOut('slow')
     hide_txInfo()
     $('#upload_file_button').attr('disabled', true)
-  
+    try{
+    document.getElementById('Exporter-Req-address').value = window.userAddress;
+    }catch (error) {
 
+    }
 
     if (window.userAddress.length > 10) {
       // let isLocked =await window.ethereum._metamask.isUnlocked();
       //  if(!isLocked) disconnect();
+      
       $('#logoutButton').show()
       $('#loginButton').hide()
       $('#userAddress')
@@ -592,6 +596,7 @@ window.onload = async () => {
   }
   
 }
+
 
 function hide_txInfo() {
   $('.transaction-status').addClass('d-none')
@@ -1058,14 +1063,33 @@ function AcceptExporter(obj){
 
   delete_from_mango(obj.public_key)
   Confirm_AcceptExporter(obj)
-  
-  
+
 }
 
 function RejectExporter(adress){
   delete_from_mango(adress)
   location.reload()
 }
+
+async function RequestExporter() {
+  const name = document.getElementById('name').value
+  const localisation = document.getElementById('localisation').value
+  const site = document.getElementById('site').value
+
+  const address = document.getElementById('Exporter-Req-address').value
+  const pending = "1"
+  if (name && address && localisation && site) {
+    const obj= {"nom":name,"public_key":address,"localisation":localisation, "site":site,"pending":pending}
+    add_to_mango(obj)
+  
+  } else {
+    $('#note').html(
+      `<h5 class="text-center text-warning">You need to provide all info!! </h5>`,
+    )
+  }
+
+}
+
 async function Confirm() {
   
   const name = document.getElementById('name').value
@@ -1073,6 +1097,7 @@ async function Confirm() {
   const site = document.getElementById('site').value
   const address = document.getElementById('Exporter-address').value
   const pending = "0"
+  
 
   
 if (name && address && localisation && site) {
