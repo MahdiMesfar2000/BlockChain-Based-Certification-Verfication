@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,500;1,700&family=Rubik+Glitch&family=Rubik+Moonrocks&family=Ubuntu&display=swap");
 
 :root {
-  --main-color: #cb3066;
+  --main-color: #d82830;
   --second-color: #16bffd;
   --box-shadow: 0 0 5px rgb(33, 3, 3);
   --border-color: 1px solid #c3c3c361;
@@ -9,14 +9,25 @@
   --light: rgb(157, 157, 157);
   --white: rgba(255, 255, 255, 0.925);
   --border-radius: 10px;
-  --inputs-background: #121212;
-  --boxes-color: #252024 !important;
-  --nav-background: #1f2022;
-  --team-box-color: #151d20;
+  --inputs-background: #242530;
+  --boxes-color: #343546 !important;
+  --nav-background: #343546;
+  --team-box-color: #242530;
 }
 
 button {
   transition: all 0.3s;
+}
+#canvas1{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: #a0a1b2;
+  
+
 }
 
 .tx-h5 {
@@ -135,8 +146,9 @@ button {
 }
 body {
   position: relative;
-  background: linear-gradient(to right,var(--second-color), var(--main-color));
+  background: #a0a1b2;
   overflow-x: hidden;
+  /*overflow: hidden;*/
 }
 .navbar-dark {
   background: var(--nav-background) !important;
@@ -146,11 +158,7 @@ body {
 
 /* Home Page */
 .home {
-  background-image: url(../assets/images/home5.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+ 
   min-height: calc(100vh - 71px);
   position: relative;
 }

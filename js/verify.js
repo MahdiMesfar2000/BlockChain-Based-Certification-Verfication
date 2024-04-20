@@ -3,7 +3,7 @@
 //just provide the network address
 
 window.CONTRACT = {
-  address: '0x4ED639Bd46843177E0C0D91f5Fb74CFD1944BeD5',
+  address: '0xEb833AfE95C07135fC35cF46Ca79bD41C2F80819',
   network: 'https://rpc.sepolia.org/',
   explore: 'https://sepolia.etherscan.io/',
   // Your Contract ABI 

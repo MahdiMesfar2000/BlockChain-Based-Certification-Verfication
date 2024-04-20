@@ -1,5 +1,5 @@
 window.CONTRACT = {
-  address: '0x4ED639Bd46843177E0C0D91f5Fb74CFD1944BeD5',
+  address: '0xEb833AfE95C07135fC35cF46Ca79bD41C2F80819',
   network: 'https://rpc.sepolia.org/',
   explore: 'https://sepolia.etherscan.io/',
   // Your Contract ABI 
@@ -1508,9 +1508,10 @@ async function getrole(){
 
     .then((result) => {
     console.log("roles:", result);
-    if ((result[0])){$(document).ready(function() {$('#Admin').removeClass('d-none');});}
-    if ((result[1])){$(document).ready(function() {$('#Upload').removeClass('d-none');$('#Delete').removeClass('d-none');});}
-    if ((result[2])){$(document).ready(function() {$('#certificates').removeClass('d-none');});}
+    if ((result[0])){$(document).ready(function() {$('#Admin').removeClass('d-none');$('#request').addClass('d-none');});}
+    if ((result[1])){$(document).ready(function() {$('#Upload').removeClass('d-none');$('#Delete').removeClass('d-none');$('#request').addClass('d-none');});}
+    if ((result[2])){$(document).ready(function() {$('#certificates').removeClass('d-none');$('#request').addClass('d-none');});}
+    
 
     if (window.location.pathname == '/admin.html')
     {
@@ -1528,7 +1529,11 @@ async function getrole(){
       if (!(result[2])) {window.location.href = '/index.html';}
       
     }
+    if (window.location.pathname == '/request.html')
+    {
+      if ((result[0])||(result[1])||(result[2])) {window.location.href = '/index.html';}
       
+    }
     })
 
   if (window.location.pathname == '/upload.html') {

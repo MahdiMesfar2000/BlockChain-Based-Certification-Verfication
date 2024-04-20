@@ -16,11 +16,13 @@
     <script src="node_modules\web3\dist\web3.min.js"></script>
     <link href="./css/aos.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <link rel="stylesheet" href="css/main.css" />
-    <link rel="icon" href="./assets/images/icon.png" />
+    <link rel="icon" href="/files/logo diplomi icon.svg" />
     <title>Admin Dashboard</title>
   </head>
   
   <body>
+    <canvas id="canvas1"></canvas>
+    <script src="js/animation.js"></script>
     <div class="loader-wraper">
       <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     </div>
@@ -39,7 +41,7 @@
           ...
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -48,10 +50,7 @@
 <!--NavBar Start-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 navbar-dark">
     <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <i class="fa-solid fa-dragon home_text"></i>
-        <span class="home_text">Orio</span>Chain
-        </a>
+      <img src="files/logo diplomi.svg" alt="logo" style="width: 10%;height: 10%; margin-right: 1em;">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
@@ -132,14 +131,14 @@
             <div  class="btn-container mt-3">
               <input
               onclick="addExporter()"
-                class="btn btn-primary  exporter-button main-button"
+                class="btn  exporter-button main-button"
                 type="submit"
                 value="Add Exporter"
                 id="ExporterBtn"
               />
               <input
               onclick="Confirm()"
-                class="btn btn-primary  exporter-button main-button d-none"
+                class="btn   exporter-button main-button d-none"
                 type="submit"
                 value="Confirm"
                 id="Confirm"
@@ -147,35 +146,35 @@
              
               <input
               onclick="Confirm2()"
-                class="btn btn-primary  exporter-button main-button d-none"
+                class="btn   exporter-button main-button d-none"
                 type="submit"
                 value="Confirm"
                 id="Confirm2"
               />
               <input
               onclick="back()"
-                class="btn btn-primary  exporter-button main-button d-none"
+                class="btn   exporter-button main-button d-none"
                 type="submit"
                 value="Back"
                 id="back"
               />
               <input
               onclick="back2()"
-                class="btn btn-primary  exporter-button main-button d-none"
+                class="btn   exporter-button main-button d-none"
                 type="submit"
                 value="Back"
                 id="back2"
               />
               <input
               onclick="deleteExporter()"
-                class="btn btn-danger  exporter-button main-button"
+                class="btn   exporter-button main-button"
                 type="submit"
                 value="Delete Exporter"
                 id="delete"
               />
               <input
               onclick="editExporter()"
-                class="btn btn-warning  exporter-button main-button"
+                class="btn   exporter-button main-button"
                 type="submit"
                 value="Edit Exporter"
                 id="edit"
@@ -212,7 +211,7 @@
     </table>
       </div>
     <!--=====================Footer===========================-->
-    <div class="footer-dark">
+    <!-- <div class="footer-dark">
       <footer>
         <div class="container">
           <div class="row">
@@ -235,7 +234,6 @@
               <h3  data-aos="fade-right"> 
                  <i class="fa-solid fa-dragon"></i>
                 OrioChain</h3>
-              <!-- <a href="https://www.flaticon.com/free-icons/blockchain" title="blockchain icons">Blockchain icons created by photo3idea_studio - Flaticon</a> -->
               <p  data-aos="zoom-in">
                 Praesent sed lobortis mi. Suspendisse vel placerat ligula.
                 Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis
@@ -282,7 +280,7 @@
         </div>
   
       </footer>
-    </div>
+    </div> -->
     <div><a href="mailto:devaloshe@gmail.com?subject=From OrioChain Site"> 
       <i class="mail-us fa-solid fa-headset"></i>
     </a>
@@ -317,13 +315,13 @@ function Table(data){
             <td>${data[i].site}</td>
             <td><button
     onclick='RejectExporter(${JSON.stringify(data[i].public_key)})'
-                class='btn btn-warning  exporter-button main-button'
+                class='btn   exporter-button main-button'
                 type='button'
                 id='RejectExporter'
     >Reject</button>
     <button
     onclick='AcceptExporter(${JSON.stringify(data[i])})'
-                class='btn btn-warning  exporter-button main-button'
+                class='btn   exporter-button main-button'
                 type='button'
                 id='AcceptExporter'
     >Accept</button>
