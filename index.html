@@ -16,10 +16,16 @@
     <!-- website link -->
     <meta property="og:title" content="Diplomi" />
     <!-- title shown in the actual shared post -->
-    <meta property="og:description" content="Diplomi Is A Website For institutions To Verify The Authenticity
-    Of Your Documents Online Easily And Safely. Let's Go.." />
+    <meta
+      property="og:description"
+      content="Diplomi Is A Website For institutions To Verify The Authenticity
+    Of Your Documents Online Easily And Safely. Let's Go.."
+    />
     <!-- description shown in the actual shared post -->
-    <meta property="og:image" content="https://blockhcain-project-ali.on.drv.tw/DevAli/assets/images/home5.jpg" />
+    <meta
+      property="og:image"
+      content="https://blockhcain-project-ali.on.drv.tw/DevAli/assets/images/home5.jpg"
+    />
     <!-- image link, make sure it's jpg -->
     <meta property="og:url" content="#ABOUT" />
     <!-- where do you want your post to link to -->
@@ -28,146 +34,172 @@
 
     <!-- Webpage Title -->
     <title>Diplomi</title>
-    <link rel="stylesheet" href="./css/loader.css">
+    <link rel="stylesheet" href="./css/loader.css" />
     <link href="./css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <link href="./css/aos.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="./css/aos.min.css" rel="stylesheet" />
     <link href="./css/main.css" rel="stylesheet" />
     <!-- Favicon -->
     <link rel="icon" href="/files/logo diplomi icon.svg" />
     <script src="node_modules\web3\dist\web3.min.js"></script>
-    
+
     <script src="js/App.js"></script>
-
-
   </head>
-
 
   <body>
     <canvas id="canvas1"></canvas>
     <script src="js/animation.js"></script>
     <div class="loader-wraper">
-      <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
-  <!--NavBar Start-->
-       <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 navbar-dark">
-        <div class="container">
-          <img src="files/logo diplomi.svg" alt="logo" style="width: 10%;height: 10%; margin-right: 1em;">
+    <!--NavBar Start-->
+    <nav class="navbar navbar-expand-lg bg-light py-3 navbar-dark">
+      <div class="container">
+        <img
+          src="files/logo diplomi.svg"
+          alt="logo"
+          style="width: 10%; height: 10%; margin-right: 1em"
+        />
 
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-              <a class="nav-link active" id="Home" aria-current="page" href="index.html">Home</a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link d-none" id="Upload" href="upload.html">Upload </a>
-              </li>
-              <li class="nav-item">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                id="Home"
+                aria-current="page"
+                href="index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-none" id="Upload" href="upload.html"
+                >Upload
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" id="Verify" href="verify.html">Verify </a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link d-none" id="Delete" href="delete.html">Delete </a>
-              </li>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-none" id="Delete" href="delete.html"
+                >Revoke</a
+              >
+            </li>
 
-              <li class="nav-item">
-                <a class="nav-link d-none" id="Admin" href="admin.html">Admin</a>
-                </li>            
-                <li class="nav-item">
-                  <a class="nav-link d-none" id="certificates" href="certificates.html">Certificates</a>
-                </li>  
-                <li class="nav-item">
-                  <a class="nav-link" id="request" href="request.html">Request</a>
-                  </li>
-                  <li class="nav-item">
-              <a class="nav-link " id="Team" href="about.html">Team</a>
-              </li>
+            <li class="nav-item">
+              <a class="nav-link d-none" id="Admin" href="admin.html">Admin</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link d-none"
+                id="certificates"
+                href="certificates.html"
+                >Certificates</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="request" href="request.html">Request</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="Team" href="about.html">Team</a>
+            </li>
           </ul>
-          </div>
         </div>
-        </nav>
+      </div>
+    </nav>
 
     <!-- Home -->
-    <section class="home py-5 d-flex align-items-center" id="header">
-
-      <div class="container  text text-light py-5" data-aos="fade-right">
-        <h1 class="headline text">
-          Build <span class="text-info">trust</span>  <br>
-          into your Organization
-        </h1>
-        <p class="para  py-3">
-          The OrioChain platform is a leading Document Verification platform <br> 
-          designed to bring efficiency and security to your operations.
-        </p>
-
-        <div class="my-3">
-          <a class="btn bg-danger text-white" href="verify.html">Go Verify</a>
-        </div>
-        
+    <section
+      class="home py-5 d-flex align-items-center justify-content-center"
+      id="header"
+    >
+      <div class="video-wrapper">
+        <video
+          autoplay
+          muted
+          loop
+          id="myVideo"
+          style="filter: brightness(100%)"
+        >
+          <source src="./files/blockchain.mp4" type="video/mp4" />
+        </video>
       </div>
-      <!-- end of container -->
-    </section>
-    <!-- end of home -->
+      <div class="container text text-light py-5" data-aos="fade-right">
+        <div>
+          <h1 class="headline text">
+            Verify with
+            <img
+              src="files/logo diplomi.svg"
+              alt="Logo"
+              style="max-width: 300px; height: auto"
+            />
+            <br />
+          </h1>
+          <p class="para py-3">
+            Diplomi is your premier Document Verification platform <br />
+            designed to enhance efficiency and security in your organization.
+          </p>
 
-    <!-- Information -->
-    <section class="information">
-      <div class="container-fluid">
-        <div class="row text-light">
-          <div class="col-lg-4 text-center p-5" data-aos="zoom-in">
-            <img src="files/undraw_investment_data_re_sh9x.svg" width="150">   
-            <h4 class="py-3">Less Cost</h4>
-            <p class="para-light">
-              with OrioChain uploading any document cost only <span class="text-warning"> 0.01 &dollar; 😮</span>
-              so you can upload without caring about the Operation cost
-            </p>
-          </div>
-          <div class="col-lg-4 text-center p-5" data-aos="zoom-in">
-            <img src="files/undraw_time_management_re_tk5w.svg" width="150">   
-            <h4 class="py-3">Fast Process</h4>
-            <p class="para-light">
-              Verfying Cirtificates  takes just <span class="text-warning"> 1 Second 😳 </span>
-            </p>
-          </div>
-          <div class="col-lg-4 text-center p-5" data-aos="zoom-in">
-            <img src="files/securefiles.svg" width="150">   
-            <h4 class="py-3">Secure</h4>
-            <p class="para-light">
-              100% Secure & Transparent all operations With Blockchain Technology 🔒
-            </p>
+          <div class="my-3">
+            <a class="btn bg-light btn-lg text-grey" href="verify.html"
+              >Go Verify</a
+            >
           </div>
         </div>
       </div>
       <!-- end of container -->
     </section>
-    <!-- end of information -->
 
     <!-- About -->
-    <section id="about" class="about d-flex align-items-center text-light py-5" id="about">
+    <section
+      id="about"
+      class="about d-flex align-items-center text-light py-5"
+      id="about"
+    >
       <div class="container">
         <div class="row d-flex align-items-center">
           <div class="col-lg-7" data-aos="fade-right">
-            <p  class="main-header-section">ABOUT US</p>
-            <h1>
-              WE ARE TOP <br />
-              
-            </h1>
+            <p class="main-header-section">ABOUT US</p>
+            <h1>WE ARE TOP <br /></h1>
             <p class="py-2 para-light">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Non sed
-              accusantium aut dolores inventore architecto modi cupiditate
-              eligendi corporis, illum illo culpa. Reiciendis, molestias. Illum
-              voluptatum quisquam ad veritatis dolorem.
+              We are a top-tier organization dedicated to excellence and
+              innovation in our field. With a team of passionate professionals,
+              we strive to deliver unparalleled solutions to meet the needs of
+              our clients.
             </p>
             <p class="py-2 para-light">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Non sed
-              accusantium aut dolores inventore architecto modi cupiditate
-              eligendi corporis, illum illo culpa. Reiciendis, molestias. Illum
-              voluptatum quisquam ad veritatis dolorem.
+              Our mission is to provide efficient and secure document
+              verification services, ensuring trust and reliability in every
+              interaction. Through continuous improvement and cutting-edge
+              technology, we aim to redefine industry standards and exceed
+              expectations.
             </p>
-
-            <div class="my-3">
-              <a class="btn bg-white" href="#your-link">Learn More</a>
-            </div>
           </div>
           <div class="col-lg-5 text-center py-4 py-sm-0" data-aos="fade-down">
             <img
@@ -183,22 +215,66 @@
     </section>
     <!-- end of about -->
 
+    <!-- Information -->
+    <section class="information" style="background-color: #343546">
+      <div class="container-fluid">
+        <div class="row text-light">
+          <div class="col-lg-4 text-center p-5" data-aos="zoom-in">
+            <img src="files/undraw_investment_data_re_sh9x.svg" height="150" />
+            <h4 class="py-3">Cost Efficiency</h4>
+            <p class="para-light">
+              With Diplomi, uploading any document costs only
+              <span class="text-warning">0.01 &dollar; 😮</span>, ensuring
+              affordability without compromising quality.
+            </p>
+          </div>
+          <div class="col-lg-4 text-center p-5" data-aos="zoom-in">
+            <img src="files/undraw_time_management_re_tk5w.svg" height="150" />
+            <h4 class="py-3">Speedy Verification</h4>
+            <p class="para-light">
+              With Diplomi, verifying certificates takes just
+              <span class="text-warning">1 Second 😳</span>, ensuring swift and
+              efficient processing for all users.
+            </p>
+          </div>
+          <div class="col-lg-4 text-center p-5" data-aos="zoom-in">
+            <img src="files/securefiles.svg" height="150" />
+            <h4 class="py-3">Secure & Transparent</h4>
+            <p class="para-light">
+              Diplomi ensures 100% security and transparency in all operations
+              through Blockchain Technology 🔒, providing users with peace of
+              mind and confidence in the integrity of their documents.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- end of container -->
+    </section>
+    <!-- end of information -->
+
     <!-- Work -->
-    <section id="ourwork"  class="work d-flex align-items-center py-5">
+    <section id="ourwork" class="work d-flex align-items-center py-5">
       <div class="container text-light">
         <div class="row">
           <div class="col-lg-6 d-flex align-items-center" data-aos="fade-right">
             <img class="img-fluid" src="./assets/images/work.jpg" alt="work" />
           </div>
-          <div class="col-lg-5 d-flex align-items-center px-4 py-3" data-aos="zoom-in">
+          <div
+            class="col-lg-5 d-flex align-items-center px-4 py-3"
+            data-aos="zoom-in"
+          >
             <div class="row">
               <div class="text-center text-lg-start py-4 pt-lg-0">
-                <p class="main-header-section">OUR WORK</p>
-                <h2 class="py-2">Explore unlimited possibilities</h2>
+                <p class="main-header-section">ABOUT US</p>
+                <h2 class="py-2">Discover our story</h2>
                 <p class="para-light">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Dignissimos dicta mollitia totam explicabo obcaecati quia
-                  laudantium repudiandae.
+                  Diplomi was founded with the vision of revolutionizing the way
+                  academic credentials are verified and managed. Our journey
+                  began with a deep understanding of the challenges faced by
+                  institutions, employers, and individuals in the verification
+                  process. We set out to create a platform that not only
+                  addresses these challenges but also brings transparency,
+                  efficiency, and security to the entire ecosystem.
                 </p>
               </div>
               <div class="container" data-aos="fade-up">
@@ -265,102 +341,55 @@
     </section>
     <!-- end of work -->
 
-    <!-- Samples -->
-<section class="samples text-light">
-  <div class="container py-3"> 
-    <h4  data-aos="fade-right" class="main-header-section" >Samples</h4>
-    <h2 data-aos="fade-right" class="p-3">Scan Sample Cards to Test Our System</h2>
-    <div class="row gy-4 ">
-      <div data-aos="zoom-in" class="col-md-6 ">
-        <img class="sample" src="files/Ali Falah Orio.svg" alt="">
-      </div>
-      <div data-aos="zoom-in" class="col-md-6 ">
-        <img class="sample" src="files/Ali Hussein Orio.svg" alt="">
-      </div>
-    </div>
-  </div>
-</section>
-    <!-- end of Samples -->
-
-<!-- Footer -->
-    <!-- <footer class="footer-dark">
+    <!-- Footer -->
+    <footer class="footer-dark" style="background-color: #343546">
       <div class="container">
         <div class="row">
-          <div class="col-sm-6 col-md-3 item">
-            <h3   data-aos="fade-right">Services</h3>
-            <ul  data-aos="zoom-in">
-              <li><a href="#">Ethereum</a></li>
-              <li><a href="#">Blockchain Tech.</a></li>
-              <li><a href="#">Smart Contracts </a></li>
-            </ul>
-          </div>
-          <div class="col-sm-6 col-md-3 item">
-            <h3   data-aos="fade-right">About us</h3>
-            <ul  data-aos="zoom-in">
-              <li><a href="about.html">Company</a></li>
-              <li><a href="about.html">Team</a></li>
-            </ul>
-          </div>
           <div class="col-md-6 item text">
-            <h3  data-aos="fade-right"> 
-               <i class="fa-solid fa-dragon"></i>
-              OrioChain</h3>
-            <p  data-aos="zoom-in">
-              The OrioChain platform is a leading Document Verification platform
-              designed to bring efficiency and security to your operations. 
+            <h3 data-aos="fade-right">
+              <img
+                src="files/logo diplomi.svg"
+                alt="Logo"
+                style="max-width: 80px; height: auto"
+              />
+            </h3>
+            <p data-aos="zoom-in">
+              The Diplomi platform is a leading document verification solution
+              designed to enhance the efficiency and security of your
+              operations, providing a seamless experience for users.
             </p>
           </div>
-          <div class="col-md text-center text-md-start">
-            <h3 data-aos="fade-right">Credits</h3>
-            <ul data-aos="zoom-in">
-              <li>
-                <a
-                  href="https://undraw.co/illustrations"
-                  title="Indraw illustrations"
-                  >Blockchain illustrations created by undraw</a
-                >
-              </li>
-              <li>
-                <a href='https://www.freepik.com/vectors/futuristic-background'>Futuristic background vector created by freepik - www.freepik.com</a>
-              </li>
-              <li>
-                <a href='https://www.freepik.com/vectors/tech-world'>Tech world vector created by liuzishan - www.freepik.com</a>
-              </li>
-              <li>
-               <a href="https://unsplash.com/@theshubhamdhage?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"> Photo by Shubham Dhage</a> on <a href="https://unsplash.com/s/photos/blockchain?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-  
-              </li>
-              <li>
-                <a href="https://www.flaticon.com/free-icons/wings" title="wings icons">Wings icons created by Freepik - Flaticon</a>
-              </li>
-              <li>
-                <a href="https://loading.io/icon/">Icon Loading  loading.io</a>  
-              </li>
-            </ul>
-          </div>
-          <div  data-aos="zoom-in" class="col item social">
+
+          <div data-aos="zoom-in" class="col item social">
             <a href="#"><i class="fa-brands fa-facebook"></i></a>
             <a href="#"><i class="fa-brands fa-twitter"></i> </a
             ><a href="#"><i class="fa-brands fa-github"> </i></a>
             <a href="#"><i class="fa-brands fa-instagram"> </i> </a>
           </div>
         </div>
-        <p class="copyright">OrioChain © 2022</p>
+        <p class="copyright">Diplomi © 2024</p>
       </div>
-
-    </footer> -->
-<!-- End Footer -->    
-    <div >
-      <i onclick="topFunction()" id="scroll-btn" class="fa-solid fa-angle-up"></i>
+    </footer>
+    <!-- End Footer -->
+    <div>
+      <i
+        onclick="topFunction()"
+        id="scroll-btn"
+        class="fa-solid fa-angle-up"
+      ></i>
     </div>
-    <div><a href="mailto:devaloshe@gmail.com?subject=From OrioChain Site"> 
-      <i class="mail-us fa-solid fa-headset"></i>
-    </a>
+    <div>
+      <a href="diplomi@gmail.com?subject=From Diplomi Site">
+        <i class="mail-us fa-solid fa-headset"></i>
+      </a>
+    </div>
     <script
-    src="https://code.jquery.com/jquery-3.6.0.js"
-    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-    crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>    <!-- Bootstrap framework -->
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap framework -->
     <script src="./js/purecounter.min.js"></script>
     <script src="./js/aos.js"></script>
     <script src="./js/script.js"></script>
@@ -374,9 +403,7 @@
       //   butterfly.style.left = window.innerWidth*Math.random() +"px";
       //   butterfly.style.top =  window.innerHeight*Math.random() + "px";
       //   },4000)
-  $(".loader-wraper").fadeOut("slow");
+      $(".loader-wraper").fadeOut("slow");
     </script>
-
-
   </body>
 </html>
