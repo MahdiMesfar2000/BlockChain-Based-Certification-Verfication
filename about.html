@@ -29,86 +29,130 @@
 
     <!-- Webpage Title -->
     <title>Diplomi Team</title>
-    <link rel="stylesheet" href="./css/loader.css">
+    <link rel="stylesheet" href="./css/loader.css" />
     <script src="js/App.js"></script>
     <script src="node_modules\web3\dist\web3.min.js"></script>
 
     <link href="./css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <link href="./css/aos.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="./css/aos.min.css" rel="stylesheet" />
     <link href="./css/main.css" rel="stylesheet" />
-
   </head>
- 
+
   <body>
     <canvas id="canvas1"></canvas>
     <script src="js/animation.js"></script>
- <div class="loader-wraper">
-  <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-</div>
-       <!--NavBar Start-->
-       <nav class="navbar navbar-expand-lg bg-light py-3 navbar-dark">
-        <div class="container">
-          <img src="files/logo diplomi.svg" alt="logo" style="width: 12%;height: 12%; margin-right: 1em;">
+    <div class="loader-wraper">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <!--NavBar Start-->
+    <nav class="navbar navbar-expand-lg bg-light py-3 navbar-dark">
+      <div class="container">
+        <img
+          src="files/logo diplomi.svg"
+          alt="logo"
+          style="width: 12%; height: 12%; margin-right: 1em"
+        />
 
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link "id="Home"  aria-current="page" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-          <a class="nav-link d-none"id="Upload"  href="upload.html">Upload </a>
-          </li>
-          <li class="nav-item">
-          <a class="nav-link" id="Verify" href="verify.html">Verify </a>
-          </li>
-          <li class="nav-item">
-          <a class="nav-link d-none" id="Delete" href="delete.html">Revoke </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link d-none" id="Admin"  href="admin.html">Admin</a>
-            </li>         
             <li class="nav-item">
-              <a class="nav-link d-none" id="certificates" href="certificates.html">Certificates</a>
-            </li>  
+              <a
+                class="nav-link"
+                id="Home"
+                aria-current="page"
+                href="index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-none" id="Upload" href="upload.html"
+                >Upload
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="Verify" href="verify.html">Verify </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-none" id="Delete" href="delete.html"
+                >Revoke
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link d-none" id="Admin" href="admin.html">Admin</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link d-none"
+                id="certificates"
+                href="certificates.html"
+                >Certificates</a
+              >
+            </li>
             <li class="nav-item">
               <a class="nav-link" id="request" href="request.html">Request</a>
-              </li>
-             <li class="nav-item">
-          <a class="nav-link active"  id="Team" href="about.html">Team</a>
-          </li>
-      </ul>
-          </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" id="Team" href="about.html">Team</a>
+            </li>
+          </ul>
         </div>
-        </nav>
-    
- 
+      </div>
+    </nav>
 
     <!-- Our Developers -->
     <div class="container">
       <div class="men d-flex justify-content-center">
-        
-        <div  data-aos="zoom-in"  class="people">
+        <div data-aos="zoom-in" class="people">
           <h1>Ketata Yessine</h1>
           <h6>Programmer & IT Engineer Student</h6>
           <div class="img-container mt-5">
-            <img src="files/ketata.jpg" alt="Ketata Yessine">
+            <img src="files/ketata.jpg" alt="Ketata Yessine" />
           </div>
           <div class="social">
-            <a href="https://www.facebook.com/AlosheFalah/"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://t.me/DevAloshe"><i class="fa-brands fa-telegram"></i></a
-            ><a href="https://github.com/DevAloshe"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.facebook.com/AlosheFalah/"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a href="https://t.me/DevAloshe"
+              ><i class="fa-brands fa-telegram"></i></a
+            ><a href="https://github.com/DevAloshe"
+              ><i class="fa-brands fa-github"></i
+            ></a>
             <a href="#"><i class="fa-brands fa-instagram"></i> </a>
           </div>
         </div>
-        <div   data-aos="zoom-in" class="people">
+        <div data-aos="zoom-in" class="people">
           <h1>Mesfar Mahdi</h1>
           <h6>Programmer & IT Engineer Student</h6>
           <div class="img-container mt-5">
-            <img src="files/mahdi.jpg" alt="Mesfar Mahdi">
+            <img src="files/mahdi.jpg" alt="Mesfar Mahdi" />
           </div>
           <div class="social">
             <a href="#"><i class="fa-brands fa-facebook"></i></a>
@@ -117,11 +161,11 @@
             <a href="#"><i class="fa-brands fa-instagram"></i> </a>
           </div>
         </div>
-        <div  data-aos="zoom-in" class="people">
+        <div data-aos="zoom-in" class="people">
           <h1>Feki Yassine</h1>
           <h6>Programmer & IT Engineer Student</h6>
           <div class="img-container mt-5">
-            <img src="files/feki.jpg" alt="Feki Yassine">
+            <img src="files/feki.jpg" alt="Feki Yassine" />
           </div>
           <div class="social">
             <a href="#"><i class="fa-brands fa-facebook"></i></a>
@@ -130,12 +174,11 @@
             <a href="#"><i class="fa-brands fa-instagram"></i> </a>
           </div>
         </div>
-        
       </div>
     </div>
-  
-  <!--=====================Footer===========================-->
-  <!-- <div class="footer-dark">
+
+    <!--=====================Footer===========================-->
+    <!-- <div class="footer-dark">
     <footer>
       <div class="container">
         <div class="row">
@@ -205,24 +248,28 @@
 
     </footer>
   </div> -->
-  <div >
-    <i onclick="topFunction()" id="scroll-btn" class="fa-solid fa-angle-up"></i>
-  </div>
-  <div>
-    <a href="diplomi@gmail.com?subject=From Diplomi Site">
-      <i class="mail-us fa-solid fa-headset"></i>
-    </a>
-  </div>
-  <script
-  src="https://code.jquery.com/jquery-3.6.0.js"
-  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-  crossorigin="anonymous"></script>
-    <script src="./js/bootstrap.min.js"></script>  
+    <div>
+      <i
+        onclick="topFunction()"
+        id="scroll-btn"
+        class="fa-solid fa-angle-up"
+      ></i>
+    </div>
+    <div>
+      <a href="diplomi@gmail.com?subject=From Diplomi Site">
+        <i class="mail-us fa-solid fa-headset"></i>
+      </a>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/bootstrap.min.js"></script>
     <script src="./js/aos.js"></script>
     <script src="./js/script.js"></script>
-  <script defer>
-  $(".loader-wraper").fadeOut("slow");
-  </script>
-
+    <script defer>
+      $(".loader-wraper").fadeOut("slow");
+    </script>
   </body>
 </html>
