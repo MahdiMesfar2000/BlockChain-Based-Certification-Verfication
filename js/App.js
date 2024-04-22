@@ -1,107 +1,9 @@
 window.CONTRACT = {
-  address: '0xEb833AfE95C07135fC35cF46Ca79bD41C2F80819',
+  address: '0x96eDa3F62cE82AD4C9EFfeFfbdAB2c2C37dc88AB',
   network: 'https://rpc.sepolia.org/',
   explore: 'https://sepolia.etherscan.io/',
   // Your Contract ABI 
   abi:[
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "_add",
-          "type": "address"
-        },
-        {
-          "internalType": "string",
-          "name": "_info",
-          "type": "string"
-        }
-      ],
-      "name": "add_Exporter",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "bytes32",
-          "name": "hash",
-          "type": "bytes32"
-        },
-        {
-          "internalType": "string",
-          "name": "_ipfs",
-          "type": "string"
-        },
-        {
-          "internalType": "address",
-          "name": "_studentAddress",
-          "type": "address"
-        }
-      ],
-      "name": "addDocHash",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "_add",
-          "type": "address"
-        },
-        {
-          "internalType": "string",
-          "name": "_newInfo",
-          "type": "string"
-        }
-      ],
-      "name": "alter_Exporter",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "_newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "changeOwner",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "_add",
-          "type": "address"
-        }
-      ],
-      "name": "delete_Exporter",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "bytes32",
-          "name": "_hash",
-          "type": "bytes32"
-        }
-      ],
-      "name": "deleteHash",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
     {
       "inputs": [],
       "stateMutability": "nonpayable",
@@ -202,25 +104,88 @@ window.CONTRACT = {
           "internalType": "address",
           "name": "_studentAddress",
           "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "hash",
+          "type": "bytes32"
         }
       ],
       "name": "addHash",
       "type": "event"
     },
     {
+      "inputs": [],
+      "name": "DEFAULT_ADMIN_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "EXPORTER_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "OWNER_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "STUDENT_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [
         {
           "internalType": "bytes32",
-          "name": "role",
+          "name": "hash",
           "type": "bytes32"
         },
         {
+          "internalType": "string",
+          "name": "_ipfs",
+          "type": "string"
+        },
+        {
           "internalType": "address",
-          "name": "account",
+          "name": "_studentAddress",
           "type": "address"
         }
       ],
-      "name": "grantRole",
+      "name": "addDocHash",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -228,17 +193,17 @@ window.CONTRACT = {
     {
       "inputs": [
         {
-          "internalType": "bytes32",
-          "name": "role",
-          "type": "bytes32"
+          "internalType": "address",
+          "name": "_add",
+          "type": "address"
         },
         {
-          "internalType": "address",
-          "name": "account",
-          "type": "address"
+          "internalType": "string",
+          "name": "_info",
+          "type": "string"
         }
       ],
-      "name": "renounceRole",
+      "name": "add_Exporter",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -246,17 +211,30 @@ window.CONTRACT = {
     {
       "inputs": [
         {
-          "internalType": "bytes32",
-          "name": "role",
-          "type": "bytes32"
+          "internalType": "address",
+          "name": "_add",
+          "type": "address"
         },
         {
+          "internalType": "string",
+          "name": "_newInfo",
+          "type": "string"
+        }
+      ],
+      "name": "alter_Exporter",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
           "internalType": "address",
-          "name": "account",
+          "name": "_newOwner",
           "type": "address"
         }
       ],
-      "name": "revokeRole",
+      "name": "changeOwner",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -288,29 +266,29 @@ window.CONTRACT = {
       "type": "function"
     },
     {
-      "inputs": [],
-      "name": "DEFAULT_ADMIN_ROLE",
-      "outputs": [
+      "inputs": [
         {
           "internalType": "bytes32",
-          "name": "",
+          "name": "_hash",
           "type": "bytes32"
         }
       ],
-      "stateMutability": "view",
+      "name": "deleteHash",
+      "outputs": [],
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
-      "inputs": [],
-      "name": "EXPORTER_ROLE",
-      "outputs": [
+      "inputs": [
         {
-          "internalType": "bytes32",
-          "name": "",
-          "type": "bytes32"
+          "internalType": "address",
+          "name": "_add",
+          "type": "address"
         }
       ],
-      "stateMutability": "view",
+      "name": "delete_Exporter",
+      "outputs": [],
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -408,6 +386,24 @@ window.CONTRACT = {
           "type": "address"
         }
       ],
+      "name": "grantRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
       "name": "hasRole",
       "outputs": [
         {
@@ -420,16 +416,39 @@ window.CONTRACT = {
       "type": "function"
     },
     {
-      "inputs": [],
-      "name": "OWNER_ROLE",
-      "outputs": [
+      "inputs": [
         {
           "internalType": "bytes32",
-          "name": "",
+          "name": "role",
           "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
         }
       ],
-      "stateMutability": "view",
+      "name": "renounceRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "revokeRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -446,19 +465,6 @@ window.CONTRACT = {
           "internalType": "bool[3]",
           "name": "",
           "type": "bool[3]"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "STUDENT_ROLE",
-      "outputs": [
-        {
-          "internalType": "bytes32",
-          "name": "",
-          "type": "bytes32"
         }
       ],
       "stateMutability": "view",
@@ -772,6 +778,45 @@ async function deleteHash() {
         $('#note').html(`<h5 class="text-center">${error.message}</h5>`)
         $('#loader').addClass('d-none')
         $('#upload_file_button').slideDown()
+      })
+  }
+}
+async function deleteHash2(hash) {
+  $('#loader').removeClass('d-none')
+  // $('#upload_file_button').slideUp()
+  $('#note').html(
+    `<h5 class="text-info">Please confirm the transaction 🙂</h5>`,
+  )
+  $('#upload_file_button').attr('disabled', true)
+  get_ChainID()
+
+  if (hash) {
+    await window.contract.methods
+      .deleteHash(hash)
+      .send({ from: window.userAddress })
+      .on('transactionHash', function (hash) {
+        $('#note').html(
+          `<h5 class="text-info p-1 text-center">Please wait for transaction to be mined 😴</h5>`,
+        )
+      })
+
+      .on('receipt', function (receipt) {
+        $('#note').html(
+          `<h5 class="text-info p-1 text-center">Document Deleted 😳</h5>`,
+        )
+
+        $('#loader').addClass('d-none')
+        // $('#upload_file_button').slideDown()
+      })
+
+      .on('confirmation', function (confirmationNr) {
+        console.log(confirmationNr)
+      })
+      .on('error', function (error) {
+        console.log(error.message)
+        $('#note').html(`<h5 class="text-center">${error.message}</h5>`)
+        $('#loader').addClass('d-none')
+        // $('#upload_file_button').slideDown()
       })
   }
 }
@@ -1461,7 +1506,7 @@ function generateQRCode() {
 // cuz the pastEvents returns transactions in last 999 block
 async function listen() {
   console.log('started...')
-  if (window.location.pathname != '/upload.html' && window.location.pathname != '/certificates.html') return
+  if (window.location.pathname != '/upload.html' && window.location.pathname != '/certificates.html'&& window.location.pathname != '/delete.html') return 
   document.querySelector('.loading-tx').classList.remove('d-none')
   window.web3 = new Web3(window.ethereum)
   window.contract = new window.web3.eth.Contract(
@@ -1480,7 +1525,8 @@ async function listen() {
       toBlock: 'latest',
     },
     function (error, events) {
-      printTransactions(events)
+      console.log("1111111111111111111111111")
+      // printTransactions(events)
       console.log(events)
     },
     
@@ -1536,22 +1582,43 @@ async function getrole(){
     }
     })
 
-  if (window.location.pathname == '/upload.html') {
-    await window.contract.getPastEvents(
-      'addHash',
-      {
-        filter: {
-          _exporter: window.userAddress, //Only get the documents uploaded by current Exporter
+    if (window.location.pathname == '/upload.html') {
+      await window.contract.getPastEvents(
+        'addHash',
+        {
+          filter: {
+            _exporter: window.userAddress, //Only get the documents uploaded by current Exporter
+          },
+          fromBlock: (await window.web3.eth.getBlockNumber()) - 999,
+          toBlock: 'latest',
         },
-        fromBlock: (await window.web3.eth.getBlockNumber()) - 999,
-        toBlock: 'latest',
-      },
-      function (error, events) {
-        printTransactions(events)
-        console.log(events)
-      },
-    )
-  }
+        function (error, events) {
+          console.log("events:")
+          console.log("222222222222222222222")
+          printTransactions(events)
+          console.log(events)
+        },
+      )
+    }
+    else if (window.location.pathname == '/delete.html') {
+      await window.contract.getPastEvents(
+        'addHash',
+        {
+          filter: {
+            _exporter: window.userAddress, //Only get the documents uploaded by current Exporter
+          },
+          fromBlock: (await window.web3.eth.getBlockNumber()) - 999,
+          toBlock: 'latest',
+        },
+        function (error, events) {
+          console.log("events:")
+          console.log("3333333333333333333333333333")
+          printTransactions(events)
+          console.log(events)
+        },
+      )
+    }
+    
   else if (window.location.pathname == '/certificates.html') {
     await window.contract.getPastEvents(
       'addHash',
@@ -1563,7 +1630,10 @@ async function getrole(){
         toBlock: 'latest',
       },
       function (error, events) {
+      console.log("44444444444444444444444444")
+
         printTransactions(events)
+        
         console.log(events)
         console.log(window.userAddress)
       },
@@ -1574,7 +1644,7 @@ async function getrole(){
 //If there is past tx then show them
 async function printTransactions(data) {
 
-  if(window.location.pathname == '/upload.html'){
+  if(window.location.pathname == '/upload.html' ){
     document.querySelector('.transactions').innerHTML = ''
     document.querySelector('.loading-tx').classList.add('d-none')
     if (!data.length) {
@@ -1602,6 +1672,35 @@ async function printTransactions(data) {
       main.prepend(a)
     }
   }
+  else if(window.location.pathname == '/delete.html'){
+    document.querySelector('.transactions').innerHTML = ''
+    document.querySelector('.loading-tx').classList.add('d-none')
+    if (!data.length) {
+      $('#recent-header').hide()
+      return
+    }
+    $('#recent-header').show()
+    const main = document.querySelector('.transactions')
+    console.log("sssssssssssssssssssssssssss")
+    for (let i = 0; i < data.length; i++) {
+      
+      if (data[i].returnValues[3]) {
+        await contract.methods
+          .findDocHash(data[i].returnValues[3])
+          .call({ from: window.CONTRACT.address })
+          .then((result) => {
+            if ((result[0] != 0) & (result[1] != 0)) {
+              
+              if (result[5]) { // Check if the document is valid
+                print_imgs(main,data,i)
+                
+              
+      
+    } 
+  } 
+})
+}
+  }}
   else if(window.location.pathname == '/certificates.html'){
     const main = document.querySelector('.transactions');
     main.innerHTML = '';
@@ -1647,5 +1746,29 @@ async function printTransactions(data) {
         console.error('Error fetching file:', error);
       }
     }));
+  }
+  async function print_imgs(main,data,i){
+    const a = document.createElement('div')
+      const bt = document.createElement('button')
+      a.href = `${window.CONTRACT.explore}` + '/tx/' + data[i].transactionHash
+      a.setAttribute('target', '_blank')
+      bt.setAttribute('onclick',`deleteHash2("${data[i].returnValues[3]}")`)
+      a.setAttribute('hash',data[i].returnValues[3])
+      
+      a.className ='col-lg-3 col-md-4 col-sm-5 m-2  bg-dark text-light rounded position-relative card'
+      bt.className ='btn main-button position-absolute bottom-0 start-50 translate-middle-x'
+      bt.innerHTML="revoke"
+      a.style = 'overflow:hidden;'
+      const image = document.createElement('object')
+      image.style = 'width:100%;height: 100%;'
+      image.data = `https://ipfs.io/ipfs/${data[i].returnValues[1]}`
+      const num = document.createElement('h1')
+      num.append(document.createTextNode(i + 1))
+      a.appendChild(image)
+      num.style =
+        'position:absolute; left:4px; bottom: -20px;font-size:4rem; color: rgba(20, 63, 74, 0.35);'
+      a.appendChild(num)
+      main.prepend(a)
+      a.appendChild(bt)
   }
 }

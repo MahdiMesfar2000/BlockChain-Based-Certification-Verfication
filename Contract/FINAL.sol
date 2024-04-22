@@ -67,7 +67,7 @@ contract Verification is AccessControl {
             _setupRole(OWNER_ROLE, _newOwner);
             }
 
-        event addHash(address indexed _exporter,string _ipfsHash, address indexed _studentAddress);
+        event addHash(address indexed _exporter,string _ipfsHash, address indexed _studentAddress,bytes32  hash);
       function addDocHash (bytes32  hash,string calldata _ipfs, address _studentAddress) public 
       onlyRole(EXPORTER_ROLE)
       {
@@ -83,7 +83,7 @@ contract Verification is AccessControl {
             docHashes[hash] = newRecord; 
             ++count_hashes;
             _setupRole(STUDENT_ROLE, _studentAddress);
-            emit addHash(msg.sender,_ipfs,_studentAddress);
+            emit addHash(msg.sender,_ipfs,_studentAddress,hash);
       }
       
 
