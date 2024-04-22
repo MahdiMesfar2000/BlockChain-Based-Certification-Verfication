@@ -1,5 +1,7 @@
 window.CONTRACT = {
+
   address: '0x96eDa3F62cE82AD4C9EFfeFfbdAB2c2C37dc88AB',
+
   network: 'https://rpc.sepolia.org/',
   explore: 'https://sepolia.etherscan.io/',
   // Your Contract ABI 
