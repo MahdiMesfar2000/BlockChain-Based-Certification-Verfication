@@ -3,142 +3,303 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/loader.css">
-  
-    <link
-      href="css/bootstrap.min.css"
-      rel="stylesheet"
-    />  
+    <link rel="stylesheet" href="./css/loader.css" />
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/table.css" />
     <script src="js/App.js"></script>
+
     <script src="node_modules\web3\dist\web3.min.js"></script>
     <link href="./css/aos.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <link rel="stylesheet" href="css/main.css" />
-    <link rel="icon" href="./assets/images/icon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="icon" href="/files/logo diplomi icon.svg" />
     <title>Admin Dashboard</title>
   </head>
 
   <body>
+    <canvas id="canvas1"></canvas>
+    <script src="js/animation.js"></script>
     <div class="loader-wraper">
-      <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
-    <div >
-      <i onclick="topFunction()" id="scroll-btn" class="fa-solid fa-angle-up"></i>
+    <div>
+      <i
+        onclick="topFunction()"
+        id="scroll-btn"
+        class="fa-solid fa-angle-up"
+      ></i>
+    </div>
+    <!-----------------------------MODAL Start-------------------->
+    <div
+      class="modal fade"
+      id="myModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">...</div>
+          <div class="modal-footer">
+            <button type="button" class="btn" data-bs-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
     <!-----------------------------navbBar Start-------------------->
-  <!--NavBar Start-->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 navbar-dark">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <i class="fa-solid fa-dragon home_text"></i>
-        <span class="home_text">Orio</span>Chain
-        </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link " aria-current="page" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-          <a class="nav-link  " href="upload.html">Upload </a>
-          </li>
-          <li class="nav-item">
-          <a class="nav-link" href="verify.html">Verify </a>
-          </li>
-          <li class="nav-item">
-          <a class="nav-link" href="delete.html">Delete </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link active" href="admin.html">Admin</a>
-            </li>         
+    <!--NavBar Start-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 navbar-dark">
+      <div class="container">
+        <img
+          src="files/logo diplomi.svg"
+          alt="logo"
+          style="width: 10%; height: 10%; margin-right: 1em"
+        />
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="certificates.html">Certificates</a>
-            </li>  
-             <li class="nav-item">
-          <a class="nav-link" href="about.html">Team</a>
-          </li>
-      </ul>
+              <a
+                class="nav-link"
+                id="Home"
+                aria-current="page"
+                href="index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-none" id="Upload" href="upload.html"
+                >Upload
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="Verify" href="verify.html">Verify </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-none" id="Delete" href="delete.html"
+                >Revoke
+              </a>
+            </li>
 
-      <div class="d-flex">
-        <button
-          id="loginButton"
-          onclick="connect()"
-          class="btn main-button"
-        >Login</button>
-        <button
-          id="logoutButton"
-          onclick="disconnect()"
-          class="btn main-button"
-        > Logout</button>
+            <li class="nav-item">
+              <a class="nav-link d-none active" id="Admin" href="admin.html"
+                >Admin</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link d-none"
+                id="certificates"
+                href="certificates.html"
+                >Certificates</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" id="request" href="request.html">Request</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="Team" href="about.html">Team</a>
+            </li>
+          </ul>
+
+          <div class="d-flex">
+            <button
+              id="loginButton"
+              onclick="connect()"
+              class="btn main-button"
+            >
+              Login
+            </button>
+            <button
+              id="logoutButton"
+              onclick="disconnect()"
+              class="btn main-button"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
       </div>
-      </div>
-    </div>
     </nav>
     <!---------------------NavBar End-------------------->
 
     <!--=====================Upload Document===========================-->
-      <div class="container">
-        <div class="alert alert-danger d-none mt-2">
-          Please download MetaMask at <a target="_blank" href="https://metamask.io/download">Metamask Site</a>
-         </div>
-        <div class="row content m-1"> 
-          <div data-aos="fade-down" class="box wallet-status col-lg-12 d-flex flex-column my-2">
-            <i class="fa-brands fa-connectdevelop icon" aria-hidden="true"></i>
-         
-           <span id="userAddress" class="p-1">Address : <span class="text-warning">n/a</span></span>
-           <span id="network" class="p-1">Network: <span class="text-warning">n/a</span></span>
-           <span id="userBalance" class="p-1">Balance : <span class="text-warning">n/a</span></span>
-           <span id="num-hashes" class="p-1"><span class="text-warning"></span></span>
-           <span id="num-exporters" class="p-1"><span class="text-warning"></span></span>
-           
-          </div>
-        
-          <div data-aos="zoom-in" class="col-lg-6 py-3 data-upload my-3 mx-md-2">
-            <input   id="Exporter-address" type="text"  placeholder="Exporter Address"  required/>
-            <input  
-              type="text" 
-              id="info"
-              placeholder="Univesity"
-              required
-            />
-           
-            <span id="note" class="text-danger"
-              ></span
-            >
-            <img id="loader" class="d-none" src="files/loader.svg" alt="loader">
-            <div  class="btn-container mt-3">
-              <input
+    <div class="container">
+      <div class="alert alert-danger d-none mt-2">
+        Please download MetaMask at
+        <a target="_blank" href="https://metamask.io/download">Metamask Site</a>
+      </div>
+      <div class="row content m-1">
+        <div
+          data-aos="fade-down"
+          class="box wallet-status col-lg-12 d-flex flex-column my-2"
+        >
+          <i class="fa-brands fa-connectdevelop icon" aria-hidden="true"></i>
+
+          <span id="userAddress" class="p-1"
+            >Address : <span class="text-warning">n/a</span></span
+          >
+          <span id="network" class="p-1"
+            >Network: <span class="text-warning">n/a</span></span
+          >
+          <span id="userBalance" class="p-1"
+            >Balance : <span class="text-warning">n/a</span></span
+          >
+          <span id="num-hashes" class="p-1"
+            ><span class="text-warning"></span
+          ></span>
+          <span id="num-exporters" class="p-1"
+            ><span class="text-warning"></span
+          ></span>
+        </div>
+
+        <div data-aos="zoom-in" class="col-lg-6 py-3 data-upload my-3 mx-md-2">
+          <input
+            id="Exporter-address"
+            type="text"
+            placeholder="Exporter Address"
+            required
+          />
+          <input
+            type="text"
+            class="d-none"
+            id="name"
+            placeholder="Univesity Name"
+            required
+          />
+          <input
+            type="text"
+            class="d-none"
+            id="localisation"
+            placeholder="Localisation"
+            required
+          />
+          <input
+            type="text"
+            class="d-none"
+            id="site"
+            placeholder="Web Site"
+            required
+          />
+
+          <span id="note" class="text-danger"></span>
+          <img id="loader" class="d-none" src="files/loader.svg" alt="loader" />
+          <div class="btn-container mt-3">
+            <input
               onclick="addExporter()"
-                class="btn btn-primary  exporter-button main-button"
-                type="submit"
-                value="Add Exporter"
-                id="ExporterBtn"
-              />
-              <input
+              class="btn exporter-button main-button"
+              type="submit"
+              value="Add Exporter"
+              id="ExporterBtn"
+            />
+            <input
+              onclick="Confirm()"
+              class="btn exporter-button main-button d-none"
+              type="submit"
+              value="Confirm"
+              id="Confirm"
+            />
+
+            <input
+              onclick="Confirm2()"
+              class="btn exporter-button main-button d-none"
+              type="submit"
+              value="Confirm"
+              id="Confirm2"
+            />
+            <input
+              onclick="back()"
+              class="btn exporter-button main-button d-none"
+              type="submit"
+              value="Back"
+              id="back"
+            />
+            <input
+              onclick="back2()"
+              class="btn exporter-button main-button d-none"
+              type="submit"
+              value="Back"
+              id="back2"
+            />
+            <input
               onclick="deleteExporter()"
-                class="btn btn-danger  exporter-button main-button"
-                type="submit"
-                value="Delete Exporter"
-                id="delete"
-              />
-              <input
+              class="btn exporter-button main-button"
+              type="submit"
+              value="Delete Exporter"
+              id="delete"
+            />
+            <input
               onclick="editExporter()"
-                class="btn btn-warning  exporter-button main-button"
-                type="submit"
-                value="Edit Exporter"
-                id="edit"
-              />
-            </div>
-           
+              class="btn exporter-button main-button"
+              type="submit"
+              value="Edit Exporter"
+              id="edit"
+            />
           </div>
-          
- 
         </div>
       </div>
+      <table class="container rwd-table">
+        <tr>
+          <th>Public Key</th>
+          <th>Name</th>
+          <th>Localisation</th>
+          <th>site</th>
+        </tr>
+
+        <tbody id="myTable"></tbody>
+      </table>
+      <p style="color: white;">Pending Exporter</p>
+      <table class="container rwd-table">
+        <tr>
+          <th>Public Key</th>
+          <th>Name</th>
+          <th>Localisation</th>
+          <th>site</th>
+        </tr>
+
+        <tbody id="myTable2"></tbody>
+      </table>
+    </div>
     <!--=====================Footer===========================-->
-    <div class="footer-dark">
+    <!-- <div class="footer-dark">
       <footer>
         <div class="container">
           <div class="row">
@@ -161,7 +322,6 @@
               <h3  data-aos="fade-right"> 
                  <i class="fa-solid fa-dragon"></i>
                 OrioChain</h3>
-              <!-- <a href="https://www.flaticon.com/free-icons/blockchain" title="blockchain icons">Blockchain icons created by photo3idea_studio - Flaticon</a> -->
               <p  data-aos="zoom-in">
                 Praesent sed lobortis mi. Suspendisse vel placerat ligula.
                 Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis
@@ -208,27 +368,82 @@
         </div>
   
       </footer>
+    </div> -->
+    <div>
+      <a href="diplomi@gmail.com?subject=From Diplomi Site">
+        <i class="mail-us fa-solid fa-headset"></i>
+      </a>
     </div>
-    <div><a href="mailto:devaloshe@gmail.com?subject=From OrioChain Site"> 
-      <i class="mail-us fa-solid fa-headset"></i>
-    </a>
+
     <script src="./js/aos.js"></script>
     <script src="./js/script.js"></script>
     <script
-			  src="https://code.jquery.com/jquery-3.6.0.js"
-			  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-			  crossorigin="anonymous"></script>    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="node_modules\web3\dist\web3.min.js"></script>
-    
+
     <!--=====================Start Code===========================-->
     <script defer>
-  document.getElementById("Exporter-address").onclick= ()=>{
-  $("#note").html(``);
-  $("#ExporterBtn").attr("disabled", false);
-  $("#edit").attr("disabled", false);
-  $("#delete").attr("disabled", false);
-}
- 
+      document.getElementById("Exporter-address").onclick = () => {
+        $("#note").html(``);
+        $("#ExporterBtn").attr("disabled", false);
+        $("#edit").attr("disabled", false);
+        $("#delete").attr("disabled", false);
+      };
+
+      function Table(data) {
+        for (var i = 0; i < data.length; i++) {
+          if (data[i].pending === "1") {
+            var table2 = document.getElementById("myTable2");
+            var row = `<tr>
+            <td>${data[i].public_key}</td>
+            <td>${data[i].nom}</td>
+            <td>${data[i].localisation}</td>
+            <td>${data[i].site}</td>
+            <td><button
+    onclick='RejectExporter(${JSON.stringify(data[i].public_key)})'
+                class='btn   exporter-button main-button'
+                type='button'
+                id='RejectExporter'
+    >Reject</button>
+    <button
+    onclick='AcceptExporter(${JSON.stringify(data[i])})'
+                class='btn   exporter-button main-button'
+                type='button'
+                id='AcceptExporter'
+    >Accept</button>
+    </td>
+            </tr>`;
+
+            table2.innerHTML += row;
+          } else {
+            var table = document.getElementById("myTable");
+            var row = `<tr>
+            <td>${data[i].public_key}</td>
+            <td>${data[i].nom}</td>
+            <td>${data[i].localisation}</td>
+            <td>${data[i].site}</td>
+            </tr>`;
+
+            table.innerHTML += row;
+          }
+        }
+      }
+      async function buildTable() {
+        const response = await fetch("http://localhost:4000/api/workouts");
+        const json = await response.json();
+
+        if (response.ok) {
+          console.log(json);
+
+          Table(json);
+        }
+      }
+
+      buildTable();
     </script>
   </body>
 </html>

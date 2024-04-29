@@ -3,15 +3,92 @@
 //just provide the network address
 
 window.CONTRACT = {
-  address: '0x5140c9E9fB3743766450fea6100CaD7a768Cfc94',
+
+  address: '0xD870d275e833dED94804EEfF605a571cC3dE8c3a',
+
   network: 'https://rpc.sepolia.org/',
   explore: 'https://sepolia.etherscan.io/',
   // Your Contract ABI 
-  abi: [
+  abi:[
     {
       "inputs": [],
       "stateMutability": "nonpayable",
       "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "previousAdminRole",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "newAdminRole",
+          "type": "bytes32"
+        }
+      ],
+      "name": "RoleAdminChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "RoleGranted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "RoleRevoked",
+      "type": "event"
     },
     {
       "anonymous": false,
@@ -33,10 +110,68 @@ window.CONTRACT = {
           "internalType": "address",
           "name": "_studentAddress",
           "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "hash",
+          "type": "bytes32"
         }
       ],
       "name": "addHash",
       "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "DEFAULT_ADMIN_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "EXPORTER_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "OWNER_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "STUDENT_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
     },
     {
       "inputs": [
@@ -196,6 +331,11 @@ window.CONTRACT = {
           "internalType": "address",
           "name": "",
           "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
         }
       ],
       "stateMutability": "view",
@@ -221,20 +361,143 @@ window.CONTRACT = {
       "type": "function"
     },
     {
-      "inputs": [],
-      "name": "owner",
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        }
+      ],
+      "name": "getRoleAdmin",
       "outputs": [
         {
-          "internalType": "address",
+          "internalType": "bytes32",
           "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
           "type": "address"
+        }
+      ],
+      "name": "grantRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "hasRole",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "renounceRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "revokeRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_add",
+          "type": "address"
+        }
+      ],
+      "name": "roleInfo",
+      "outputs": [
+        {
+          "internalType": "bool[3]",
+          "name": "",
+          "type": "bool[3]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes4",
+          "name": "interfaceId",
+          "type": "bytes4"
+        }
+      ],
+      "name": "supportsInterface",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
         }
       ],
       "stateMutability": "view",
       "type": "function"
     }
-  ],
+  ]
 }
+
 //I used Web3.providers.HttpProvider instead of MetaMask Provider so We can Verify Docs without Wallet
 const web3 = new Web3(new Web3.providers.HttpProvider(window.CONTRACT.network))
 const contract = new web3.eth.Contract(
@@ -248,27 +511,33 @@ window.onload = async () => {
   //check the Url if it was Passed with document hash 
   $('#upload_file_button').attr('disabled', true)
   checkURL()
+  
 }
 async function verify_Hash() {
   //Show the loading
   $('#loader').show()
 
   if (window.hashedfile) {
-    /*   I used the contract address (window.CONTRACT.address) as the caller of the function 'findDocHash'
-        you can use any address because it used just for reading info from the contract
-    */
     await contract.methods
       .findDocHash(window.hashedfile)
       .call({ from: window.CONTRACT.address })
       .then((result) => {
         $('.transaction-status').removeClass('d-none')
         window.newHash = result
+        console.log("result")
+        console.log(result)
         if ((result[0] != 0) & (result[1] != 0)) {
-          //Doc Verified
-          print_verification_info(result, true)
+          
+          if (result[5]) { // Check if the document is valid
+            //Doc Verified
+            print_verification_info(result, 'verified')
+          } else {
+            //Doc Revoked
+            print_verification_info(result, 'revoked')
+          }
         } else {
-         //Doc not Verified
-          print_verification_info(result, false)
+          //Doc not Found
+          print_verification_info(result, 'not found')
         }
       })
   }
@@ -283,7 +552,7 @@ function checkURL() {
   verify_Hash()
 }
 // get Sha3 Hash from the file
-async function get_Sha3() {
+async function get_Sha() {
   $('#note').html(`<h5 class="text-warning">Hashing Your Document 😴...</h5>`)
   $('#upload_file_button').attr('disabled', false)
   console.log('file changed')
@@ -310,30 +579,12 @@ async function get_Sha3() {
   }
 }
 
-function print_verification_info(result, is_verified) {
+function print_verification_info(result, status) {
   //Default Image for not Verified Docunets
   document.getElementById('student-document').src = './files/notvalid.svg'
   $('#loader').hide()
   // when document not verfied
-  if (!is_verified) {
-    // document.getElementById('download-document').classList.add('d-none')
-    $('#download-document').hide()
-    $('#doc-status').html(`<h3 class="text-danger">
-        Certificate not Verified 😕
-         <i class="text-danger  fa fa-times-circle" aria-hidden="true"></i>
-        </h3>`)
-    $('#file-hash').html(
-      `<span class="text-info"><i class="fa-solid fa-hashtag"></i></span> ${truncateAddress(
-        window.hashedfile,
-      )}`,
-    )
-    $('#college-name').hide()
-    $('#contract-address').hide()
-    $('#time-stamps').hide()
-    $('#blockNumber').hide()
-    $('#student-address').hide()
-    $('.transaction-status').show()
-  } else {
+  if (status === 'verified') {
     $('#download-document').show()
     // when document verfied
     $('#college-name').show()
@@ -379,6 +630,72 @@ function print_verification_info(result, is_verified) {
     document.getElementById('download-document').href = document.getElementById(
       'student-document',
     ).src
+    $('.transaction-status').show()
+  } else if (status === 'revoked'){
+    $('#download-document').show()
+    // when document verfied
+    $('#college-name').show()
+    $('#contract-address').show()
+    $('#time-stamps').show()
+    $('#blockNumber').show()
+    $('#student-address').show()
+
+    var t = new Date(1970, 0, 1)
+    t.setSeconds(result[1])
+    console.log(result[1])
+    t.setHours(t.getHours() + 3)
+    // hide loader
+    $('#loader').hide()
+    $('#doc-status').html(`<h3 class="text-danger">
+        Certificate Revoked 😕
+         <i class="text-danger  fa fa-times-circle" aria-hidden="true"></i>
+        </h3>`)
+    $('#file-hash').html(
+      `<span class="text-info"><i class="fa-solid fa-hashtag"></i></span> ${truncateAddress(
+        window.hashedfile,
+      )}`,
+    )
+    $('#college-name').html(
+      `<span class="text-info"><i class="fa-solid fa-graduation-cap"></i></span> ${result[2]}`,
+    )
+    $('#contract-address').html(
+      `<span class="text-info"><i class="fa-solid fa-file-contract"></i> </span>${truncateAddress(
+        window.CONTRACT.address,
+      )}`,
+    )
+    $('#time-stamps').html(
+      `<span class="text-info"><i class="fa-solid fa-clock"></i> </span>${t}`,
+    )
+    $('#blockNumber').html(
+      `<span class="text-info"><i class="fa-solid fa-cube"></i></span> ${result[0]}`,
+    )
+    $('#student-address').html(
+      `<span class="text-info"><i class="fa-solid fa-user"></i></span> ${truncateAddress(result[4])}`,
+    )
+    document.getElementById('student-document').src =
+      'https://ipfs.io/ipfs/' + result[3]
+    document.getElementById('download-document').href = document.getElementById(
+      'student-document',
+    ).src
+    $('.transaction-status').show()
+  } 
+  else {
+    // document.getElementById('download-document').classList.add('d-none')
+    $('#download-document').hide()
+    $('#doc-status').html(`<h3 class="text-danger">
+        Certificate not Verified 😕
+         <i class="text-danger  fa fa-times-circle" aria-hidden="true"></i>
+        </h3>`)
+    $('#file-hash').html(
+      `<span class="text-info"><i class="fa-solid fa-hashtag"></i></span> ${truncateAddress(
+        window.hashedfile,
+      )}`,
+    )
+    $('#college-name').hide()
+    $('#contract-address').hide()
+    $('#time-stamps').hide()
+    $('#blockNumber').hide()
+    $('#student-address').hide()
     $('.transaction-status').show()
   }
 }

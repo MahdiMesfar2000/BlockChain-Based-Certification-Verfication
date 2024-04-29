@@ -12,6 +12,8 @@
     <script src="./js/aos.js"></script>
     <script src="node_modules\web3\dist\web3.min.js"></script>
     <script src="js/verify.js"></script>
+    <script src="js/App.js"></script>
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -20,10 +22,13 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="css/main.css" />
-    <link rel="icon" href="./assets/images/icon.png" />
+    <link rel="icon" href="/files/logo diplomi icon.svg" />
     <title>Verfiy Document</title>
   </head>
+
   <body>
+    <canvas id="canvas1"></canvas>
+    <script src="js/animation.js"></script>
     <!-- loading Circular dots... -->
     <div class="loader-wraper">
       <div class="lds-roller">
@@ -41,11 +46,12 @@
     <!-- navigation bar -->
     <nav class="navbar navbar-expand-lg bg-light py-3 navbar-dark">
       <div class="container">
-        <a class="navbar-brand" href="index.html">
-          <i class="fa-solid fa-dragon home_text"></i>
-          <span class="home_text">Orio</span>
-          Chain
-        </a>
+        <img
+          src="files/logo diplomi.svg"
+          alt="logo"
+          style="width: 10%; height: 10%; margin-right: 1em"
+        />
+
         <button
           class="navbar-toggler"
           type="button"
@@ -60,36 +66,60 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="index.html">Home</a>
+              <a
+                class="nav-link"
+                id="Home"
+                aria-current="page"
+                href="index.html"
+                >Home</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="upload.html">Upload</a>
+              <a class="nav-link d-none" id="Upload" href="upload.html"
+                >Upload</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="verify.html">Verify</a>
+              <a class="nav-link active" id="Verify" href="verify.html"
+                >Verify</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="delete.html">Delete</a>
+              <a class="nav-link d-none" id="Delete" href="delete.html"
+                >Revoke</a
+              >
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="admin.html">Admin</a>
+              <a class="nav-link d-none" id="Admin" href="admin.html">Admin</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="certificates.html">Certificates</a>
-            </li>  
+              <a
+                class="nav-link d-none"
+                id="certificates"
+                href="certificates.html"
+                >Certificates</a
+              >
+            </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">Team</a>
+              <a class="nav-link" id="request" href="request.html">Request</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="Team" href="about.html">Team</a>
             </li>
           </ul>
-          
         </div>
       </div>
     </nav>
     <div class="container">
       <!-- upload form -->
       <div data-aos="zoom-in" class="col p-3 data-upload my-3 mx-md-2">
-        <input onchange="get_Sha3()" id="doc-file" type="file" accept="image/jpeg" />
+        <input
+          onchange="get_Sha()"
+          id="doc-file"
+          type="file"
+          accept="image/jpeg"
+        />
         <span id="note" class="text-danger"></span>
         <img id="loader" src="files/loader.svg" alt="loader" />
         <input
@@ -131,7 +161,7 @@
         </div>
       </div>
     </div>
-    <footer class="footer-dark">
+    <!-- <footer class="footer-dark">
       <div class="container">
         <div class="row">
           <div class="col-sm-6 col-md-3 item">
@@ -154,7 +184,6 @@
               <i class="fa-solid fa-dragon"></i>
               OrioChain
             </h3>
-            <!-- <a href="https://www.flaticon.com/free-icons/blockchain" title="blockchain icons">Blockchain icons created by photo3idea_studio - Flaticon</a> -->
             <p>
               Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus
               ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique
@@ -220,12 +249,9 @@
         </div>
         <p class="copyright">OrioChain © 2022</p>
       </div>
-    </footer>
+    </footer> -->
     <div>
-      <a
-        title="Send Email"
-        href="mailto:devaloshe@gmail.com?subject=From OrioChain Site"
-      >
+      <a href="diplomi@gmail.com?subject=From Diplomi Site">
         <i class="mail-us fa-solid fa-headset"></i>
       </a>
     </div>

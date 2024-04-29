@@ -1,13 +1,90 @@
 window.CONTRACT = {
-  address: '0x5140c9E9fB3743766450fea6100CaD7a768Cfc94',
+
+  address: '0xD870d275e833dED94804EEfF605a571cC3dE8c3a',
+
   network: 'https://rpc.sepolia.org/',
   explore: 'https://sepolia.etherscan.io/',
   // Your Contract ABI 
-  abi: [
+  abi:[
     {
       "inputs": [],
       "stateMutability": "nonpayable",
       "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "previousAdminRole",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "newAdminRole",
+          "type": "bytes32"
+        }
+      ],
+      "name": "RoleAdminChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "RoleGranted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "RoleRevoked",
+      "type": "event"
     },
     {
       "anonymous": false,
@@ -29,10 +106,68 @@ window.CONTRACT = {
           "internalType": "address",
           "name": "_studentAddress",
           "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "hash",
+          "type": "bytes32"
         }
       ],
       "name": "addHash",
       "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "DEFAULT_ADMIN_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "EXPORTER_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "OWNER_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "STUDENT_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
     },
     {
       "inputs": [
@@ -192,6 +327,11 @@ window.CONTRACT = {
           "internalType": "address",
           "name": "",
           "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
         }
       ],
       "stateMutability": "view",
@@ -217,19 +357,141 @@ window.CONTRACT = {
       "type": "function"
     },
     {
-      "inputs": [],
-      "name": "owner",
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        }
+      ],
+      "name": "getRoleAdmin",
       "outputs": [
         {
-          "internalType": "address",
+          "internalType": "bytes32",
           "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
           "type": "address"
+        }
+      ],
+      "name": "grantRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "hasRole",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "renounceRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "revokeRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_add",
+          "type": "address"
+        }
+      ],
+      "name": "roleInfo",
+      "outputs": [
+        {
+          "internalType": "bool[3]",
+          "name": "",
+          "type": "bool[3]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes4",
+          "name": "interfaceId",
+          "type": "bytes4"
+        }
+      ],
+      "name": "supportsInterface",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
         }
       ],
       "stateMutability": "view",
       "type": "function"
     }
-  ],
+  ]
 }
 
 //login
@@ -261,25 +523,40 @@ async function connect() {
 }
 
 window.onload = async () => {
-  $('#loginButton').hide()
-  $('#recent-header').hide()
-  $('.loader-wraper').fadeOut('slow')
-  hide_txInfo()
-  $('#upload_file_button').attr('disabled', true)
+  
 
   window.userAddress = window.localStorage.getItem('userAddress')
 
   if (window.ethereum) {
-    //gere we need MetaMask to read and write to our Contract
+    //here we need MetaMask to read and write to our Contract
     window.web3 = new Web3(window.ethereum)
     window.contract = new window.web3.eth.Contract(
       window.CONTRACT.abi,
       window.CONTRACT.address,
     )
     //checking if user loged in
+
+
+
+
+    getRolesList()
+
+    $('#loader').hide()
+    $('#loginButton').hide()
+    $('#recent-header').hide()
+    $('.loader-wraper').fadeOut('slow')
+    hide_txInfo()
+    $('#upload_file_button').attr('disabled', true)
+    try{
+    document.getElementById('Exporter-Req-address').value = window.userAddress;
+    }catch (error) {
+
+    }
+
     if (window.userAddress.length > 10) {
       // let isLocked =await window.ethereum._metamask.isUnlocked();
       //  if(!isLocked) disconnect();
+      
       $('#logoutButton').show()
       $('#loginButton').hide()
       $('#userAddress')
@@ -303,6 +580,7 @@ window.onload = async () => {
 
       setTimeout(() => {
         listen()
+        
       }, 0)
     } else {
       $('#logoutButton').hide()
@@ -324,7 +602,9 @@ window.onload = async () => {
     // alert("Please download metamask extension first.\nhttps://metamask.io/download/");
     // window.location = "https://metamask.io/download/"
   }
+  
 }
+
 
 function hide_txInfo() {
   $('.transaction-status').addClass('d-none')
@@ -503,6 +783,45 @@ async function deleteHash() {
       })
   }
 }
+async function deleteHash2(hash) {
+  $('#loader').removeClass('d-none')
+  // $('#upload_file_button').slideUp()
+  $('#note').html(
+    `<h5 class="text-info">Please confirm the transaction 🙂</h5>`,
+  )
+  $('#upload_file_button').attr('disabled', true)
+  get_ChainID()
+
+  if (hash) {
+    await window.contract.methods
+      .deleteHash(hash)
+      .send({ from: window.userAddress })
+      .on('transactionHash', function (hash) {
+        $('#note').html(
+          `<h5 class="text-info p-1 text-center">Please wait for transaction to be mined 😴</h5>`,
+        )
+      })
+
+      .on('receipt', function (receipt) {
+        $('#note').html(
+          `<h5 class="text-info p-1 text-center">Document Deleted 😳</h5>`,
+        )
+
+        $('#loader').addClass('d-none')
+        // $('#upload_file_button').slideDown()
+      })
+
+      .on('confirmation', function (confirmationNr) {
+        console.log(confirmationNr)
+      })
+      .on('error', function (error) {
+        console.log(error.message)
+        $('#note').html(`<h5 class="text-center">${error.message}</h5>`)
+        $('#loader').addClass('d-none')
+        // $('#upload_file_button').slideDown()
+      })
+  }
+}
 
 //get current time
 function getTime() {
@@ -565,7 +884,8 @@ async function get_ChainID() {
 
 
 function get_Sha3() {
-  const studentAddress = document.getElementById('student-address').value;
+  if(window.location.pathname == '/upload.html'){
+    const studentAddress = document.getElementById('student-address').value;
   var file = document.getElementById('doc-file').files[0];
 
   if(web3.utils.isAddress(studentAddress) && file){
@@ -597,6 +917,37 @@ function get_Sha3() {
       console.log('File size exceeds 256KB');
     }
   }
+  }
+  else if(window.location.pathname == '/delete.html'){
+  var file = document.getElementById('doc-file').files[0];
+  if(file){
+    hide_txInfo();
+    $('#note').html(`<h5 class="text-warning">Hashing Your Document 😴...</h5>`);
+    $('#upload_file_button').attr('disabled', false);
+    console.log('file changed');
+
+    var reader = new FileReader();
+    reader.readAsText(file, 'UTF-8');
+    reader.onload = function (evt) {
+      window.hashedfile = web3.utils.soliditySha3(evt.target.result);
+      console.log(`Document Hash : ${window.hashedfile}`);
+      $('#note').html(`<h5 class="text-center text-info">Document Hashed  😎 </h5>`);
+    }
+    reader.onerror = function (evt) {
+      console.log('error reading file');
+    }
+  } else {
+    window.hashedfile = null;
+    $('#upload_file_button').attr('disabled', true);
+    if (!file) {
+      console.log('File input is empty');
+    }
+    if (file && file.size > 256 * 1024) {
+      console.log('File size exceeds 256KB');
+    }
+  }
+
+}
 }
 
 //logout
@@ -619,63 +970,306 @@ function truncateAddress(address) {
     address.length,
   )}`
 }
+async function Confirm2() {
+  const name = document.getElementById('name').value
+  const localisation = document.getElementById('localisation').value
+  const site = document.getElementById('site').value
+  const address = document.getElementById('Exporter-address').value
+if (name && address && localisation && site) {
+  const obj= {"nom":name,"public_key":address,"localisation":localisation, "site":site}
+  console.log(obj)
+  
+  const response = await fetch('http://localhost:4000/api/workouts/'+address, {
+    method: 'PUT',
+    body: JSON.stringify(obj),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  const json = await response.json()
+
+  if (!response.ok) {
+    console.log(json.error)
+  }
+  if (response.ok) {
+   
+    console.log('workout updated:', json)
+    location.reload()
+  }
+
+
+} else {
+  $('#note').html(
+    `<h5 class="text-center text-warning">You need to provide all info!! </h5>`,
+  )
+}
+}
+
+
+async function add_to_mango(obj) {
+const response =  await fetch('http://localhost:4000/api/workouts', {
+    method: 'POST',
+    body: JSON.stringify(obj),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  const json = await response.json()
+
+  if (!response.ok) {
+    console.log(json.error)
+  }
+  if (response.ok) {
+   
+    console.log('new workout added:', json)
+    location.reload()
+  }
+}
+
+async function Confirm_AcceptExporter(obj) {
+  
+  const name = obj.nom
+  const localisation = obj.localisation
+  const site = obj.site
+  const address =obj.public_key
+  const pending = "0"
+
+  
+if (name && address && localisation && site) {
+  const obj= {"nom":name,"public_key":address,"localisation":localisation, "site":site,"pending":pending}
+  //const obj= {"nom":name,"public_key":address,"localisation":localisation, "site":site}
+
+  $('#loader').removeClass('d-none')
+  $('#Confirm').attr('disabled', true)
+
+  $('#note').html(
+    `<h5 class="text-info">Please confirm the transaction 👍...</h5>`,
+  )
+  $('#ExporterBtn').attr('disabled', true)
+  $('#delete').attr('disabled', true)
+  $('#edit').attr('disabled', true)
+  get_ChainID()
+
+  try {
+    await window.contract.methods
+      .add_Exporter(address,name)//add to blockchain
+      .send({ from: window.userAddress })
+
+      .on('transactionHash', function (hash) {
+        $('#note').html(
+          `<h5 class="text-info p-1 text-center">Please wait for transaction to be mined 😴...</h5>`,
+        )
+      })
+
+      .on('receipt', function (receipt) {
+        $('#loader').addClass('d-none')
+        $('#ExporterBtn').slideDown()
+        $('#edit').slideDown()
+        $('#delete').slideDown()
+        console.log(receipt)
+        
+
+        console.log(obj)
+  
+
+        $('#note').html(
+          `<h5 class="text-info">Exporter Added to the Blockchain 😇</h5>`,
+        )
+        add_to_mango(obj)//add to database
+        
+      })
+
+      .on('confirmation', function (confirmationNr) {})
+      .on('error', function (error) {
+        console.log(error.message)
+        $('#Confirm').attr('disabled', false)
+        $('#note').html(`<h5 class="text-center">${error.message}</h5>`)
+        $('#loader').addClass('d-none')
+        $('#ExporterBtn').slideDown()
+        
+      })
+  } catch (error) {
+    $('#Confirm').attr('disabled', false)
+    $('#note').html(`<h5 class="text-center">${error.message}</h5>`)
+    $('#loader').addClass('d-none')
+    $('#ExporterBtn').slideDown()
+    $('#edit').slideDown()
+    $('#delete').slideDown()
+  }
+  
+  
+
+} else {
+  $('#note').html(
+    `<h5 class="text-center text-warning">You need to provide all info!! </h5>`,
+  )
+}
+} 
+
+function AcceptExporter(obj){
+
+  delete_from_mango(obj.public_key)
+  Confirm_AcceptExporter(obj)
+
+}
+
+function RejectExporter(adress){
+  delete_from_mango(adress)
+  location.reload()
+}
+
+async function RequestExporter() {
+  const name = document.getElementById('name').value
+  const localisation = document.getElementById('localisation').value
+  const site = document.getElementById('site').value
+
+  const address = document.getElementById('Exporter-Req-address').value
+  const pending = "1"
+  if (name && address && localisation && site) {
+    const obj= {"nom":name,"public_key":address,"localisation":localisation, "site":site,"pending":pending}
+    add_to_mango(obj)
+  
+  } else {
+    $('#note').html(
+      `<h5 class="text-center text-warning">You need to provide all info!! </h5>`,
+    )
+  }
+
+}
+
+async function Confirm() {
+  
+  const name = document.getElementById('name').value
+  const localisation = document.getElementById('localisation').value
+  const site = document.getElementById('site').value
+  const address = document.getElementById('Exporter-address').value
+  const pending = "0"
+  
+
+  
+if (name && address && localisation && site) {
+  const obj= {"nom":name,"public_key":address,"localisation":localisation, "site":site,"pending":pending}
+  //const obj= {"nom":name,"public_key":address,"localisation":localisation, "site":site}
+
+  $('#loader').removeClass('d-none')
+  $('#Confirm').attr('disabled', true)
+
+  $('#note').html(
+    `<h5 class="text-info">Please confirm the transaction 👍...</h5>`,
+  )
+  $('#ExporterBtn').attr('disabled', true)
+  $('#delete').attr('disabled', true)
+  $('#edit').attr('disabled', true)
+  get_ChainID()
+
+  try {
+    await window.contract.methods
+      .add_Exporter(address,name)//add to blockchain
+      .send({ from: window.userAddress })
+
+      .on('transactionHash', function (hash) {
+        $('#note').html(
+          `<h5 class="text-info p-1 text-center">Please wait for transaction to be mined 😴...</h5>`,
+        )
+      })
+
+      .on('receipt', function (receipt) {
+        $('#loader').addClass('d-none')
+        $('#ExporterBtn').slideDown()
+        $('#edit').slideDown()
+        $('#delete').slideDown()
+        console.log(receipt)
+        
+
+        console.log(obj)
+  
+
+        $('#note').html(
+          `<h5 class="text-info">Exporter Added to the Blockchain 😇</h5>`,
+        )
+        add_to_mango(obj)//add to database
+        
+      })
+
+      .on('confirmation', function (confirmationNr) {})
+      .on('error', function (error) {
+        console.log(error.message)
+        $('#Confirm').attr('disabled', false)
+        $('#note').html(`<h5 class="text-center">${error.message}</h5>`)
+        $('#loader').addClass('d-none')
+        $('#ExporterBtn').slideDown()
+        
+      })
+  } catch (error) {
+    $('#Confirm').attr('disabled', false)
+    $('#note').html(`<h5 class="text-center">${error.message}</h5>`)
+    $('#loader').addClass('d-none')
+    $('#ExporterBtn').slideDown()
+    $('#edit').slideDown()
+    $('#delete').slideDown()
+  }
+  
+  
+
+} else {
+  $('#note').html(
+    `<h5 class="text-center text-warning">You need to provide all info!! </h5>`,
+  )
+}
+} 
+
+
+
+
+function back() {
+  $('#loader').addClass('d-none')
+  $('#name').addClass('d-none')
+  $('#localisation').addClass('d-none')
+  $('#site').addClass('d-none')
+
+  $('#ExporterBtn').removeClass('d-none')
+  $('#edit').removeClass('d-none')
+  $('#delete').removeClass('d-none')
+
+  $('#back').addClass('d-none')
+  $('#Confirm').addClass('d-none')
+  $('#note').html( `<h5 class="text-center text-warning"></h5>`,
+  )
+}
+function back2() {
+  $('#loader').addClass('d-none')
+  $('#name').addClass('d-none')
+  $('#localisation').addClass('d-none')
+  $('#site').addClass('d-none')
+
+  $('#ExporterBtn').removeClass('d-none')
+  $('#edit').removeClass('d-none')
+  $('#delete').removeClass('d-none')
+
+  $('#back2').addClass('d-none')
+  $('#Confirm2').addClass('d-none')
+  $('#note').html( `<h5 class="text-center text-warning"></h5>`,
+  )
+}
+
 
 async function addExporter() {
   const address = document.getElementById('Exporter-address').value
-  const info = document.getElementById('info').value
-
-  if (info && address) {
-    $('#loader').removeClass('d-none')
-    $('#ExporterBtn').slideUp()
-    $('#edit').slideUp()
-    $('#delete').slideUp()
+  if (address){
+    $('#name').removeClass('d-none')
+    $('#localisation').removeClass('d-none')
+    $('#site').removeClass('d-none')
+    $('#ExporterBtn').addClass('d-none')
+    $('#edit').addClass('d-none')
+    $('#delete').addClass('d-none')
+    $('#back').removeClass('d-none')
+    $('#Confirm').removeClass('d-none')
+    $('#Confirm22').removeClass('d-none')
+  //add here other inputs
+}
+  else {
     $('#note').html(
-      `<h5 class="text-info">Please confirm the transaction 👍...</h5>`,
-    )
-    $('#ExporterBtn').attr('disabled', true)
-    $('#delete').attr('disabled', true)
-    $('#edit').attr('disabled', true)
-    get_ChainID()
-
-    try {
-      await window.contract.methods
-        .add_Exporter(address, info)
-        .send({ from: window.userAddress })
-
-        .on('transactionHash', function (hash) {
-          $('#note').html(
-            `<h5 class="text-info p-1 text-center">Please wait for transaction to be mined 😴...</h5>`,
-          )
-        })
-
-        .on('receipt', function (receipt) {
-          $('#loader').addClass('d-none')
-          $('#ExporterBtn').slideDown()
-          $('#edit').slideDown()
-          $('#delete').slideDown()
-          console.log(receipt)
-          $('#note').html(
-            `<h5 class="text-info">Exporter Added to the Blockchain 😇</h5>`,
-          )
-        })
-
-        .on('confirmation', function (confirmationNr) {})
-        .on('error', function (error) {
-          console.log(error.message)
-          $('#note').html(`<h5 class="text-center">${error.message}</h5>`)
-          $('#loader').addClass('d-none')
-          $('#ExporterBtn').slideDown()
-        })
-    } catch (error) {
-      $('#note').html(`<h5 class="text-center">${error.message}</h5>`)
-      $('#loader').addClass('d-none')
-      $('#ExporterBtn').slideDown()
-      $('#edit').slideDown()
-      $('#delete').slideDown()
-    }
-  } else {
-    $('#note').html(
-      `<h5 class="text-center text-warning">You need to provide address & inforamtion to add  </h5>`,
+      `<h5 class="text-center text-warning">You need to provide address </h5>`,
     )
   }
 }
@@ -708,12 +1302,49 @@ async function getCounters() {
       $('#num-hashes').html(
         `<i class="fa-solid fa-file mx-2 text-warning"></i>${result}`,
       )
+      
+
     })
 }
 
 async function editExporter() {
   const address = document.getElementById('Exporter-address').value
-  const info = document.getElementById('info').value
+  if (address){
+   
+  const response = await fetch('http://localhost:4000/api/workouts'+'/'+address, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  const json = await response.json()
+
+  if (!response.ok) {
+    console.log(json.error)
+    $('#note').html(
+      `<h5 class="text-center text-warning">Adress not found!!</h5>`,
+    )
+  }
+  if (response.ok) {
+    $('#name').removeClass('d-none')
+    $('#localisation').removeClass('d-none')
+    $('#site').removeClass('d-none')
+    $('#ExporterBtn').addClass('d-none')
+    $('#edit').addClass('d-none')
+    $('#delete').addClass('d-none')
+    $('#back2').removeClass('d-none')
+    $('#Confirm2').removeClass('d-none')
+    console.log('workout selected:', json)
+    document.getElementById('name').value=json['nom']
+    document.getElementById('localisation').value=json['localisation']
+    document.getElementById('site').value=json['site']
+    
+    //location.reload()
+  }}else {
+    $('#note').html(
+      `<h5 class="text-center text-warning">You need to provide address </h5>`,
+    )
+  }
 
   if (info && address) {
     $('#loader').removeClass('d-none')
@@ -767,10 +1398,27 @@ async function editExporter() {
   }
 }
 
+async function delete_from_mango(address) {
+const response = await fetch('http://localhost:4000/api/workouts'+'/'+address, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  const json = await response.json()
 
+  if (!response.ok) {
+    console.log(json.error)
+  }
+  if (response.ok) {
+   
+    console.log('workout deleted:', json)
+  }
+}
 async function deleteExporter() {
   const address = document.getElementById('Exporter-address').value
-
+  
+  
   if (address) {
     $('#loader').removeClass('d-none')
     $('#ExporterBtn').slideUp()
@@ -802,6 +1450,8 @@ async function deleteExporter() {
           $('#note').html(
             `<h5 class="text-info">Exporter Deleted Successfully 🙂</h5>`,
           )
+          delete_from_mango(address)
+          
         })
         .on('error', function (error) {
           console.log(error.message)
@@ -818,6 +1468,7 @@ async function deleteExporter() {
       $('#edit').slideDown()
       $('#delete').slideDown()
     }
+    location.reload()
   } else {
     $('#note').html(
       `<h5 class="text-center text-warning">You need to provide address to delete 👍</h5>`,
@@ -857,29 +1508,119 @@ function generateQRCode() {
 // cuz the pastEvents returns transactions in last 999 block
 async function listen() {
   console.log('started...')
-  if (window.location.pathname != '/upload.html' && window.location.pathname != '/certificates.html') return
+  if (window.location.pathname != '/upload.html' && window.location.pathname != '/certificates.html'&& window.location.pathname != '/delete.html') return 
   document.querySelector('.loading-tx').classList.remove('d-none')
   window.web3 = new Web3(window.ethereum)
   window.contract = new window.web3.eth.Contract(
     window.CONTRACT.abi,
     window.CONTRACT.address,
   )
-  if (window.location.pathname == '/upload.html') {
-    await window.contract.getPastEvents(
-      'addHash',
-      {
-        filter: {
-          _exporter: window.userAddress, //Only get the documents uploaded by current Exporter
+
+  
+  await window.contract.getPastEvents(
+    'addHash',
+    {
+      filter: {
+        _exporter: window.userAddress, //Only get the documents uploaded by current Exporter
+      },
+      fromBlock: (await window.web3.eth.getBlockNumber()) - 999,
+      toBlock: 'latest',
+    },
+    function (error, events) {
+      console.log("1111111111111111111111111")
+      // printTransactions(events)
+      console.log(events)
+    },
+    
+  )
+  
+  
+  
+
+}
+async function getRolesList() {
+  window.web3 = new Web3(window.ethereum)
+  window.contract = new window.web3.eth.Contract(
+    window.CONTRACT.abi,
+    window.CONTRACT.address,
+  )
+  await getrole()
+}
+
+
+
+async function getrole(){
+  await window.contract.methods
+    .roleInfo(window.userAddress)
+    .call({ from: window.userAddress })
+
+    .then((result) => {
+    console.log("roles:", result);
+    if ((result[0])){$(document).ready(function() {$('#Admin').removeClass('d-none');$('#request').addClass('d-none');});}
+    if ((result[1])){$(document).ready(function() {$('#Upload').removeClass('d-none');$('#Delete').removeClass('d-none');$('#request').addClass('d-none');});}
+    if ((result[2])){$(document).ready(function() {$('#certificates').removeClass('d-none');$('#request').addClass('d-none');});}
+    
+
+    if (window.location.pathname == '/admin.html')
+    {
+      if (!(result[0])) {window.location.href = '/index.html';}
+      
+    }
+
+    if ((window.location.pathname == '/delete.html') || (window.location.pathname == '/upload.html'))
+    {
+      if (!(result[1])) {window.location.href = '/index.html';}
+      
+    }
+    if (window.location.pathname == '/certificates.html')
+    {
+      if (!(result[2])) {window.location.href = '/index.html';}
+      
+    }
+    if (window.location.pathname == '/request.html')
+    {
+      if ((result[0])||(result[1])||(result[2])) {window.location.href = '/index.html';}
+      
+    }
+    })
+
+    if (window.location.pathname == '/upload.html') {
+      await window.contract.getPastEvents(
+        'addHash',
+        {
+          filter: {
+            _exporter: window.userAddress, //Only get the documents uploaded by current Exporter
+          },
+          fromBlock: (await window.web3.eth.getBlockNumber()) - 999,
+          toBlock: 'latest',
         },
-        fromBlock: (await window.web3.eth.getBlockNumber()) - 999,
-        toBlock: 'latest',
-      },
-      function (error, events) {
-        printTransactions(events)
-        console.log(events)
-      },
-    )
-  }
+        function (error, events) {
+          console.log("events:")
+          console.log("222222222222222222222")
+          printTransactions(events)
+          console.log(events)
+        },
+      )
+    }
+    else if (window.location.pathname == '/delete.html') {
+      await window.contract.getPastEvents(
+        'addHash',
+        {
+          filter: {
+            _exporter: window.userAddress, //Only get the documents uploaded by current Exporter
+          },
+          fromBlock: (await window.web3.eth.getBlockNumber()) - 999,
+          toBlock: 'latest',
+        },
+        function (error, events) {
+          console.log("events:")
+          console.log("3333333333333333333333333333")
+          printTransactions(events)
+          console.log(events)
+        },
+      )
+    }
+    
   else if (window.location.pathname == '/certificates.html') {
     await window.contract.getPastEvents(
       'addHash',
@@ -891,7 +1632,10 @@ async function listen() {
         toBlock: 'latest',
       },
       function (error, events) {
+      console.log("44444444444444444444444444")
+
         printTransactions(events)
+        
         console.log(events)
         console.log(window.userAddress)
       },
@@ -900,31 +1644,133 @@ async function listen() {
 }
 
 //If there is past tx then show them
-function printTransactions(data) {
-  document.querySelector('.transactions').innerHTML = ''
-  document.querySelector('.loading-tx').classList.add('d-none')
-  if (!data.length) {
-    $('#recent-header').hide()
-    return
+async function printTransactions(data) {
+
+  if(window.location.pathname == '/upload.html' ){
+    document.querySelector('.transactions').innerHTML = ''
+    document.querySelector('.loading-tx').classList.add('d-none')
+    if (!data.length) {
+      $('#recent-header').hide()
+      return
+    }
+    $('#recent-header').show()
+    const main = document.querySelector('.transactions')
+    for (let i = 0; i < data.length; i++) {
+      const a = document.createElement('a')
+      a.href = `${window.CONTRACT.explore}` + '/tx/' + data[i].transactionHash
+      a.setAttribute('target', '_blank')
+      a.className =
+        'col-lg-3 col-md-4 col-sm-5 m-2  bg-dark text-light rounded position-relative card'
+      a.style = 'overflow:hidden;'
+      const image = document.createElement('object')
+      image.style = 'width:100%;height: 100%;'
+      image.data = `https://ipfs.io/ipfs/${data[i].returnValues[1]}`
+      const num = document.createElement('h1')
+      num.append(document.createTextNode(i + 1))
+      a.appendChild(image)
+      num.style =
+        'position:absolute; left:4px; bottom: -20px;font-size:4rem; color: rgba(20, 63, 74, 0.35);'
+      a.appendChild(num)
+      main.prepend(a)
+    }
   }
-  $('#recent-header').show()
-  const main = document.querySelector('.transactions')
-  for (let i = 0; i < data.length; i++) {
-    const a = document.createElement('a')
-    a.href = `${window.CONTRACT.explore}` + '/tx/' + data[i].transactionHash
-    a.setAttribute('target', '_blank')
-    a.className =
-      'col-lg-3 col-md-4 col-sm-5 m-2  bg-dark text-light rounded position-relative card'
-    a.style = 'overflow:hidden;'
-    const image = document.createElement('object')
-    image.style = 'width:100%;height: 100%;'
-    image.data = `https://ipfs.io/ipfs/${data[i].returnValues[1]}`
-    const num = document.createElement('h1')
-    num.append(document.createTextNode(i + 1))
-    a.appendChild(image)
-    num.style =
-      'position:absolute; left:4px; bottom: -20px;font-size:4rem; color: rgba(20, 63, 74, 0.35);'
-    a.appendChild(num)
-    main.prepend(a)
+  else if(window.location.pathname == '/delete.html'){
+    document.querySelector('.transactions').innerHTML = ''
+    document.querySelector('.loading-tx').classList.add('d-none')
+    if (!data.length) {
+      $('#recent-header').hide()
+      return
+    }
+    $('#recent-header').show()
+    const main = document.querySelector('.transactions')
+    console.log("sssssssssssssssssssssssssss")
+    for (let i = 0; i < data.length; i++) {
+      
+      if (data[i].returnValues[3]) {
+        await contract.methods
+          .findDocHash(data[i].returnValues[3])
+          .call({ from: window.CONTRACT.address })
+          .then((result) => {
+            if ((result[0] != 0) & (result[1] != 0)) {
+              
+              if (result[5]) { // Check if the document is valid
+                print_imgs(main,data,i)
+                
+              
+      
+    } 
+  } 
+})
+}
+  }}
+  else if(window.location.pathname == '/certificates.html'){
+    const main = document.querySelector('.transactions');
+    main.innerHTML = '';
+    document.querySelector('.loading-tx').classList.add('d-none');
+  
+    if (!data.length) {
+      $('#recent-header').hide();
+      return;
+    }
+    $('#recent-header').show();
+  
+    await Promise.all(data.map(async (item, i) => {
+      const fileUrl = `https://ipfs.io/ipfs/${item.returnValues[1]}`;
+  
+      try {
+        const response = await fetch(fileUrl);
+        const fileData = await response.text();
+        const hash = web3.utils.soliditySha3(fileData);
+  
+        const a = document.createElement('a');
+        a.href = `/verify.html?hash=${hash}`;
+        a.setAttribute('target', '_blank');
+        a.className = 'col-lg-3 col-md-4 col-sm-5 m-2 bg-dark text-light rounded position-relative card';
+        a.style.overflow = 'hidden';
+  
+        const image = document.createElement('object');
+        image.style.width = '100%';
+        image.style.height = '100%';
+        image.data = fileUrl;
+  
+        const num = document.createElement('h1');
+        num.textContent = i + 1;
+        num.style.position = 'absolute';
+        num.style.left = '4px';
+        num.style.bottom = '-20px';
+        num.style.fontSize = '4rem';
+        num.style.color = 'rgba(20, 63, 74, 0.35)';
+  
+        a.appendChild(image);
+        a.appendChild(num);
+        main.prepend(a);
+      } catch (error) {
+        console.error('Error fetching file:', error);
+      }
+    }));
+  }
+  async function print_imgs(main,data,i){
+    const a = document.createElement('div')
+      const bt = document.createElement('button')
+      a.href = `${window.CONTRACT.explore}` + '/tx/' + data[i].transactionHash
+      a.setAttribute('target', '_blank')
+      bt.setAttribute('onclick',`deleteHash2("${data[i].returnValues[3]}")`)
+      a.setAttribute('hash',data[i].returnValues[3])
+      
+      a.className ='col-lg-3 col-md-4 col-sm-5 m-2  bg-dark text-light rounded position-relative card'
+      bt.className ='btn main-button position-absolute bottom-0 start-50 translate-middle-x'
+      bt.innerHTML="revoke"
+      a.style = 'overflow:hidden;'
+      const image = document.createElement('object')
+      image.style = 'width:100%;height: 100%;'
+      image.data = `https://ipfs.io/ipfs/${data[i].returnValues[1]}`
+      const num = document.createElement('h1')
+      num.append(document.createTextNode(i + 1))
+      a.appendChild(image)
+      num.style =
+        'position:absolute; left:4px; bottom: -20px;font-size:4rem; color: rgba(20, 63, 74, 0.35);'
+      a.appendChild(num)
+      main.prepend(a)
+      a.appendChild(bt)
   }
 }

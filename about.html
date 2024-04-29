@@ -10,13 +10,13 @@
     <!-- SEO Meta Tags -->
     <meta name="description" content="Your description" />
     <meta name="author" content="Your name" />
-    <link rel="icon" href="./assets/images/icon.png" />
+    <link rel="icon" href="/files/logo diplomi icon.svg" />
     <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
-    <meta property="og:site_name" content="OrioChain" />
+    <meta property="og:site_name" content="Diplomi" />
     <!-- website name -->
-    <meta property="og:site" content="oriochain.com" />
+    <meta property="og:site" content="Diplomi.com" />
     <!-- website link -->
-    <meta property="og:title" content="Orio" />
+    <meta property="og:title" content="Diplomi" />
     <!-- title shown in the actual shared post -->
     <meta property="og:description" content="Verify  Documents" />
     <!-- description shown in the actual shared post -->
@@ -28,89 +28,131 @@
     <!-- to have large image post format in Twitter -->
 
     <!-- Webpage Title -->
-    <title>OrioChain Team</title>
-    <link rel="stylesheet" href="./css/loader.css">
-    <link href="./css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <link href="./css/aos.min.css" rel="stylesheet" />
-    <link href="./css/main.css" rel="stylesheet" />
+    <title>Diplomi Team</title>
+    <link rel="stylesheet" href="./css/loader.css" />
+    <script src="js/App.js"></script>
+    <script src="node_modules\web3\dist\web3.min.js"></script>
 
+    <link href="./css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="./css/aos.min.css" rel="stylesheet" />
+    <link href="./css/main.css" rel="stylesheet" />
   </head>
 
   <body>
- <div class="loader-wraper">
-  <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-</div>
-       <!--NavBar Start-->
-       <nav class="navbar navbar-expand-lg bg-light py-3 navbar-dark">
-        <div class="container">
-          <a class="navbar-brand" href="index.html">
-            <i class="fa-solid fa-dragon home_text"></i>
-            <span class="home_text">Orio</span>Chain
-            </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <canvas id="canvas1"></canvas>
+    <script src="js/animation.js"></script>
+    <div class="loader-wraper">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <!--NavBar Start-->
+    <nav class="navbar navbar-expand-lg bg-light py-3 navbar-dark">
+      <div class="container">
+        <img
+          src="files/logo diplomi.svg"
+          alt="logo"
+          style="width: 12%; height: 12%; margin-right: 1em"
+        />
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="index.html">Home</a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link " href="upload.html">Upload </a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link" href="verify.html">Verify </a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link" href="delete.html">Delete </a>
-              </li>
+              <a
+                class="nav-link"
+                id="Home"
+                aria-current="page"
+                href="index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-none" id="Upload" href="upload.html"
+                >Upload
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="Verify" href="verify.html">Verify </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-none" id="Delete" href="delete.html"
+                >Revoke
+              </a>
+            </li>
 
-              <li class="nav-item">
-                <a class="nav-link" href="admin.html">Admin</a>
-                </li>        
-                <li class="nav-item">
-                  <a class="nav-link" href="certificates.html">Certificates</a>
-                </li>      
-                <li class="nav-item">
-              <a class="nav-link active" href="about.html">Team</a>
-              </li>
+            <li class="nav-item">
+              <a class="nav-link d-none" id="Admin" href="admin.html">Admin</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link d-none"
+                id="certificates"
+                href="certificates.html"
+                >Certificates</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="request" href="request.html">Request</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" id="Team" href="about.html">Team</a>
+            </li>
           </ul>
-          </div>
         </div>
-        </nav>
-    
- 
+      </div>
+    </nav>
 
     <!-- Our Developers -->
     <div class="container">
       <div class="men d-flex justify-content-center">
-        
-        <div  data-aos="zoom-in"  class="people">
-          <h1>Ali Falah</h1>
-          <h6>Programmer & IT Engineer</h6>
-          <p class="about-me-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Iste voluptatum culpa nesciunt
-          </p>
-          <div class="img-container">
-            <img src="files/alifalah.jpg" alt="Ali Falah">
+        <div data-aos="zoom-in" class="people">
+          <h1>Ketata Yessine</h1>
+          <h6>Programmer & IT Engineer Student</h6>
+          <div class="img-container mt-5">
+            <img src="files/ketata.jpg" alt="Ketata Yessine" />
           </div>
           <div class="social">
-            <a href="https://www.facebook.com/AlosheFalah/"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://t.me/DevAloshe"><i class="fa-brands fa-telegram"></i></a
-            ><a href="https://github.com/DevAloshe"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.facebook.com/AlosheFalah/"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a href="https://t.me/DevAloshe"
+              ><i class="fa-brands fa-telegram"></i></a
+            ><a href="https://github.com/DevAloshe"
+              ><i class="fa-brands fa-github"></i
+            ></a>
             <a href="#"><i class="fa-brands fa-instagram"></i> </a>
           </div>
         </div>
-        <div   data-aos="zoom-in" class="people">
-          <h1>Dr. Omar Ali</h1>
-          <h6>Professor & IT Engineer</h6>
-          <p class="about-me-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Iste voluptatum culpa nesciunt
-          </p>
-          <div class="img-container">
-            <img src="files/—Pngtree—user avatar boy_4693645.png" alt="Ali Falah">
+        <div data-aos="zoom-in" class="people">
+          <h1>Mesfar Mahdi</h1>
+          <h6>Programmer & IT Engineer Student</h6>
+          <div class="img-container mt-5">
+            <img src="files/mahdi.jpg" alt="Mesfar Mahdi" />
           </div>
           <div class="social">
             <a href="#"><i class="fa-brands fa-facebook"></i></a>
@@ -119,15 +161,11 @@
             <a href="#"><i class="fa-brands fa-instagram"></i> </a>
           </div>
         </div>
-        <div  data-aos="zoom-in" class="people">
-          <h1>Ali Hussein</h1>
-          <h6>Programmer & IT Engineer</h6>
-          <p class="about-me-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Iste voluptatum culpa nesciunt
-          </p>
-          <div class="img-container">
-            <img src="files/alihussein.jpg" alt="Ali Falah">
+        <div data-aos="zoom-in" class="people">
+          <h1>Feki Yassine</h1>
+          <h6>Programmer & IT Engineer Student</h6>
+          <div class="img-container mt-5">
+            <img src="files/feki.jpg" alt="Feki Yassine" />
           </div>
           <div class="social">
             <a href="#"><i class="fa-brands fa-facebook"></i></a>
@@ -136,12 +174,11 @@
             <a href="#"><i class="fa-brands fa-instagram"></i> </a>
           </div>
         </div>
-        
       </div>
     </div>
-  
-  <!--=====================Footer===========================-->
-  <div class="footer-dark">
+
+    <!--=====================Footer===========================-->
+    <!-- <div class="footer-dark">
     <footer>
       <div class="container">
         <div class="row">
@@ -164,7 +201,6 @@
             <h3  data-aos="fade-right"> 
                <i class="fa-solid fa-dragon"></i>
               OrioChain</h3>
-            <!-- <a href="https://www.flaticon.com/free-icons/blockchain" title="blockchain icons">Blockchain icons created by photo3idea_studio - Flaticon</a> -->
             <p  data-aos="zoom-in">
               Praesent sed lobortis mi. Suspendisse vel placerat ligula.
               Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis
@@ -211,22 +247,29 @@
       </div>
 
     </footer>
-  </div>
-  <div >
-    <i onclick="topFunction()" id="scroll-btn" class="fa-solid fa-angle-up"></i>
-  </div>
-  <div><a href="mailto:devaloshe@gmail.com?subject=From OrioChain Site"> 
-    <i class="mail-us fa-solid fa-headset"></i>
-  </a>
-  <script
-  src="https://code.jquery.com/jquery-3.6.0.js"
-  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-  crossorigin="anonymous"></script>
-    <script src="./js/bootstrap.min.js"></script>  
+  </div> -->
+    <div>
+      <i
+        onclick="topFunction()"
+        id="scroll-btn"
+        class="fa-solid fa-angle-up"
+      ></i>
+    </div>
+    <div>
+      <a href="diplomi@gmail.com?subject=From Diplomi Site">
+        <i class="mail-us fa-solid fa-headset"></i>
+      </a>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/bootstrap.min.js"></script>
     <script src="./js/aos.js"></script>
     <script src="./js/script.js"></script>
-  <script defer>
-  $(".loader-wraper").fadeOut("slow");
-  </script>
+    <script defer>
+      $(".loader-wraper").fadeOut("slow");
+    </script>
   </body>
 </html>
