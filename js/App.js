@@ -1,6 +1,6 @@
 window.CONTRACT = {
 
-  address: '0x96eDa3F62cE82AD4C9EFfeFfbdAB2c2C37dc88AB',
+  address: '0xD870d275e833dED94804EEfF605a571cC3dE8c3a',
 
   network: 'https://rpc.sepolia.org/',
   explore: 'https://sepolia.etherscan.io/',
