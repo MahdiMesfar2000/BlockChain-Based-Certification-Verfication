@@ -1,57 +1,32 @@
-# BlockChain-Based Document Verification with IPFS
+# Diplomi_PFA
 
-This project aims to create a secure and decentralized system for document verification using Blockchain and InterPlanetary File System (IPFS) technologies. The system stores the hash of the documents in the Blockchain network and the documents themselves in the IPFS network. This ensures that the documents cannot be tampered with or altered, and they can be easily retrieved and verified by authorized parties.
+This End-of-Year Project was realized by Me, Yessine Ketata, and Yassine Feki. It is a blockchain-based application for the verification and validation of academic certificates.
 
-## Features
+## Description
 
-- Secure document verification using Blockchain and IPFS technologies
-- Decentralized system, with no central authority or single point of failure
-- Fast and easy verification process, with no need for intermediaries or third-party services
-- User-friendly interface for document upload and verification
-- Support for multiple document types and formats
+Diplomi_PFA is designed to provide a secure and decentralized platform for verifying and validating academic certificates using blockchain technology. It ensures the integrity and authenticity of academic credentials, reducing the risk of fraud and manipulation.
 
-## Requirements
+## Objective
 
-- Node.js and npm installed on your system
-- MetaMask Wallet
-- IPFS client (Currently not working due ipfs server error)
-
-## Installation
-
-1. Clone this repository: 
-``https://github.com/DevAloshe/BlockChain-Based-Document-Verfication-With-IPFS.git``
-
-
-2. Install the required packages:
-
-``cd BlockChain-Based-Document-Verfication-With-IPFS
-npm install``
-
-
-3. Open the application in your browser using Liver Server Extension .
-
+The objective of this project is to create a reliable and transparent system for verifying academic certificates, addressing the limitations of traditional methods and providing a secure platform for students, educational institutions, and employers.
 
 ## Usage
 
-1. The owner of the system must first add an exporter to the list of authorized parties. This is done by clicking on the "Add Exporter" button and entering the exporter's Ethereum address.
-2. Upload a document to the system by clicking on the "Upload Document" button and selecting a file from your computer. The document will be encrypted and stored in the IPFS network, and its hash will be recorded in the Blockchain.
+To use the application, follow these steps:
 
-3. Verify a document by clicking on the "Verify Document" button and entering its unique identifier (hash) in the input field. The system will retrieve the document from the IPFS network, decrypt it, and compare its hash with the one recorded in the Blockchain.
+1. Install Node.js from [here](https://nodejs.org/).
+2. Clone this repository to your local machine.
+3. Navigate to the project directory in your terminal.
+4. Run `npm install` to install the project dependencies.
+5. Navigate to the `backend` directory.
+6. Run `npx nodemon dev` to start the backend server.
 
-4. The system will display a message indicating whether the document is authentic or not.
+Once the backend server is running, you can access the application from your web browser.
+
+## Contributions
+
+Contributions to the project are welcome! Feel free to submit bug reports, feature requests, or pull requests to help improve the application.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE.md file for details.
-
-## Acknowledgments
-- Metamask documentation
-- Solidity and Web3.js documentation
-- IPFS documentation
-- Truffle documentation
-
-# If You want paid Smiliar Projects DM on Telegram @DevAloshe
-### Payment Method only Crypto Currency
-
-
-
+This project is licensed under the [MIT License](LICENSE).
